@@ -1,0 +1,138 @@
+*author: ADAM
+*reference: ARXIV: : 2017 # arXiv number
+*reference: CERN-EP-xxxx-xx : 2017 # preprint number
+*doi:
+*status: Encoded xx JUN 2017 by Dong Jo Kim for ALICE Publications
+*experiment: CERN-LHC-ALICE
+*detector: ALICE
+*spiresId:
+*inspireId:
+*cdsId:
+*durhamId:
+*title: Systematic studies of correlations between different order flow harmonics in Pb-Pb collisions at $\sqrt{s_{_{\rm NN}}}=2.76$ TeV
+*comment: CERN-LHC. Measurements of correlations between event-by-event fluctuations of amplitudes of anisotropic flow harmonics in nucleus-nucleus collisions at $\sqrt{s_{_{\rm NN}}}=2.76$ TeV. Data was recorded in November 2010 with the ALICE detector at the CERN Large Hadron Collider. The measurements are performed in the central pseudorapidity region (|$\eta$| < 0.8) and transverse momentum range 0.2 < $p_T$ < 5.0 GeV/c.
+
+*dataset:
+*location: Figure 1
+*dscomment: Centrality dependence of observables SC(5,2) in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: SC
+*qual: ETARAP : -0.8 TO 0.8
+*qual: PT IN GEV/C : 0.2 TO 5.0
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: CENTRALITY IN PCT
+*yheader: SC(5,2)
+*data: x : y
+0.0 TO 5.0;	4.140716E-10 +- 1.113931E-09 (DSYS=1.113931E-09)
+5.0 TO 10.0;	6.713435E-09 +- 2.891121E-09 (DSYS=2.891121E-09)
+10.0 TO 20.0;	1.529927E-08 +- 5.364805E-09 (DSYS=5.364805E-09)
+20.0 TO 30.0;	5.189072E-08 +- 1.308934E-08 (DSYS=1.308934E-08)
+30.0 TO 40.0;	1.094558E-07 +- 2.691066E-08 (DSYS=2.691066E-08)
+40.0 TO 50.0;	1.298023E-07 +- 5.263170E-08 (DSYS=5.263170E-08)
+*dataend:
+
+*dataset:
+*location: Figure 1
+*dscomment: Centrality dependence of observables SC(5,3) in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: SC
+*qual: ETARAP : -0.8 TO 0.8
+*qual: PT IN GEV/C : 0.2 TO 5.0
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: CENTRALITY IN PCT
+*yheader: SC(5,3)
+*data: x : y
+0.0 TO 5.0;	2.894789E-10 +- 6.719300E-10 (DSYS=6.719300E-10)
+5.0 TO 10.0;	3.964441E-09 +- 1.091935E-09 (DSYS=1.091935E-09)
+10.0 TO 20.0;	1.065057E-08 +- 1.418464E-09 (DSYS=1.418464E-09)
+20.0 TO 30.0;	2.348236E-08 +- 2.845184E-09 (DSYS=2.845184E-09)
+30.0 TO 40.0;	3.809298E-08 +- 5.827914E-09 (DSYS=5.827914E-09)
+40.0 TO 50.0;	4.255487E-08 +- 1.311739E-08 (DSYS=1.311739E-08)
+*dataend:
+
+*dataset:
+*location: Figure 1
+*dscomment: Centrality dependence of observables SC(4,3) in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: SC
+*qual: ETARAP : -0.8 TO 0.8
+*qual: PT IN GEV/C : 0.2 TO 5.0
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: CENTRALITY IN PCT
+*yheader: SC(4,3)
+*data: x : y
+0.0 TO 5.0;	-1.440458E-09 +- 8.142325E-10 (DSYS=8.142325E-10)
+5.0 TO 10.0;	-3.031715E-09 +- 1.323967E-09 (DSYS=1.323967E-09)
+10.0 TO 20.0;	-1.123485E-08 +- 1.664732E-09 (DSYS=1.664732E-09)
+20.0 TO 30.0;	-2.608431E-08 +- 3.230300E-09 (DSYS=3.230300E-09)
+30.0 TO 40.0;	-3.695879E-08 +- 6.427908E-09 (DSYS=6.427908E-09)
+40.0 TO 50.0;	-4.504331E-08 +- 1.405650E-08 (DSYS=1.405650E-08)
+*dataend:
+
+*dataset:
+*location: Figure 1
+*dscomment: Centrality dependence of observables NSC(5,2) in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: NSC
+*qual: ETARAP : -0.8 TO 0.8
+*qual: PT IN GEV/C : 0.2 TO 5.0
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: CENTRALITY IN PCT
+*yheader: NSC(5,2)
+*data: x : y
+0.0 TO 5.0;	2.885351E-02 +- 8.956337E-02 (DSYS=8.956337E-02)
+5.0 TO 10.0;	1.930038E-01 +- 1.145172E-01 (DSYS=1.145172E-01)
+10.0 TO 20.0;	1.357607E-01 +- 6.984497E-02 (DSYS=6.984497E-02)
+20.0 TO 30.0;	1.948778E-01 +- 7.379489E-02 (DSYS=7.379489E-02)
+30.0 TO 40.0;	2.841486E-01 +- 1.015965E-01 (DSYS=1.015965E-01)
+40.0 TO 50.0;	3.536037E-01 +- 1.924802E-01 (DSYS=1.924802E-01)
+*dataend:
+
+*dataset:
+*location: Figure 1
+*dscomment: Centrality dependence of observables NSC(5,3) in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: NSC
+*qual: ETARAP : -0.8 TO 0.8
+*qual: PT IN GEV/C : 0.2 TO 5.0
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: CENTRALITY IN PCT
+*yheader: NSC(5,3)
+*data: x : y
+0.0 TO 5.0;	3.751426E-02 +- 9.122648E-02 (DSYS=9.122648E-02)
+5.0 TO 10.0;	4.138229E-01 +- 1.158378E-01 (DSYS=1.158378E-01)
+10.0 TO 20.0;	5.604857E-01 +- 7.106717E-02 (DSYS=7.106717E-02)
+20.0 TO 30.0;	7.225253E-01 +- 7.529624E-02 (DSYS=7.529624E-02)
+30.0 TO 40.0;	9.474152E-01 +- 1.035535E-01 (DSYS=1.035535E-01)
+40.0 TO 50.0;	1.218336E+00 +- 1.951855E-01 (DSYS=1.951855E-01)
+*dataend:
+
+*dataset:
+*location: Figure 1
+*dscomment: Centrality dependence of observables NSC(4,3) in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: NSC
+*qual: ETARAP : -0.8 TO 0.8
+*qual: PT IN GEV/C : 0.2 TO 5.0
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: CENTRALITY IN PCT
+*yheader: NSC(4,3)
+*data: x : y
+0.0 TO 5.0;	-3.334541E-02 +- 2.084820E-02 (DSYS=2.084820E-02)
+5.0 TO 10.0;	-3.896127E-02 +- 1.905275E-02 (DSYS=1.905275E-02)
+10.0 TO 20.0;	-9.461390E-02 +- 1.500212E-02 (DSYS=1.500212E-02)
+20.0 TO 30.0;	-1.467197E-01 +- 1.789909E-02 (DSYS=1.789909E-02)
+30.0 TO 40.0;	-1.581397E-01 +- 2.314833E-02 (DSYS=2.314833E-02)
+40.0 TO 50.0;	-1.837091E-01 +- 3.628239E-02 (DSYS=3.628239E-02)
+*dataend:
+
+# Use "*E" to denote the end of the input file (optional, can be omitted,
+# provided that "*dataend:" is used above).
+
+*E

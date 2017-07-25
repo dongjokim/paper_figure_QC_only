@@ -1,0 +1,1 @@
+cp figs/fig2_QConly_higherSC.eps figs/fig2_QConly_higherNSC.eps figs/ModelComparison_All_*.eps figs/fig4_QConly_ptdep_All.eps figs/fig5_QConly_xminpt_nSC32_EKRT.eps figs/fig5_QConly_xminpt_nSC42_EKRT.eps ~/GitHub/paperQConly/figs/
