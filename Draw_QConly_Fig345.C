@@ -57,6 +57,12 @@ TString strVISHconf[kNVISH][kVNvisco] = {
 
 
 
+int sc_number[5][2] = { 3,2,
+	4,2,
+	5,2,
+	5,3,
+	4,3};
+
 TString strSCType[kNSC] = { 
 	"SC(3,2)","SC(4,2)","SC(5,2)","SC(5,3)","SC(4,3)"}; 
 TString strSCnormType[kNSC] = {
@@ -118,7 +124,25 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 	LoadEKRT();
 	cout << "load done. start draw " << endl;
 	//===================================================================================
-
+	// Calculate chisquared
+	double ekrt_SC_chisq[2][kNSC];
+	double ekrt_NSC_chisq[2][kNSC];
+	
+	int inc = 1;
+	for(int iy=0;iy<kNSC;iy++){
+		ekrt_SC_chisq[0][iy] = calculate_chisquared(gr_SC[iy], gr_SC_syst[iy], gr_SC_EKRT[0][iy]);
+		ekrt_NSC_chisq[0][iy] = calculate_chisquared(gr_SC_norm[iy], gr_SC_norm_syst[iy], gr_NSC_EKRT[0][iy]);
+		ekrt_SC_chisq[1][iy] = calculate_chisquared(gr_SC[iy], gr_SC_syst[iy], gr_SC_EKRT[1][iy]);
+		ekrt_NSC_chisq[1][iy] = calculate_chisquared(gr_SC_norm[iy], gr_SC_norm_syst[iy], gr_NSC_EKRT[1][iy]);
+	}
+	cout << "	       SC             NSC"<<endl;
+	for(int iy=0;iy<kNSC;iy++){
+                int m = sc_number[iy][0];
+                int n = sc_number[iy][1];
+                TString sObs = Form("(%d,%d)   ", m, n);
+		cout << sObs <<"\t"<< ekrt_SC_chisq[0][iy] <<"\t"<< ekrt_NSC_chisq[0][iy] << endl;
+		cout << sObs <<"\t"<< ekrt_SC_chisq[1][iy] <<"\t"<< ekrt_NSC_chisq[0][iy] << endl;
+	}
 
 	//*********************************************************************************
 	// New 2X5 Figures //
@@ -169,7 +193,7 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 	for(int i=0; i<cNY+1; i++){
 		if(i==0) ypos[i] = Ym + 0.02;
 		if(i!=0) ypos[i] = Ym + i* H +0.02; // give label size for bottom pa
-		cout << ypos[i] << endl;;
+		//cout << ypos[i] << endl;;
 	}
 
 	if(imodel==kEKRT) {
@@ -191,11 +215,6 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 		double Ref_Histo_NSC_y_max[cNY] = {0.27,1.45, 1.11, 2.75, 0.47};
 	}
 
-	int sc_number[5][2] = { 3,2,
-		4,2,
-		5,2,
-		5,3,
-		4,3};
 
 	TCanvas *c100 = new TCanvas("c100", "", canvas_width, canvas_height);
 	TPad *pads[cNX][cNY];
@@ -646,3 +665,23 @@ void LoadEKRT(){
 //TGraphErrors *gr_NSC_EKRT[2][kNSC]; // only param0, and par1 at this moment
 
 
+double calculate_chisquared( TGraphErrors *gr_data, TGraphErrors *gr_data_syst, TGraphErrors *gr_theory) {
+	//gr_data->Print();
+	//gr_theory->Print();
+	int NPoint = gr_data->GetN();
+	TGraph ger( gr_theory->GetN(), gr_theory->GetX(), gr_theory->GetEY() ); // << Err estimation of gr2
+	Double_t chisq = 0.;
+	for(int i=0; i<NPoint; i++){
+		double x = gr_data->GetX()[i];
+		if(x>5 && x<50) {
+			double data = gr_data->GetY()[i];
+			double err_data = gr_data->GetEY()[i]; 
+			double tho = gr_theory->Eval(x);
+			double err_tho_ = ger.Eval(x);
+			chisq += TMath::Sqrt(TMath::Abs(data-tho))/TMath::Abs(tho);
+			//cout << i <<"\t"<< x <<"\t"<< data <<"\t"<< tho << "\t"<< TMath::Sqrt(TMath::Abs(data-tho)) <<"\t"<<  chisq<< endl;
+		}
+	}
+	//cout << chisq << endl;
+	return chisq;
+}
