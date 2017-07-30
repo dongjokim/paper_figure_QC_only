@@ -111,6 +111,11 @@ TGraphErrors *gr_SC_norm_VISH[kNSC][kNVISH][kVNvisco];
 TGraphErrors *gr_SC_EKRT[2][kNSC];
 TGraphErrors *gr_NSC_EKRT[2][kNSC];
 
+// chisqared test results as a function of oberables, fist index 0 SC, 1 NSC
+TGraphErrors *gr_VISH_chisq[2][kNVISH][kVNvisco];
+TGraphErrors *gr_EKRT_chisq[2][2];
+TGraphErrors *gr_AMPT_chisq[2][kNAMPT];
+
 double YlabelOffset = 1.21;
 
 void Draw_QConly_Fig345(int imodel=kEKRT){
@@ -127,7 +132,11 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 	// Calculate chisquared
 	double ekrt_SC_chisq[2][kNSC];
 	double ekrt_NSC_chisq[2][kNSC];
-	
+	double vish_SC_chisq[kNVISH][kVNvisco][kNSC];
+	double vish_NSC_chisq[kNVISH][kVNvisco][kNSC];
+	double ampt_SC_chisq[kNAMPT][kNSC];
+	double ampt_NSC_chisq[kNAMPT][kNSC];
+
 	int inc = 1;
 	for(int iy=0;iy<kNSC;iy++){
 		ekrt_SC_chisq[0][iy] = calculate_chisquared(gr_SC[iy], gr_SC_syst[iy], gr_SC_EKRT[0][iy]);
@@ -135,14 +144,67 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 		ekrt_SC_chisq[1][iy] = calculate_chisquared(gr_SC[iy], gr_SC_syst[iy], gr_SC_EKRT[1][iy]);
 		ekrt_NSC_chisq[1][iy] = calculate_chisquared(gr_SC_norm[iy], gr_SC_norm_syst[iy], gr_NSC_EKRT[1][iy]);
 	}
-	cout << "	       SC             NSC"<<endl;
-	for(int iy=0;iy<kNSC;iy++){
-                int m = sc_number[iy][0];
-                int n = sc_number[iy][1];
-                TString sObs = Form("(%d,%d)   ", m, n);
-		cout << sObs <<"\t"<< ekrt_SC_chisq[0][iy] <<"\t"<< ekrt_NSC_chisq[0][iy] << endl;
-		cout << sObs <<"\t"<< ekrt_SC_chisq[1][iy] <<"\t"<< ekrt_NSC_chisq[0][iy] << endl;
+	// VISH
+    for(int iset=0; iset<kNVISH; iset++){
+        for(int ieta=0; ieta<kVNvisco; ieta++){
+            for(int isc=0; isc< kNSC; isc++){
+				vish_SC_chisq[iset][ieta][isc] = calculate_chisquared(gr_SC[isc], gr_SC_syst[isc], gr_SC_VISH[isc][iset][ieta]);
+				vish_NSC_chisq[iset][ieta][isc] = calculate_chisquared(gr_SC_norm[isc], gr_SC_norm_syst[isc], gr_SC_norm_VISH[isc][iset][ieta]);
+			}
+		}
 	}
+	//AMPT
+	for(int iset=0; iset<kNAMPT; iset++){
+		for(int isc=0; isc< kNSC; isc++){
+			ampt_SC_chisq[iset][isc] = calculate_chisquared(gr_SC[isc], gr_SC_syst[isc], gr_SC_AMPT[iset][isc]);
+			ampt_NSC_chisq[iset][isc] = calculate_chisquared(gr_SC_norm[isc], gr_SC_norm_syst[isc], gr_SC_norm_AMPT[iset][isc]);
+		}
+	}
+
+	double obsX[kNSC+1]={kSC32, kSC42, kSC52, kSC53, kSC43, kNSC};
+
+	for(int iset=0;iset<2;iset++) {
+		gr_EKRT_chisq[0][iset] = new TGraphErrors(kNSC,obsX,ekrt_SC_chisq[iset],0,0);
+		gr_EKRT_chisq[1][iset] = new TGraphErrors(kNSC,obsX,ekrt_NSC_chisq[iset],0,0);
+	}
+	for(int iset=0; iset<kNVISH; iset++){
+        for(int ieta=0; ieta<kVNvisco; ieta++){
+			gr_VISH_chisq[0][iset][ieta] = new TGraphErrors(kNSC,obsX,vish_SC_chisq[iset][ieta],0,0);
+			gr_VISH_chisq[1][iset][ieta] = new TGraphErrors(kNSC,obsX,vish_NSC_chisq[iset][ieta],0,0);
+		}
+	}
+	for(int iset=0; iset<kNAMPT; iset++){
+		gr_AMPT_chisq[0][iset] = new TGraphErrors(kNSC,obsX,ampt_SC_chisq[iset],0,0);
+		gr_AMPT_chisq[1][iset] = new TGraphErrors(kNSC,obsX,ampt_NSC_chisq[iset],0,0);
+	}
+	// wrinting the resuts into a rootfile
+	TFile *fout = new TFile("chisquared_results.root","recreate");
+	fout->cd();
+	for(int iset=0;iset<2;iset++) {
+		if(iset==0){
+			gr_EKRT_chisq[0][iset]->SetTitle("param0 (#eta/s=0.2)");gr_EKRT_chisq[1][iset]->SetTitle("param0 (#eta/s=0.2)");
+		}
+		if(iset==1){
+			gr_EKRT_chisq[0][iset]->SetTitle("param1 (#eta/s(T))");gr_EKRT_chisq[1][iset]->SetTitle("param1 (#eta/s(T))");
+		}
+		gr_EKRT_chisq[0][iset]->Write(Form("gr_EKRT_SC_parm%02d",iset));
+		gr_EKRT_chisq[1][iset]->Write(Form("gr_EKRT_NSC_parm%02d",iset));
+	}
+	for(int iset=0; iset<kNVISH; iset++){
+        for(int ieta=0; ieta<kVNvisco; ieta++){
+        	gr_VISH_chisq[0][iset][ieta]->SetTitle(strVISHconf[iset][ieta]);
+			gr_VISH_chisq[0][iset][ieta]->Write(Form("gr_VISH_SC_%02d%02d_chisq",iset,ieta));
+			gr_VISH_chisq[1][iset][ieta]->SetTitle(strVISHconf[iset][ieta]);
+			gr_VISH_chisq[1][iset][ieta]->Write(Form("gr_VISH_NSC_%02d%02d_chisq",iset,ieta));
+		}
+	}
+	for(int iset=0; iset<kNAMPT; iset++){
+		gr_AMPT_chisq[0][iset]->SetTitle(strAMPTName[iset]);
+		gr_AMPT_chisq[0][iset]->Write(Form("gr_AMPT_SC_%2d_chisq",iset));
+		gr_AMPT_chisq[1][iset]->SetTitle(strAMPTName[iset]);
+		gr_AMPT_chisq[1][iset]->Write(Form("gr_AMPT_NSC_%2d_chisq",iset));
+	}
+	fout->Write();fout->Close();
 
 	//*********************************************************************************
 	// New 2X5 Figures //
