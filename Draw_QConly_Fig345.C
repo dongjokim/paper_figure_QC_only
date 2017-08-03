@@ -739,9 +739,11 @@ double calculate_chisquared( TGraphErrors *gr_data, TGraphErrors *gr_data_syst, 
 			double data = gr_data->GetY()[i];
 			double err_data = gr_data->GetEY()[i]; 
 			double tho = gr_theory->Eval(x);
-			double err_tho_ = ger.Eval(x);
-			chisq += TMath::Sqrt(TMath::Abs(data-tho))/TMath::Abs(tho);
-			//cout << i <<"\t"<< x <<"\t"<< data <<"\t"<< tho << "\t"<< TMath::Sqrt(TMath::Abs(data-tho)) <<"\t"<<  chisq<< endl;
+			double err_tho = ger.Eval(x);
+			// chi square is the quadratic sum of the distance from the point to the function weighted by its error
+			double delta  = TMath::Abs(data-tho)/TMath::Abs(err_data);
+    		chisq += delta*delta;
+			cout << i <<"\t"<< x <<"\t"<< data <<"\t"<< tho << "\t"<< TMath::Power(TMath::Abs(data-tho),2.) <<"\t"<<  chisq<< endl;
 		}
 	}
 	//cout << chisq << endl;
