@@ -23,20 +23,19 @@ TString strVISHconf[kNVISH][kVNvisco] = {
 	"MC-Glauber, #eta/s=0.2"	
 };
 
-int sc_number[5][2] = { 3,2,
-	4,2,
-	5,2,
-	5,3,
-	4,3};
+int sc_number[5][2] = { {3,2},
+{4,2},
+{5,2},
+{5,3},
+{4,3}};
 
-TString strSCType[kNSC] = { 
-	"(3,2)","(4,2)","(5,2)","(5,3)","(4,3)"}; 
+TString strSCType[kNSC] = {"(3,2)","(4,2)","(5,2)","(5,3)","(4,3)"}; 
 
-TString strAMPTName[kNAMPT] ={
+TString strAMPTName[kNAMPT] = { 
 	"string melting w/o hadronic rescattering",
 	"default",
 	"string melting"
-}
+};
 
 TString strModel[3] = { "EKRT","VISH","AMPT"};
 
@@ -50,7 +49,7 @@ void draw_chiq(){
 	}
 
 	for(int iset=0; iset<kNVISH; iset++){
-        for(int ieta=0; ieta<kVNvisco; ieta++){
+		for(int ieta=0; ieta<kVNvisco; ieta++){
 			gr_VISH_chisq[0][iset][ieta] = (TGraphErrors*)fin->Get(Form("gr_VISH_SC_%02d%02d_chisq",iset,ieta));
 			gr_VISH_chisq[1][iset][ieta] = (TGraphErrors*)fin->Get(Form("gr_VISH_NSC_%02d%02d_chisq",iset,ieta));
 		}
@@ -61,46 +60,46 @@ void draw_chiq(){
 	}
 
 	double sc=1.0, sdx=400, sdy=400;
-	double ly=5.1e-1, hy=1.1e6;
+	double ly=0.9e-1, hy=1.1e5;
 	int logy=1;
 
 	int iCan = 1;
 	TLatex latexPad;
 	latexPad.SetTextSize(0.04);
-	
+
 	//Best fit
 	mc(iCan++,sc,sdx); //===================================
     // scale sc and sdx could be omitted
 	mpad->SetLogy(logy);
-    mpad->SetLeftMargin(0.2);
-    gStyle->SetOptStat(0); gStyle->SetOptTitle(0);
+	mpad->SetLeftMargin(0.2);
+	gStyle->SetOptStat(0); gStyle->SetOptTitle(0);
 
-    hfr0 = new TH2F("hfr0", " ", kNSC, -0.5, kNSC-0.5, 10, ly, hy);
-    hset( *hfr0, "", "#chi^{2}",0.9,1.4, 0.05,0.07, 0.01,0.001, 0.09,0.06, 510,510);
-    SetGraphBinLabel(hfr0, strSCType);
+	hfr0 = new TH2F("hfr0", " ", kNSC, -0.5, kNSC-0.5, 10, ly, hy);
+	hset( *hfr0, "", "#chi^{2}",0.9,1.4, 0.05,0.07, 0.01,0.001, 0.09,0.06, 510,510);
+	SetGraphBinLabel(hfr0, strSCType);
 	hfr0->Draw();
-    
-    leg = new TLegend(0.25,0.70,0.5,0.93,NULL,"brNDC");
-    leg->SetFillStyle(0); leg->SetBorderSize(0); leg->SetTextSize(0.04);
-    leg->AddEntry((TObject*)NULL,"EKRT+Viscous Hydrodynamics","");
-    for(int iset=0;iset<2;iset++) {
-    	gr_EKRT_chisq[0][iset]->SetMarkerStyle(gCMarker[iset]);
-    	gr_EKRT_chisq[0][iset]->SetMarkerColor(gColor[iset]);
-    	gr_EKRT_chisq[0][iset]->SetLineColor(gColor[iset]);
+
+	leg = new TLegend(0.25,0.70,0.5,0.93,NULL,"brNDC");
+	leg->SetFillStyle(0); leg->SetBorderSize(0); leg->SetTextSize(0.04);
+	leg->AddEntry((TObject*)NULL,"EKRT+Viscous Hydrodynamics","");
+	for(int iset=0;iset<2;iset++) {
+		gr_EKRT_chisq[0][iset]->SetMarkerStyle(gCMarker[iset]);
+		gr_EKRT_chisq[0][iset]->SetMarkerColor(gColor[iset]);
+		gr_EKRT_chisq[0][iset]->SetLineColor(gColor[iset]);
 		gr_EKRT_chisq[0][iset]->Draw("lp");
 		gr_EKRT_chisq[1][iset]->SetMarkerStyle(gOMarker[iset]);
 		gr_EKRT_chisq[1][iset]->SetMarkerColor(gColor[iset]);
-    	gr_EKRT_chisq[1][iset]->SetLineColor(gColor[iset]);
+		gr_EKRT_chisq[1][iset]->SetLineColor(gColor[iset]);
 		gr_EKRT_chisq[1][iset]->SetLineStyle(2);
 		gr_EKRT_chisq[1][iset]->Draw("lp");
 		leg->AddEntry(gr_EKRT_chisq[0][iset],Form("%s",gr_EKRT_chisq[0][iset]->GetTitle()),"lp");
 	}
-    int count = 0;
+	int count = 0;
     // AMPT eta/s =0.08
-    int iset=0,ieta=0;
-    gr_VISH_chisq[0][iset][ieta]->SetMarkerStyle(gCMarker[2]);
-    gr_VISH_chisq[0][iset][ieta]->SetMarkerColor(gColor[2]);
-    gr_VISH_chisq[0][iset][ieta]->SetLineColor(gColor[2]);
+	int iset=0,ieta=0;
+	gr_VISH_chisq[0][iset][ieta]->SetMarkerStyle(gCMarker[2]);
+	gr_VISH_chisq[0][iset][ieta]->SetMarkerColor(gColor[2]);
+	gr_VISH_chisq[0][iset][ieta]->SetLineColor(gColor[2]);
 	gr_VISH_chisq[0][iset][ieta]->Draw("lp");
 	leg->AddEntry(gr_VISH_chisq[0][iset][ieta],Form("VISH2+1, %s",gr_VISH_chisq[0][iset][ieta]->GetTitle()),"lp");
 
@@ -123,8 +122,8 @@ void draw_chiq(){
 	gr_AMPT_chisq[1][1]->SetLineStyle(2);
 	gr_AMPT_chisq[1][1]->Draw("lp");
 	leg->Draw();
-	latexPad.DrawLatexNDC( 0.48, 0.48 , "SC(m,n)");
-	latexPad.DrawLatexNDC( 0.48, 0.30 , "NSC(m,n)");
+	latexPad.DrawLatexNDC( 0.52, 0.66 , "SC(m,n) closed markers");
+	latexPad.DrawLatexNDC( 0.52, 0.60 , "NSC(m,n) open markers");
 
 	gPad->GetCanvas()->Update();
 	gPad->GetCanvas()->SaveAs("figs/chisq_bestfits.eps");
@@ -132,14 +131,14 @@ void draw_chiq(){
 	mc(iCan++,sc,sdx); //===================================
     // scale sc and sdx could be omitted
 	mpad->SetLogy(1);
-    mpad->SetLeftMargin(0.2);
-    gStyle->SetOptStat(0); gStyle->SetOptTitle(0);
+	mpad->SetLeftMargin(0.2);
+	gStyle->SetOptStat(0); gStyle->SetOptTitle(0);
 	hfr0->Draw();
 	leg = new TLegend(0.25,0.74,0.5,0.93,NULL,"brNDC");
-    leg->SetFillStyle(0); leg->SetBorderSize(0); leg->SetTextSize(0.04);
-    leg->AddEntry((TObject*)NULL,"EKRT+Viscous Hydrodynamics","");
-    for(int iset=0;iset<2;iset++) {
-    	gr_EKRT_chisq[0][iset]->SetMarkerStyle(gCMarker[iset]);
+	leg->SetFillStyle(0); leg->SetBorderSize(0); leg->SetTextSize(0.04);
+	leg->AddEntry((TObject*)NULL,"EKRT+Viscous Hydrodynamics","");
+	for(int iset=0;iset<2;iset++) {
+		gr_EKRT_chisq[0][iset]->SetMarkerStyle(gCMarker[iset]);
 		gr_EKRT_chisq[0][iset]->Draw("lp");
 		gr_EKRT_chisq[1][iset]->SetMarkerStyle(gOMarker[iset]);
 		gr_EKRT_chisq[1][iset]->Draw("lp");
@@ -147,68 +146,150 @@ void draw_chiq(){
 	}
 
 	leg->Draw();
-	latexPad.DrawLatexNDC( 0.48, 0.48 , "SC(m,n)");
-	latexPad.DrawLatexNDC( 0.48, 0.30 , "NSC(m,n)");
+	//latexPad.DrawLatexNDC( 0.48, 0.48 , "SC(m,n)");
+	//atexPad.DrawLatexNDC( 0.48, 0.30 , "NSC(m,n)");
+	latexPad.DrawLatexNDC( 0.52, 0.66 , "SC(m,n) closed markers");
+	latexPad.DrawLatexNDC( 0.52, 0.60 , "NSC(m,n) open markers");
 	gPad->GetCanvas()->Update();
 	gPad->GetCanvas()->SaveAs("figs/chisq_EKRT.eps");
-// VISH2+1
+
+	// VISH2+1  low eta/s
 	mc(iCan++,sc,sdx); //===================================
     // scale sc and sdx could be omitted
 	mpad->SetLogy(1);
-    mpad->SetLeftMargin(0.2);
-    gStyle->SetOptStat(0); gStyle->SetOptTitle(0);
+	mpad->SetLeftMargin(0.2);
+	gStyle->SetOptStat(0); gStyle->SetOptTitle(0);
+	hfr0->Draw();
+
+	latexPad.DrawLatexNDC( 0.52, 0.66 , "SC(m,n) closed markers");
+	latexPad.DrawLatexNDC( 0.52, 0.60 , "NSC(m,n) open markers");
+
+	leg = new TLegend(0.23,0.72,0.5,0.92,NULL,"brNDC");
+	leg->SetFillStyle(0); leg->SetBorderSize(0); leg->SetTextSize(0.04);
+	
+	leg->AddEntry((TObject*)NULL,"VISH2+1","");
+	for(int iset=0; iset<kNVISH; iset++){
+		int ieta=0;
+		gr_VISH_chisq[0][iset][ieta]->SetMarkerStyle(gCMarker[iset]);
+		gr_VISH_chisq[0][iset][ieta]->SetMarkerColor(gColor[iset]);
+		gr_VISH_chisq[0][iset][ieta]->SetLineColor(gColor[iset]);
+		gr_VISH_chisq[1][iset][ieta]->SetMarkerStyle(gOMarker[iset]);
+		gr_VISH_chisq[1][iset][ieta]->SetMarkerColor(gColor[iset]);
+		gr_VISH_chisq[1][iset][ieta]->SetLineColor(gColor[iset]);
+		leg->AddEntry(gr_VISH_chisq[0][iset][ieta],gr_VISH_chisq[0][iset][ieta]->GetTitle(),"lp");
+		gr_VISH_chisq[0][iset][ieta]->Draw("lp");
+		gr_VISH_chisq[1][iset][ieta]->Draw("lp");
+	}
+	
+	leg->Draw();
+	gPad->GetCanvas()->Update();
+	gPad->GetCanvas()->SaveAs("figs/chisq_VISH_lowetas.eps");
+// VISH2+1  SC
+	mc(iCan++,sc,sdx); //===================================
+    // scale sc and sdx could be omitted
+	mpad->SetLogy(1);
+	mpad->SetLeftMargin(0.2);
+	gStyle->SetOptStat(0); gStyle->SetOptTitle(0);
 	hfr0->Draw();
 	latexPad.DrawLatexNDC( 0.45, 0.90 , "VISH2+1");
-    latexPad.DrawLatexNDC( 0.48, 0.48 , "SC(m,n)");
-	latexPad.DrawLatexNDC( 0.48, 0.30 , "NSC(m,n)");
+	latexPad.DrawLatexNDC( 0.52, 0.66 , "SC(m,n)");
+    //latexPad.DrawLatexNDC( 0.48, 0.48 , "SC(m,n)");
+	//latexPad.DrawLatexNDC( 0.48, 0.30 , "NSC(m,n)");
 
-    leg = new TLegend(0.23,0.72,0.5,0.89,NULL,"brNDC");
-    leg->SetFillStyle(0); leg->SetBorderSize(0); leg->SetTextSize(0.03);
-    legR = new TLegend(0.60,0.72,0.9,0.89,NULL,"brNDC");
-    legR->SetFillStyle(0); legR->SetBorderSize(0); legR->SetTextSize(0.03);
-    
+	leg = new TLegend(0.23,0.72,0.5,0.89,NULL,"brNDC");
+	leg->SetFillStyle(0); leg->SetBorderSize(0); leg->SetTextSize(0.03);
+	legR = new TLegend(0.60,0.72,0.9,0.89,NULL,"brNDC");
+	legR->SetFillStyle(0); legR->SetBorderSize(0); legR->SetTextSize(0.03);
+
     //leg->AddEntry((TObject*)NULL,"VISH2+1","");
-    for(int iset=0; iset<kNVISH; iset++){
-        for(int ieta=0; ieta<kVNvisco; ieta++){
-        	gr_VISH_chisq[0][iset][ieta]->SetMarkerStyle(gCMarker[iset]);
-        	gr_VISH_chisq[0][iset][ieta]->SetMarkerColor(gColor[iset]);
-        	gr_VISH_chisq[0][iset][ieta]->SetLineColor(gColor[iset]);
-        	gr_VISH_chisq[1][iset][ieta]->SetMarkerStyle(gCMarker[iset]);
-        	gr_VISH_chisq[1][iset][ieta]->SetMarkerColor(gColor[iset]);
-        	gr_VISH_chisq[1][iset][ieta]->SetLineColor(gColor[iset]);
-        	if(ieta==1) {
-        		gr_VISH_chisq[0][iset][ieta]->SetMarkerStyle(gOMarker[iset]);
-        		gr_VISH_chisq[1][iset][ieta]->SetMarkerStyle(gOMarker[iset]);
-        		gr_VISH_chisq[0][iset][ieta]->SetLineStyle(2); 
-        		gr_VISH_chisq[1][iset][ieta]->SetLineStyle(2);
-        		legR->AddEntry(gr_VISH_chisq[0][iset][ieta],gr_VISH_chisq[0][iset][ieta]->GetTitle(),"lp");
-        	} else {
-        		leg->AddEntry(gr_VISH_chisq[0][iset][ieta],gr_VISH_chisq[0][iset][ieta]->GetTitle(),"lp");
+	for(int iset=0; iset<kNVISH; iset++){
+		for(int ieta=0; ieta<kVNvisco-1; ieta++){
+			gr_VISH_chisq[0][iset][ieta]->SetMarkerStyle(gCMarker[iset]);
+			gr_VISH_chisq[0][iset][ieta]->SetMarkerColor(gColor[iset]);
+			gr_VISH_chisq[0][iset][ieta]->SetLineColor(gColor[iset]);
+			gr_VISH_chisq[1][iset][ieta]->SetMarkerStyle(gCMarker[iset]);
+			gr_VISH_chisq[1][iset][ieta]->SetMarkerColor(gColor[iset]);
+			gr_VISH_chisq[1][iset][ieta]->SetLineColor(gColor[iset]);
+			if(ieta==1) {
+				gr_VISH_chisq[0][iset][ieta]->SetMarkerStyle(gOMarker[iset]);
+				gr_VISH_chisq[1][iset][ieta]->SetMarkerStyle(gOMarker[iset]);
+				gr_VISH_chisq[0][iset][ieta]->SetLineStyle(2); 
+				gr_VISH_chisq[1][iset][ieta]->SetLineStyle(2);
+				legR->AddEntry(gr_VISH_chisq[0][iset][ieta],gr_VISH_chisq[0][iset][ieta]->GetTitle(),"lp");
+			} else {
+				leg->AddEntry(gr_VISH_chisq[0][iset][ieta],gr_VISH_chisq[0][iset][ieta]->GetTitle(),"lp");
 			}
 			gr_VISH_chisq[0][iset][ieta]->Draw("lp");
+			//gr_VISH_chisq[1][iset][ieta]->Draw("lp");
+		}
+	}
+	
+	leg->Draw();legR->Draw();
+	gPad->GetCanvas()->Update();
+	gPad->GetCanvas()->SaveAs("figs/chisq_VISH_SC.eps");
+
+// VISH2+1 SC
+	mc(iCan++,sc,sdx); //===================================
+    // scale sc and sdx could be omitted
+	mpad->SetLogy(1);
+	mpad->SetLeftMargin(0.2);
+	gStyle->SetOptStat(0); gStyle->SetOptTitle(0);
+	hfr0->Draw();
+	latexPad.DrawLatexNDC( 0.45, 0.90 , "VISH2+1");
+	latexPad.DrawLatexNDC( 0.52, 0.66 , "NSC(m,n)");
+    //latexPad.DrawLatexNDC( 0.48, 0.48 , "SC(m,n)");
+	//latexPad.DrawLatexNDC( 0.48, 0.30 , "NSC(m,n)");
+
+	leg = new TLegend(0.23,0.72,0.5,0.89,NULL,"brNDC");
+	leg->SetFillStyle(0); leg->SetBorderSize(0); leg->SetTextSize(0.03);
+	legR = new TLegend(0.60,0.72,0.9,0.89,NULL,"brNDC");
+	legR->SetFillStyle(0); legR->SetBorderSize(0); legR->SetTextSize(0.03);
+
+    //leg->AddEntry((TObject*)NULL,"VISH2+1","");
+	for(int iset=0; iset<kNVISH; iset++){
+		for(int ieta=0; ieta<kVNvisco; ieta++){
+			gr_VISH_chisq[0][iset][ieta]->SetMarkerStyle(gCMarker[iset]);
+			gr_VISH_chisq[0][iset][ieta]->SetMarkerColor(gColor[iset]);
+			gr_VISH_chisq[0][iset][ieta]->SetLineColor(gColor[iset]);
+			gr_VISH_chisq[1][iset][ieta]->SetMarkerStyle(gCMarker[iset]);
+			gr_VISH_chisq[1][iset][ieta]->SetMarkerColor(gColor[iset]);
+			gr_VISH_chisq[1][iset][ieta]->SetLineColor(gColor[iset]);
+			if(ieta==1) {
+				gr_VISH_chisq[0][iset][ieta]->SetMarkerStyle(gOMarker[iset]);
+				gr_VISH_chisq[1][iset][ieta]->SetMarkerStyle(gOMarker[iset]);
+				gr_VISH_chisq[0][iset][ieta]->SetLineStyle(2); 
+				gr_VISH_chisq[1][iset][ieta]->SetLineStyle(2);
+				legR->AddEntry(gr_VISH_chisq[0][iset][ieta],gr_VISH_chisq[0][iset][ieta]->GetTitle(),"lp");
+			} else {
+				leg->AddEntry(gr_VISH_chisq[0][iset][ieta],gr_VISH_chisq[0][iset][ieta]->GetTitle(),"lp");
+			}
+			//gr_VISH_chisq[0][iset][ieta]->Draw("lp");
 			gr_VISH_chisq[1][iset][ieta]->Draw("lp");
 		}
 	}
 	
 	leg->Draw();legR->Draw();
 	gPad->GetCanvas()->Update();
-	gPad->GetCanvas()->SaveAs("figs/chisq_VISH.eps");
+	gPad->GetCanvas()->SaveAs("figs/chisq_VISH_NSC.eps");
+
 
 //AMPT
 	mc(iCan++,sc,sdx); //===================================
     // scale sc and sdx could be omitted
 	mpad->SetLogy(1);
-    mpad->SetLeftMargin(0.2);
-    gStyle->SetOptStat(0); gStyle->SetOptTitle(0);
+	mpad->SetLeftMargin(0.2);
+	gStyle->SetOptStat(0); gStyle->SetOptTitle(0);
 
-    
+
 	hfr0->Draw();
-    latexPad.DrawLatexNDC( 0.48, 0.48 , "SC(m,n)");
-	latexPad.DrawLatexNDC( 0.48, 0.30 , "NSC(m,n)");
+	latexPad.DrawLatexNDC( 0.52, 0.72 , "SC(m,n) closed markers");
+	latexPad.DrawLatexNDC( 0.52, 0.66 , "NSC(m,n) open markers");
+    //latexPad.DrawLatexNDC( 0.48, 0.48 , "SC(m,n)");
+	//latexPad.DrawLatexNDC( 0.48, 0.30 , "NSC(m,n)");
 
-    leg = new TLegend(0.25,0.70,0.5,0.93,NULL,"brNDC");
-    leg->SetFillStyle(0); leg->SetBorderSize(0); leg->SetTextSize(0.04);
-    leg->AddEntry((TObject*)NULL,"AMPT","");
+	leg = new TLegend(0.23,0.75,0.5,0.93,NULL,"brNDC");
+	leg->SetFillStyle(0); leg->SetBorderSize(0); leg->SetTextSize(0.04);
+	leg->AddEntry((TObject*)NULL,"AMPT","");
 	for(int iset=0; iset<kNAMPT; iset++){
 		gr_AMPT_chisq[0][iset]->SetMarkerStyle(gCMarker[iset]);
 		gr_AMPT_chisq[0][iset]->SetMarkerColor(gColor[iset]);
