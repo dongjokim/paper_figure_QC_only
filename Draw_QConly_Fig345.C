@@ -140,8 +140,8 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 	int inc = 1;
 	for(int iy=0;iy<kNSC;iy++){
 		ekrt_SC_chisq[0][iy] = calculate_chisquared(gr_SC[iy], gr_SC_syst[iy], gr_SC_EKRT[0][iy]);
-		ekrt_NSC_chisq[0][iy] = calculate_chisquared(gr_SC_norm[iy], gr_SC_norm_syst[iy], gr_NSC_EKRT[0][iy]);
 		ekrt_SC_chisq[1][iy] = calculate_chisquared(gr_SC[iy], gr_SC_syst[iy], gr_SC_EKRT[1][iy]);
+		ekrt_NSC_chisq[0][iy] = calculate_chisquared(gr_SC_norm[iy], gr_SC_norm_syst[iy], gr_NSC_EKRT[0][iy]);
 		ekrt_NSC_chisq[1][iy] = calculate_chisquared(gr_SC_norm[iy], gr_SC_norm_syst[iy], gr_NSC_EKRT[1][iy]);
 	}
 	// VISH
