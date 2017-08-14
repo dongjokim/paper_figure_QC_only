@@ -60,7 +60,7 @@ void draw_chiq(){
 	}
 
 	double sc=1.0, sdx=400, sdy=400;
-	double ly=0.9e-1, hy=1.1e5;
+	double ly=0.9e-1, hy=1.1e4;
 	int logy=1;
 
 	int iCan = 1;
@@ -124,6 +124,7 @@ void draw_chiq(){
 	leg->Draw();
 	latexPad.DrawLatexNDC( 0.52, 0.66 , "SC(m,n) closed markers");
 	latexPad.DrawLatexNDC( 0.52, 0.60 , "NSC(m,n) open markers");
+	latexPad.DrawLatexNDC( 0.52, 0.20 , "N = 4, Centrality 10 - 50\%");
 
 	gPad->GetCanvas()->Update();
 	gPad->GetCanvas()->SaveAs("figs/chisq_bestfits.eps");

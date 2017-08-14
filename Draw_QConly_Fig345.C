@@ -735,7 +735,7 @@ double calculate_chisquared( TGraphErrors *gr_data, TGraphErrors *gr_data_syst, 
 	Double_t chisq = 0.;
 	for(int i=0; i<NPoint; i++){
 		double x = gr_data->GetX()[i];
-		if(x>5 && x<50) {
+		if(x>10 && x<50) {
 			double data = gr_data->GetY()[i];
 			double err_data = gr_data->GetEY()[i]; 
 			double err_data_syst = gr_data_syst->GetEY()[i];
