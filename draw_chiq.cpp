@@ -65,7 +65,7 @@ void draw_chiq(){
 
 	int iCan = 1;
 	TLatex latexPad;
-	latexPad.SetTextSize(0.04);
+	latexPad.SetTextSize(0.035);
 
 	//Best fit
 	mc(iCan++,sc,sdx); //===================================
@@ -80,8 +80,8 @@ void draw_chiq(){
 	hfr0->Draw();
 
 	leg = new TLegend(0.25,0.70,0.5,0.93,NULL,"brNDC");
-	leg->SetFillStyle(0); leg->SetBorderSize(0); leg->SetTextSize(0.04);
-	leg->AddEntry((TObject*)NULL,"EKRT+Viscous Hydrodynamics","");
+	leg->SetFillStyle(0); leg->SetBorderSize(0); leg->SetTextSize(0.035);
+	//leg->AddEntry((TObject*)NULL,"EKRT+Viscous Hydrodynamics","");
 	for(int iset=0;iset<2;iset++) {
 		gr_EKRT_chisq[0][iset]->SetMarkerStyle(gCMarker[iset]);
 		gr_EKRT_chisq[0][iset]->SetMarkerColor(gColor[iset]);
@@ -92,7 +92,7 @@ void draw_chiq(){
 		gr_EKRT_chisq[1][iset]->SetLineColor(gColor[iset]);
 		gr_EKRT_chisq[1][iset]->SetLineStyle(2);
 		gr_EKRT_chisq[1][iset]->Draw("lp");
-		leg->AddEntry(gr_EKRT_chisq[0][iset],Form("%s",gr_EKRT_chisq[0][iset]->GetTitle()),"lp");
+		leg->AddEntry(gr_EKRT_chisq[0][iset],Form("EKRT+Viscous Hydro, %s",gr_EKRT_chisq[0][iset]->GetTitle()),"lp");
 	}
 	int count = 0;
     // AMPT eta/s =0.08
