@@ -25,7 +25,7 @@ def TGraphErrorsToNumpy(gr):
 
 	return x,y,xerr,yerr;
 
-p,ax = plt.subplots(1,2,sharex=False,sharey=True,figsize=(10,5)); #create a 1x2 canvas of aspect 2/1 with shared y-axis
+p,ax = plt.subplots(1,3,sharex=False,sharey=True,figsize=(14,5)); #create a 1x2 canvas of aspect 2/1 with shared y-axis
 p.subplots_adjust(wspace=0.0,hspace=0.0); #remove the spacing between the pads
 
 f = ROOT.TFile("chisquared_results.root");
@@ -41,7 +41,7 @@ for i in range(0,2):
 	ax[0].errorbar(x,y,yerr,linestyle="-",fmt=marker[i],color=color[i],label="EKRT+Viscous Hydro, "+title);
 
 	x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_EKRT_NSC_parm{iset:02d}".format(iset=i)));
-	ax[0].errorbar(x,y,yerr,linestyle="--",fmt=marker[i],color=color[i],mfc="none"); #mfc="none" -> open marker
+	ax[1].errorbar(x,y,yerr,linestyle="--",fmt=marker[i],color=color[i],mfc="none"); #mfc="none" -> open marker
 
 tgraph = f.Get("gr_VISH_SC_{iset:02d}{ieta:02d}_chisq".format(iset=0,ieta=0));
 title = tgraph.GetTitle().replace("#eta","$\eta")+"$";
@@ -49,17 +49,25 @@ x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
 ax[0].errorbar(x,y,yerr,linestyle="-",fmt=marker[2],color=color[2],label="VISH2+1, "+title);
 
 x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_VISH_NSC_{iset:02d}{ieta:02d}_chisq".format(iset=0,ieta=0)));
-ax[0].errorbar(x,y,yerr,linestyle="--",fmt=marker[2],color=color[2],mfc="none");
+ax[1].errorbar(x,y,yerr,linestyle="--",fmt=marker[2],color=color[2],mfc="none");
+
+# tgraph = f.Get("gr_AMPT_SC_ {iset:d}_chisq".format(iset=1));
+# title = tgraph.GetTitle();
+# x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
+# ax[0].errorbar(x,y,yerr,linestyle="-",fmt=marker[3],color=color[3],label="AMPT, "+title);
+
+# x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_AMPT_NSC_ {iset:d}_chisq".format(iset=1)));
+# ax[1].errorbar(x,y,yerr,linestyle="--",fmt=marker[3],color=color[3],mfc="none");
 
 #add text to first pad
 ax[0].text(0.6,0.1,"N = 4, Centrality 10 - 50 %",
 	horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=12);
-ax[0].text(0.4,0.7,"SC(m,n) closed markers\nNSC(m,n) open markers",
-	horizontalalignment='left',verticalalignment='center',transform=ax[0].transAxes,size=12);
-
-ax[0].set_xticklabels(["","(3,2)","(4,2)","(5,2)","(5,3)","(4,3)"],fontsize = 11);
+ax[0].set_xticklabels(["","(3,2)","(4,2)","(5,2)","(5,3)","(4,3)"],fontsize = 10.2);
 ax[0].legend(frameon=False,prop={'size':9},loc="center",
-	handletextpad=0.1,bbox_to_anchor=(0.45,0.9)); #title="Legend"
+	handletextpad=0.1,bbox_to_anchor=(0.45,0.87)); #title="Legend"
+
+#add text to 2nd pad
+ax[1].set_xticklabels(["","(3,2)","(4,2)","(5,2)","(5,3)","(4,3)"],fontsize = 10.2);
 
 f.Close();
 f = ROOT.TFile("chisquared_vn_results.root");
@@ -67,16 +75,14 @@ f = ROOT.TFile("chisquared_vn_results.root");
 #draw on the second pad
 for i in range(0,2):
 	x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_EKRT_vn_parm{iset:02d}_chisq".format(iset=i)));
-	ax[1].errorbar(x,y,yerr,linestyle="-",fmt=marker[i],color=color[i]);#,label="a"+str(i));
+	ax[2].errorbar(x,y,yerr,linestyle="-",fmt=marker[i],color=color[i]);#,label="a"+str(i));
 
 x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_VISH_vn_{iset:02d}{ieta:02d}_chisq".format(iset=0,ieta=0)));
-ax[1].errorbar(x,y,yerr,linestyle="-",fmt=marker[2],color=color[2]);#,label="b");
+ax[2].errorbar(x,y,yerr,linestyle="-",fmt=marker[2],color=color[2]);#,label="b");
+ax[2].set_xticklabels(["","$v_2$","$v_3$","$v_4$"],fontsize = 11);
 
-ax[1].text(0.6,0.7,"$v_n$ (n=2,3 and 4)",
-	horizontalalignment='left',verticalalignment='center',transform=ax[1].transAxes,size=12);
-
-ax[1].set_xticklabels(["","$v_2$","$v_3$","$v_4$"],fontsize = 11);
-#ax[1].legend(frameon=False,prop={'size':9},loc="center",handletextpad=0.1,bbox_to_anchor=(0.2,0.9)); #title="Legend"
+# x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_AMPT_vn_ {iset:d}_chisq".format(iset=1)));
+# ax[2].errorbar(x,y,yerr,linestyle="-",fmt=marker[3],color=color[3]);#,label="b");
 
 f.Close();
 
@@ -89,11 +95,12 @@ for i,a in enumerate(ax):
 	#a.xaxis.set_minor_locator(plticker.MultipleLocator(0.1));
 
 	#a.text(0.5,-0.1,["x1","x2"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=16);
-	a.text(0.93,0.93,["(a)","(b)"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=12);
+	a.text(0.93,0.93,["(a)","(b)","(c)"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=12);
+	a.text(0.6,0.7,["SC(m,n)","NSC(m,n)","$v_n$ (n=2,3 and 4)"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=12);
 
 #Manually place the axis labels for shared axes. There might be a better way..
 #p.text(0.46,0.02,"x-axis",size=16);
 p.text(0.07,0.5,"$\chi^2$",rotation="vertical",size=16);
 
-plt.savefig("figs/chisq_bestfits.eps",bbox_inches="tight");
+plt.savefig("figs/chisq_bestfits_3pad_wo_ampt.eps",bbox_inches="tight");
 plt.show();
