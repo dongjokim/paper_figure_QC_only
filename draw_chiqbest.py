@@ -57,6 +57,8 @@ ax[0].text(0.6,0.1,"N = 4, Centrality 10 - 50 %",
 ax[0].text(0.4,0.7,"SC(m,n) closed markers\nNSC(m,n) open markers",
 	horizontalalignment='left',verticalalignment='center',transform=ax[0].transAxes,size=12);
 
+ax[0].set_xticklabels(["","(3,2)","(4,2)","(5,2)","(5,3)","(4,3)"]);
+
 f.Close();
 f = ROOT.TFile("chisquared_vn_results.root");
 
@@ -67,6 +69,8 @@ for i in range(0,2):
 
 x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_VISH_vn_{iset:02d}{ieta:02d}_chisq".format(iset=0,ieta=0)));
 ax[1].errorbar(x,y,yerr,linestyle="-",fmt=marker[2],color=color[2]);
+
+ax[1].set_xticklabels(["","$v_2$","$v_3$","$v_4$"]);
 
 #draw the legend to first pad
 ax[0].legend(frameon=False,prop={'size':9},loc="center",
@@ -79,9 +83,10 @@ for i,a in enumerate(ax):
 	a.tick_params(which="major",direction="in",length=8.0);
 	a.tick_params(which="minor",direction="in",length=4.0);
 
-	a.xaxis.set_major_locator(plticker.MultipleLocator(0.5)); #set the x tick interval to mimic root style
-	a.xaxis.set_minor_locator(plticker.MultipleLocator(0.1));
+	a.xaxis.set_major_locator(plticker.MultipleLocator(1.0)); #set the x tick interval to mimic root style
+	#a.xaxis.set_minor_locator(plticker.MultipleLocator(0.1));
 
+	#a.text(0.5,-0.1,["x1","x2"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=16);
 	a.text(0.9,0.9,["(a)","(b)"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=12);
 
 #Manually place the axis labels for shared axes. There might be a better way..
