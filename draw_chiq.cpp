@@ -151,16 +151,16 @@ void draw_chiq(){
 	// gr_VISH_chisq[1][iset][ieta]->SetLineStyle(2);
 	// gr_VISH_chisq[1][iset][ieta]->Draw("lp");
 	
-	// gr_AMPT_chisq[0][1]->SetMarkerStyle(gCMarker[3]);
-	// gr_AMPT_chisq[0][1]->SetMarkerColor(gColor[3]);
-	// gr_AMPT_chisq[0][1]->SetLineColor(gColor[3]);
-	// gr_AMPT_chisq[0][1]->Draw("lp");
-	// leg->AddEntry(gr_AMPT_chisq[0][1],Form("AMPT, %s",gr_AMPT_chisq[0][1]->GetTitle()),"lp");
-	// gr_AMPT_chisq[1][1]->SetMarkerStyle(gOMarker[3]);
-	// gr_AMPT_chisq[1][1]->SetMarkerColor(gColor[3]);
-	// gr_AMPT_chisq[1][1]->SetLineColor(gColor[3]);
-	// gr_AMPT_chisq[1][1]->SetLineStyle(2);
-	// gr_AMPT_chisq[1][1]->Draw("lp");
+	gr_AMPT_chisq[0][1]->SetMarkerStyle(gCMarker[3]);
+	gr_AMPT_chisq[0][1]->SetMarkerColor(gColor[3]);
+	gr_AMPT_chisq[0][1]->SetLineColor(gColor[3]);
+	gr_AMPT_chisq[0][1]->Draw("lp");
+	leg->AddEntry(gr_AMPT_chisq[0][1],Form("AMPT, %s",gr_AMPT_chisq[0][1]->GetTitle()),"lp");
+	gr_AMPT_chisq[1][1]->SetMarkerStyle(gOMarker[3]);
+	gr_AMPT_chisq[1][1]->SetMarkerColor(gColor[3]);
+	gr_AMPT_chisq[1][1]->SetLineColor(gColor[3]);
+	gr_AMPT_chisq[1][1]->SetLineStyle(2);
+	gr_AMPT_chisq[1][1]->Draw("lp");
 
 	// gr_AMPT_chisq[0][2]->SetMarkerStyle(gCMarker[4]);
 	// gr_AMPT_chisq[0][2]->SetMarkerColor(gColor[4]);
@@ -406,11 +406,11 @@ void draw_chiq(){
 	// gr_VISH_vn_chisq[iset][ieta]->Draw("lp");
 	// leg->AddEntry(gr_VISH_vn_chisq[iset][ieta],Form("VISH2+1, %s",gr_VISH_vn_chisq[iset][ieta]->GetTitle()),"lp");
 	
-	// gr_AMPT_vn_chisq[1]->SetMarkerStyle(gCMarker[3]);
-	// gr_AMPT_vn_chisq[1]->SetMarkerColor(gColor[3]);
-	// gr_AMPT_vn_chisq[1]->SetLineColor(gColor[3]);
-	// gr_AMPT_vn_chisq[1]->Draw("lp");
-	// leg->AddEntry(gr_AMPT_vn_chisq[1],Form("AMPT, %s",gr_AMPT_vn_chisq[1]->GetTitle()),"lp");
+	gr_AMPT_vn_chisq[1]->SetMarkerStyle(gCMarker[3]);
+	gr_AMPT_vn_chisq[1]->SetMarkerColor(gColor[3]);
+	gr_AMPT_vn_chisq[1]->SetLineColor(gColor[3]);
+	gr_AMPT_vn_chisq[1]->Draw("lp");
+	leg->AddEntry(gr_AMPT_vn_chisq[1],Form("AMPT, %s",gr_AMPT_vn_chisq[1]->GetTitle()),"lp");
 	// gr_AMPT_vn_chisq[2]->SetMarkerStyle(gCMarker[4]);
 	// gr_AMPT_vn_chisq[2]->SetMarkerColor(gColor[4]);
 	// gr_AMPT_vn_chisq[2]->SetLineColor(gColor[4]);
