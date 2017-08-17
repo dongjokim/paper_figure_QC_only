@@ -41,7 +41,7 @@ for i in range(0,2):
 	ax[0].errorbar(x,y,yerr,linestyle="-",fmt=marker[i],color=color[i],label="EKRT+Viscous Hydro, "+title);
 
 	x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_EKRT_NSC_parm{iset:02d}".format(iset=i)));
-	ax[0].errorbar(x,y,yerr,linestyle="-",fmt=marker[i],color=color[i],mfc="none"); #mfc="none" -> open marker
+	ax[0].errorbar(x,y,yerr,linestyle="--",fmt=marker[i],color=color[i],mfc="none"); #mfc="none" -> open marker
 
 tgraph = f.Get("gr_VISH_SC_{iset:02d}{ieta:02d}_chisq".format(iset=0,ieta=0));
 title = tgraph.GetTitle().replace("#eta","$\eta")+"$";
@@ -49,7 +49,7 @@ x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
 ax[0].errorbar(x,y,yerr,linestyle="-",fmt=marker[2],color=color[2],label="VISH2+1, "+title);
 
 x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_VISH_NSC_{iset:02d}{ieta:02d}_chisq".format(iset=0,ieta=0)));
-ax[0].errorbar(x,y,yerr,linestyle="-",fmt=marker[2],color=color[2],mfc="none");
+ax[0].errorbar(x,y,yerr,linestyle="--",fmt=marker[2],color=color[2],mfc="none");
 
 #add text to first pad
 ax[0].text(0.6,0.1,"N = 4, Centrality 10 - 50 %",
