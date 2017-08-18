@@ -9,7 +9,7 @@ color = ["black","blue","red","green","orange","yellow"];
 # int gOMarker[5] = {kOpenSquare, kOpenCircle, 28, kOpenSquare, kOpenCircle};
 # int gCMarker[5] = {kFullSquare, kFullCircle, kFullCircle, kFullSquare, 33};
 # int gColor[5] = {kBlue, kRed, kRed+2, kGreen+4, kCyan+2};
-# int gFillColor[5] = {kBlue-4, kRed-4, kRed-6, kGreen-10, kCyan-4};  
+# int gFillColor[5] = {kBlue-4, kRed-4, kRed-6, kGreen-10, kCyan-4};
 
 def TGraphErrorsToNumpy(gr):
 	n = gr.GetN();
@@ -34,15 +34,6 @@ p,ax = plt.subplots(1,2,sharex=False,sharey=True,figsize=(10,5)); #create a 1x2 
 
 f = ROOT.TFile("PbPb2.76TeV_SCNSC.root");
 
-#SC
-ax[0].set_xlim([0, 57]);
-ax[0].set_yscale("log");
-ax[0].set_ylim([-1.95e-7, 3.1e-7]); #Custom y-limits. Setting to ax[0] is enough, since the sharey=True above
-#NSC
-#ax[1].set_yscale("");
-ax[1].set_xlim([0, 57]);
-ax[1].set_ylim([-0.5, 1.8]); #Custom y-limits. Setting to ax[0] is enough, since the sharey=True above
-
 
 #draw on the first pad
 for i in range(0,5):
@@ -59,6 +50,14 @@ for i in range(0,5):
 	x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_NSC_{iset:02d}".format(iset=i)));
 	ax[1].errorbar(x,y,yerr,linestyle="-",fmt=marker[i],color=color[i]);#,label="a"+str(i));
 
+#SC
+ax[0].set_xlim([0, 57]);
+#ax[0].set_yscale("log");
+ax[0].set_ylim([-1.95e-7, 3.1e-7]); #Custom y-limits. Setting to ax[0] is enough, since the sharey=True above
+#NSC
+#ax[1].set_yscale("");
+ax[1].set_xlim([0, 57]);
+ax[1].set_ylim([-0.5, 1.8]); #Custom y-limits. Setting to ax[0] is enough, since the sharey=True above
 
 f.Close();
 
@@ -67,7 +66,7 @@ for i,a in enumerate(ax):
 	a.tick_params(which="major",direction="in",length=8.0);
 	a.tick_params(which="minor",direction="in",length=4.0);
 
-	a.xaxis.set_major_locator(plticker.MultipleLocator(1.0)); #set the x tick interval to mimic root style
+	#a.xaxis.set_major_locator(plticker.MultipleLocator(1.0)); #set the x tick interval to mimic root style
 	#a.xaxis.set_minor_locator(plticker.MultipleLocator(0.1));
 
 	#a.text(0.5,-0.1,["x1","x2"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=16);
