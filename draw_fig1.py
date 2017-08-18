@@ -6,7 +6,7 @@ import ROOT
 
 marker = ["s","o","D","8","*"]; #https://matplotlib.org/api/markers_api.html
 color = ["black","blue","red","green","orange","yellow"];
-gFillColor = ["blue", "red", "green", "orange"];  
+gFillColor = ["blue", "red", "green", "orange"];
 
 # int gOMarker[5] = {kOpenSquare, kOpenCircle, 28, kOpenSquare, kOpenCircle};
 # int gCMarker[5] = {kFullSquare, kFullCircle, kFullCircle, kFullSquare, 33};
@@ -40,20 +40,20 @@ f = ROOT.TFile("PbPb2.76TeV_SCNSC.root");
 #draw on the first pad
 for i in range(0,5):
 	tgraph = f.Get("gr_SC_{iset:02d}".format(iset=i)); #read the TGraphErrors
-	if i < 2 :
-			tgraph = f.Get("gr_SC_{iset:02d}_CombinedSyst".format(iset=i)); #read the TGraphErrors
-			title = tgraph.GetTitle(); #read the title and it to latex format
-			x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
-			ax[0].fill_between(x,y-yerr,y+yerr,where= x>0, facecolor=gFillColor[i], alpha=0.1,label=title+" ( x 0.1) PRL 117 (2016) 182301");
-		else :
-			tgraph = f.Get("gr_SC_{iset:02d}".format(iset=i)); #read the TGraphErrors
-			title = tgraph.GetTitle(); #read the title and it to latex format
-			x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
-			ax[0].errorbar(x,y,yerr,linestyle="-",fmt=marker[i],color=color[i],label=title);
+	if i < 2:
+		tgraph = f.Get("gr_SC_{iset:02d}_CombinedSyst".format(iset=i)); #read the TGraphErrors
+		title = tgraph.GetTitle(); #read the title and it to latex format
+		x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
+		ax[0].fill_between(x,y-yerr,y+yerr,where= x>0, facecolor=gFillColor[i], alpha=0.1,label=title+" ( x 0.1) PRL 117 (2016) 182301");
+	else:
+		tgraph = f.Get("gr_SC_{iset:02d}".format(iset=i)); #read the TGraphErrors
+		title = tgraph.GetTitle(); #read the title and it to latex format
+		x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
+		ax[0].errorbar(x,y,yerr,linestyle="-",fmt=marker[i],color=color[i],label=title);
 
-			ax[0].legend(frameon=False,prop={'size':9},loc="center",handletextpad=0.1,bbox_to_anchor=(0.4,0.8)); #title="Legend"
+		ax[0].legend(frameon=False,prop={'size':9},loc="center",handletextpad=0.1,bbox_to_anchor=(0.4,0.8)); #title="Legend"
 
-			ax[0].text(0.4,0.95,"ALICE Pb-Pb $\sqrt{s_{NN}}$ = 2.76 TeV",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=10);
+		ax[0].text(0.4,0.95,"ALICE Pb-Pb $\sqrt{s_{NN}}$ = 2.76 TeV",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=10);
 
 #draw on the second pad
 for i in range(0,5):
