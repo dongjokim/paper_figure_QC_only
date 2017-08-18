@@ -66,8 +66,8 @@ for i,a in enumerate(ax):
 	a.tick_params(which="major",direction="in",length=8.0);
 	a.tick_params(which="minor",direction="in",length=4.0);
 
-	#a.xaxis.set_major_locator(plticker.MultipleLocator(1.0)); #set the x tick interval to mimic root style
-	#a.xaxis.set_minor_locator(plticker.MultipleLocator(0.1));
+	a.xaxis.set_major_locator(plticker.MultipleLocator(10.0)); #set the x tick interval to mimic root style
+	a.xaxis.set_minor_locator(plticker.MultipleLocator(2.0));
 
 	#a.text(0.5,-0.1,["x1","x2"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=16);
 	a.text(0.93,0.93,["(a)","(b)"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=12);
