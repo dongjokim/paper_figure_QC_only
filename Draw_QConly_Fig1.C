@@ -234,7 +234,7 @@ void Draw_QConly_Fig1(){
 			}
 			if(ScaleFactor[isc]!=1){
 				RemovePoints( gr_SC_norm_Band[isc],60);
-				gr_SC_Band[isc]->SetTitle(strSCType[isc]);
+				gr_SC_norm_Band[isc]->SetTitle(Form("N%s",strSCType[isc].Data()));
 				gr_SC_norm_Band[isc]->Write(Form("gr_NSC_%02d_CombinedSyst",isc));
 				gr_SC_norm_Band[isc]->Draw("same3");
 				leg2->AddEntry( gr_SC_norm_Band[isc], Form("%s PRL 117 (2016) 182301",strSCnormType[isc].Data()), "f");

@@ -39,7 +39,6 @@ f = ROOT.TFile("PbPb2.76TeV_SCNSC.root");
 
 #draw on the first pad
 for i in range(0,5):
-	tgraph = f.Get("gr_SC_{iset:02d}".format(iset=i)); #read the TGraphErrors
 	if i < 2:
 		tgraph = f.Get("gr_SC_{iset:02d}_CombinedSyst".format(iset=i)); #read the TGraphErrors
 		title = tgraph.GetTitle(); #read the title and it to latex format
@@ -57,12 +56,15 @@ ax[0].legend(frameon=False,prop={'size':9},loc="center",handletextpad=0.1,bbox_t
 
 #draw on the second pad
 for i in range(0,5):
-	tgraph = f.Get("gr_NSC_{iset:02d}".format(iset=i)); #read the TGraphErrors
-	title = tgraph.GetTitle(); #read the title and it to latex format
-	x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
 	if i < 2:
+		tgraph = f.Get("gr_NSC_{iset:02d}_CombinedSyst".format(iset=i)); #read the TGraphErrors
+		title = tgraph.GetTitle(); #read the title and it to latex format
+		x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
 		ax[1].fill_between(x,y-yerr,y+yerr,facecolor=gFillColor[i], alpha=0.1,label=title+" PRL 117 (2016) 182301");
 	else:
+		tgraph = f.Get("gr_NSC_{iset:02d}".format(iset=i)); #read the TGraphErrors
+		title = tgraph.GetTitle(); #read the title and it to latex format
+		x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
 		ax[1].errorbar(x,y,yerr,linestyle="-",fmt=marker[i],color=color[i],label=title);
 
 ax[1].legend(frameon=False,prop={'size':9},loc="center",handletextpad=0.1,bbox_to_anchor=(0.4,0.8)); #title="Legend"
