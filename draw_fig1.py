@@ -29,7 +29,7 @@ def TGraphErrorsToNumpy(gr):
 		xerr[i] = gr.GetErrorX(i);
 		yerr[i] = gr.GetErrorY(i);
 
-		return x,y,xerr,yerr;
+	return x,y,xerr,yerr;
 
 p,ax = plt.subplots(1,2,sharex=False,sharey=False,figsize=(10,5)); #create a 1x2 canvas of aspect 2/1 with shared y-axis
 #p.subplots_adjust(wspace=0.0,hspace=0.0); #remove the spacing between the pads
@@ -44,7 +44,7 @@ for i in range(0,5):
 		tgraph = f.Get("gr_SC_{iset:02d}_CombinedSyst".format(iset=i)); #read the TGraphErrors
 		title = tgraph.GetTitle(); #read the title and it to latex format
 		x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
-		ax[0].fill_between(x,y-yerr,y+yerr,where= x>0, facecolor=gFillColor[i], alpha=0.1,label=title+" ( x 0.1) PRL 117 (2016) 182301");
+		ax[0].fill_between(x,y-yerr,y+yerr,facecolor=gFillColor[i], alpha=0.1,label=title+" ( x 0.1) PRL 117 (2016) 182301");
 	else:
 		tgraph = f.Get("gr_SC_{iset:02d}".format(iset=i)); #read the TGraphErrors
 		title = tgraph.GetTitle(); #read the title and it to latex format
@@ -60,24 +60,23 @@ for i in range(0,5):
 	tgraph = f.Get("gr_NSC_{iset:02d}".format(iset=i)); #read the TGraphErrors
 	title = tgraph.GetTitle(); #read the title and it to latex format
 	x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
-	if i < 2 :
-		ax[1].fill_between(x,y-yerr,y+yerr,where= x>0, facecolor=gFillColor[i], alpha=0.1,label=title+" PRL 117 (2016) 182301");
-	else :
+	print(y);
+	if i < 2:
+		ax[1].fill_between(x,y-yerr,y+yerr,facecolor=gFillColor[i], alpha=0.1,label=title+" PRL 117 (2016) 182301");
+	else:
 		ax[1].errorbar(x,y,yerr,linestyle="-",fmt=marker[i],color=color[i],label=title);
 
-
-		ax[1].legend(frameon=False,prop={'size':9},loc="center",
-	handletextpad=0.1,bbox_to_anchor=(0.4,0.8)); #title="Legend"
+ax[1].legend(frameon=False,prop={'size':9},loc="center",handletextpad=0.1,bbox_to_anchor=(0.4,0.8)); #title="Legend"
 
 
 #SC
 ax[0].set_xlim([0, 57]);
 #ax[0].set_yscale("log");
-ax[0].set_ylim([-1.95e-7, 3.1e-7]); #Custom y-limits. Setting to ax[0] is enough, since the sharey=True above
+#ax[0].set_ylim([-1.95e-7, 3.1e-7]); #Custom y-limits. Setting to ax[0] is enough, since the sharey=True above
 #NSC
 #ax[1].set_yscale("");
 ax[1].set_xlim([0, 57]);
-ax[1].set_ylim([-0.5, 1.8]); #Custom y-limits. Setting to ax[0] is enough, since the sharey=True above
+#ax[1].set_ylim([-0.5, 1.8]); #Custom y-limits. Setting to ax[0] is enough, since the sharey=True above
 
 f.Close();
 
