@@ -86,6 +86,8 @@ void Draw_QConly_Fig1(){
 
 	cout << "loaded files" << endl;
 
+	TFile *fout = new TFile("PbPb2.76TeV_SCNSC.root","recreate");
+
 	TCanvas *c1 = new TCanvas("c1", "c1", 800, 600 );
 	c1->Draw();
 	TH2D *href = new TH2D("href", "", 100, x_min, x_max, 100, -1.95e-7, 3.1e-7);
@@ -117,6 +119,12 @@ void Draw_QConly_Fig1(){
 		gr_SC[isc]->SetLineWidth(2);
 		gr_SC_syst[isc]->SetFillStyle( gFillStyle);
 		gr_SC_syst[isc]->SetFillColor( gFillColor[isc] );
+		// Wrinting into ROOT file
+		fout->cd();
+		gr_SC[isc]->SetTitle(strSCType[isc]);
+		gr_SC_syst[isc]->SetTitle(strSCType[isc]);
+		gr_SC[isc]->Write(Form("gr_SC_%02d",isc));
+		gr_SC_syst[isc]->Write(Form("gr_SC_%02d_syst",isc));
 		cout <<"*dataset:"<<endl;
 		cout <<"*location: Figure 1"<<endl;
 		cout <<"*dscomment: Centrality dependence of observables "<<strSCType[isc]<<" in Pb-Pb collisions at 2.76 TeV"<<endl;
@@ -194,6 +202,13 @@ void Draw_QConly_Fig1(){
 		gr_SC_norm[isc]->SetLineWidth( 2);
 		gr_SC_norm_syst[isc]->SetFillStyle( gFillStyle);
 		gr_SC_norm_syst[isc]->SetFillColor( gFillColor[isc]);
+
+		// Wrint them to ROOT file
+		gr_SC_norm[isc]->SetTitle(Form("N%s",strSCType[isc].Data()));
+		gr_SC_norm_syst[isc]->SetTitle(Form("N%s",strSCType[isc].Data()));
+		gr_SC_norm[isc]->Write(Form("gr_NSC_%02d",isc));
+		gr_SC_norm_syst[isc]->Write(Form("gr_NSC_%02d_syst",isc));
+
 		cout <<"*dataset:"<<endl;
 		cout <<"*location: Figure 1"<<endl;
 		cout <<"*dscomment: Centrality dependence of observables "<<strSCnormType[isc]<<" in Pb-Pb collisions at 2.76 TeV"<<endl;
@@ -226,7 +241,7 @@ void Draw_QConly_Fig1(){
 	//leg2->AddEntry((TObject*)NULL,"|#eta| < 0.8, 0.2 < p_{T} < 5.0 GeV/#it{c}","");
 	leg2->Draw();
 	gPad->GetCanvas()->SaveAs("figs/Fig1b_higherNSC.eps");
-
+	fout->Close();
 }
 // 
 void LoadSCResults(){

@@ -51,13 +51,13 @@ ax[0].errorbar(x,y,yerr,linestyle="-",fmt=marker[2],color=color[2],label="VISH2+
 x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_VISH_NSC_{iset:02d}{ieta:02d}_chisq".format(iset=0,ieta=0)));
 ax[1].errorbar(x,y,yerr,linestyle="--",fmt=marker[2],color=color[2],mfc="none");
 
-# tgraph = f.Get("gr_AMPT_SC_ {iset:d}_chisq".format(iset=1));
-# title = tgraph.GetTitle();
-# x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
-# ax[0].errorbar(x,y,yerr,linestyle="-",fmt=marker[3],color=color[3],label="AMPT, "+title);
+tgraph = f.Get("gr_AMPT_SC_ {iset:d}_chisq".format(iset=1));
+title = tgraph.GetTitle();
+x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
+ax[0].errorbar(x,y,yerr,linestyle="-",fmt=marker[3],color=color[3],label="AMPT, "+title);
 
-# x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_AMPT_NSC_ {iset:d}_chisq".format(iset=1)));
-# ax[1].errorbar(x,y,yerr,linestyle="--",fmt=marker[3],color=color[3],mfc="none");
+x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_AMPT_NSC_ {iset:d}_chisq".format(iset=1)));
+ax[1].errorbar(x,y,yerr,linestyle="--",fmt=marker[3],color=color[3],mfc="none");
 
 #add text to first pad
 ax[0].text(0.6,0.1,"N = 4, Centrality 10 - 50 %",
@@ -81,8 +81,8 @@ x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_VISH_vn_{iset:02d}{ieta:02d}_chisq
 ax[2].errorbar(x,y,yerr,linestyle="-",fmt=marker[2],color=color[2]);#,label="b");
 ax[2].set_xticklabels(["","$v_2$","$v_3$","$v_4$"],fontsize = 11);
 
-# x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_AMPT_vn_ {iset:d}_chisq".format(iset=1)));
-# ax[2].errorbar(x,y,yerr,linestyle="-",fmt=marker[3],color=color[3]);#,label="b");
+x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_AMPT_vn_ {iset:d}_chisq".format(iset=1)));
+ax[2].errorbar(x,y,yerr,linestyle="-",fmt=marker[3],color=color[3]);#,label="b");
 
 f.Close();
 
@@ -102,5 +102,6 @@ for i,a in enumerate(ax):
 #p.text(0.46,0.02,"x-axis",size=16);
 p.text(0.07,0.5,"$\chi^2$",rotation="vertical",size=16);
 
-plt.savefig("figs/chisq_bestfits_3pad_wo_ampt.eps",bbox_inches="tight");
+#plt.savefig("figs/chisq_bestfits_3pad_wo_ampt.eps",bbox_inches="tight");
+plt.savefig("figs/chisq_bestfits_3pad.eps",bbox_inches="tight");
 plt.show();
