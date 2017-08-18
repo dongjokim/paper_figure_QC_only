@@ -29,7 +29,7 @@ def TGraphErrorsToNumpy(gr):
 
 	return x,y,xerr,yerr;
 
-p,ax = plt.subplots(1,2,sharex=False,sharey=True,figsize=(10,5)); #create a 1x2 canvas of aspect 2/1 with shared y-axis
+p,ax = plt.subplots(1,2,sharex=False,sharey=False,figsize=(10,5)); #create a 1x2 canvas of aspect 2/1 with shared y-axis
 #p.subplots_adjust(wspace=0.0,hspace=0.0); #remove the spacing between the pads
 
 f = ROOT.TFile("PbPb2.76TeV_SCNSC.root");
@@ -71,7 +71,7 @@ for i,a in enumerate(ax):
 
 	#a.text(0.5,-0.1,["x1","x2"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=16);
 	a.text(0.93,0.93,["(a)","(b)"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=12);
-	a.text(0.07,0.5,["SC(m,n)","NSC(m,n)"][i],rotation="vertical",size=16);
+	a.text(-0.15,0.9,["SC(m,n)","NSC(m,n)"][i],rotation="vertical",transform=a.transAxes,size=16);
 
 #Manually place the axis labels for shared axes. There might be a better way..
 p.text(0.46,0.02,"Centrality percentile",size=16);
