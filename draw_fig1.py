@@ -6,6 +6,8 @@ import ROOT
 
 marker = ["s","o","D","8","*"]; #https://matplotlib.org/api/markers_api.html
 color = ["black","blue","red","green","orange","yellow"];
+gFillColor = ["blue", "red", "green", "orange"];  
+
 # int gOMarker[5] = {kOpenSquare, kOpenCircle, 28, kOpenSquare, kOpenCircle};
 # int gCMarker[5] = {kFullSquare, kFullCircle, kFullCircle, kFullSquare, 33};
 # int gColor[5] = {kBlue, kRed, kRed+2, kGreen+4, kCyan+2};
@@ -27,7 +29,7 @@ def TGraphErrorsToNumpy(gr):
 		xerr[i] = gr.GetErrorX(i);
 		yerr[i] = gr.GetErrorY(i);
 
-	return x,y,xerr,yerr;
+		return x,y,xerr,yerr;
 
 p,ax = plt.subplots(1,2,sharex=False,sharey=False,figsize=(10,5)); #create a 1x2 canvas of aspect 2/1 with shared y-axis
 #p.subplots_adjust(wspace=0.0,hspace=0.0); #remove the spacing between the pads
@@ -38,17 +40,35 @@ f = ROOT.TFile("PbPb2.76TeV_SCNSC.root");
 #draw on the first pad
 for i in range(0,5):
 	tgraph = f.Get("gr_SC_{iset:02d}".format(iset=i)); #read the TGraphErrors
-	title = tgraph.GetTitle(); #read the title and it to latex format
-	x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
-	ax[0].errorbar(x,y,yerr,linestyle="-",fmt=marker[i],color=color[i],label="EKRT+Viscous Hydro, "+title);
+	if i < 2 :
+			tgraph = f.Get("gr_SC_{iset:02d}_CombinedSyst".format(iset=i)); #read the TGraphErrors
+			title = tgraph.GetTitle(); #read the title and it to latex format
+			x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
+			ax[0].fill_between(x,y-yerr,y+yerr,where= x>0, facecolor=gFillColor[i], alpha=0.1,label=title+" ( x 0.1) PRL 117 (2016) 182301");
+		else :
+			tgraph = f.Get("gr_SC_{iset:02d}".format(iset=i)); #read the TGraphErrors
+			title = tgraph.GetTitle(); #read the title and it to latex format
+			x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
+			ax[0].errorbar(x,y,yerr,linestyle="-",fmt=marker[i],color=color[i],label=title);
 
-	x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_SC_{iset:02d}_syst".format(iset=i)));
-	ax[0].errorbar(x,y,yerr,linestyle="--",fmt=marker[i],color=color[i],mfc="none"); #mfc="none" -> open marker
+			ax[0].legend(frameon=False,prop={'size':9},loc="center",handletextpad=0.1,bbox_to_anchor=(0.4,0.8)); #title="Legend"
+
+			ax[0].text(0.4,0.95,"ALICE Pb-Pb $\sqrt{s_{NN}}$ = 2.76 TeV",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=10);
 
 #draw on the second pad
 for i in range(0,5):
-	x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_NSC_{iset:02d}".format(iset=i)));
-	ax[1].errorbar(x,y,yerr,linestyle="-",fmt=marker[i],color=color[i]);#,label="a"+str(i));
+	tgraph = f.Get("gr_NSC_{iset:02d}".format(iset=i)); #read the TGraphErrors
+	title = tgraph.GetTitle(); #read the title and it to latex format
+	x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
+	if i < 2 :
+		ax[1].fill_between(x,y-yerr,y+yerr,where= x>0, facecolor=gFillColor[i], alpha=0.1,label=title+" PRL 117 (2016) 182301");
+	else :
+		ax[1].errorbar(x,y,yerr,linestyle="-",fmt=marker[i],color=color[i],label=title);
+
+
+		ax[1].legend(frameon=False,prop={'size':9},loc="center",
+	handletextpad=0.1,bbox_to_anchor=(0.4,0.8)); #title="Legend"
+
 
 #SC
 ax[0].set_xlim([0, 57]);

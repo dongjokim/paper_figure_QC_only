@@ -149,6 +149,8 @@ void Draw_QConly_Fig1(){
 			}
 			if(ScaleFactor[isc]!=1){
 				RemovePoints( gr_SC_Band[isc],60);
+				gr_SC_Band[isc]->SetTitle(strSCType[isc]);
+				gr_SC_Band[isc]->Write(Form("gr_SC_%02d_CombinedSyst",isc));
 				gr_SC_Band[isc]->Draw("same3");
 				leg->AddEntry( gr_SC_Band[isc] , Form("%s ( #times %1.1f) PRL 117 (2016) 182301", strSCType[isc].Data(), ScaleFactor[isc]  ), "f");
 			}
@@ -232,6 +234,8 @@ void Draw_QConly_Fig1(){
 			}
 			if(ScaleFactor[isc]!=1){
 				RemovePoints( gr_SC_norm_Band[isc],60);
+				gr_SC_Band[isc]->SetTitle(strSCType[isc]);
+				gr_SC_norm_Band[isc]->Write(Form("gr_NSC_%02d_CombinedSyst",isc));
 				gr_SC_norm_Band[isc]->Draw("same3");
 				leg2->AddEntry( gr_SC_norm_Band[isc], Form("%s PRL 117 (2016) 182301",strSCnormType[isc].Data()), "f");
 			}
