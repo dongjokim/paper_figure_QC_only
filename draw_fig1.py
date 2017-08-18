@@ -51,9 +51,9 @@ for i in range(0,5):
 		x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
 		ax[0].errorbar(x,y,yerr,linestyle="-",fmt=marker[i],color=color[i],label=title);
 
-		ax[0].legend(frameon=False,prop={'size':9},loc="center",handletextpad=0.1,bbox_to_anchor=(0.4,0.8)); #title="Legend"
-
 		ax[0].text(0.4,0.95,"ALICE Pb-Pb $\sqrt{s_{NN}}$ = 2.76 TeV",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=10);
+
+ax[0].legend(frameon=False,prop={'size':9},loc="center",handletextpad=0.1,bbox_to_anchor=(0.4,0.8)); #title="Legend"
 
 #draw on the second pad
 for i in range(0,5):
