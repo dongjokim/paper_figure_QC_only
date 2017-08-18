@@ -60,7 +60,6 @@ for i in range(0,5):
 	tgraph = f.Get("gr_NSC_{iset:02d}".format(iset=i)); #read the TGraphErrors
 	title = tgraph.GetTitle(); #read the title and it to latex format
 	x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
-	print(y);
 	if i < 2:
 		ax[1].fill_between(x,y-yerr,y+yerr,facecolor=gFillColor[i], alpha=0.1,label=title+" PRL 117 (2016) 182301");
 	else:
