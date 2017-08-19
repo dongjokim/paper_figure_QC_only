@@ -5,9 +5,10 @@ import matplotlib.ticker as plticker
 import ROOT
 
 marker = ["s","o","o","s","D","8","*"]; #https://matplotlib.org/api/markers_api.html
-color = ["black","blue","red","green","orange","yellow"];
-gFillColor = ["blue", "red", "green", "orange","yellow"];
-systColor = ["#3333ff","#ff3333","#cc6666","#ccffcc","#33ffff"];
+color =     ["black","blue","red","darkgreen","m"];
+systColor = ["azure","mistyrose","lightsalmon","#ccffcc","plum"];
+hatchstyle = ["//","\\\\"];
+hatchcolor= ["blue","red"];
 
 # int gOMarker[5] = {kOpenSquare, kOpenCircle, 28, kOpenSquare, kOpenCircle};
 # int gCMarker[5] = {kFullSquare, kFullCircle, kFullCircle, kFullSquare, 33};
@@ -58,7 +59,7 @@ for i in range(0,5):
 		tgraph = f.Get("gr_SC_{iset:02d}_CombinedSyst".format(iset=i)); #read the TGraphErrors
 		title = tgraph.GetTitle(); #read the title and it to latex format
 		x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
-		ax[0].fill_between(x,y-yerr,y+yerr,facecolor=systColor[i], alpha=0.3,label=title+" ( x 0.1) PRL 117 (2016) 182301");
+		ax[0].fill_between(x,y-yerr,y+yerr,facecolor=systColor[i], hatch=hatchstyle[i],edgecolor=hatchcolor[i], alpha=0.2,label=title+" ( x 0.1) PRL 117 (2016) 182301");
 	else:
 		tgraph = f.Get("gr_SC_{iset:02d}_syst".format(iset=i)); #read the TGraphErrors
 		title = tgraph.GetTitle(); #read the title and it to latex format
@@ -69,8 +70,9 @@ for i in range(0,5):
 		x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
 		ax[0].errorbar(x,y,yerr,fmt=marker[i],color=color[i],label=title);
 		
-ax[0].text(0.4,0.95,"ALICE Pb-Pb $\sqrt{s_{NN}}$ = 2.76 TeV",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=10);
-ax[0].legend(frameon=False,prop={'size':9},loc="center",handletextpad=0.1,bbox_to_anchor=(0.4,0.8)); #title="Legend"
+ax[0].text(0.4,0.96,"ALICE Pb-Pb $\sqrt{s_{NN}}$ = 2.76 TeV",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=10);
+ax[0].text(0.3,0.07, "|$\eta$| < 0.8, 0.2 < $p_{T}$ < 5.0 GeV/$\it{c}$",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=10);
+ax[0].legend(frameon=False,prop={'size':9.5},loc="center",handletextpad=0.1,bbox_to_anchor=(0.4,0.8)); #title="Legend"
 
 #draw on the second pad
 for i in range(0,5):
@@ -78,7 +80,7 @@ for i in range(0,5):
 		tgraph = f.Get("gr_NSC_{iset:02d}_CombinedSyst".format(iset=i)); #read the TGraphErrors
 		title = tgraph.GetTitle(); #read the title and it to latex format
 		x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
-		ax[1].fill_between(x,y-yerr,y+yerr,facecolor=systColor[i], alpha=0.3,label=title+" PRL 117 (2016) 182301");
+		ax[1].fill_between(x,y-yerr,y+yerr,facecolor=systColor[i],hatch=hatchstyle[i],edgecolor=hatchcolor[i], alpha=0.2,label=title+" PRL 117 (2016) 182301");
 	else:
 		tgraph = f.Get("gr_NSC_{iset:02d}_syst".format(iset=i)); #read the TGraphErrors
 		title = tgraph.GetTitle(); #read the title and it to latex format
@@ -89,7 +91,7 @@ for i in range(0,5):
 		x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
 		ax[1].errorbar(x,y,yerr,fmt=marker[i],color=color[i],label=title);
 
-ax[1].legend(frameon=False,prop={'size':9},loc="center",handletextpad=0.1,bbox_to_anchor=(0.4,0.8)); #title="Legend"
+ax[1].legend(frameon=False,prop={'size':9.5},loc="center",handletextpad=0.1,bbox_to_anchor=(0.4,0.8)); #title="Legend"
 
 
 
@@ -106,13 +108,14 @@ for i,a in enumerate(ax):
 	#a.text(0.5,-0.1,["x1","x2"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=16);
 	a.text(0.93,0.93,["(a)","(b)"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=12);
 	a.text(-0.15,0.9,["SC(m,n)","NSC(m,n)"][i],rotation="vertical",transform=a.transAxes,size=16);
+	a.text(0.25,-0.1,["Centrality percentile","Centrality percentile"][i],transform=a.transAxes,size=16);
 
 #Manually place the axis labels for shared axes. There might be a better way..
-p.text(0.40,0.02,"Centrality percentile",size=16);
-x = [0,0];
-y = [57,0];
-ax[0].plot(x, y,lw=2,color="black");
-ax[1].plot(x, y,lw=2,color="black");
+#p.text(0.40,0.02,"Centrality percentile",size=16);
+x = [0,57];
+y = [0,0];
+ax[0].plot(x, y,lw=.5,color="black");
+ax[1].plot(x, y,lw=.5,color="black");
 
 plt.savefig("figs/Fig1.eps",bbox_inches="tight");
 plt.show();
