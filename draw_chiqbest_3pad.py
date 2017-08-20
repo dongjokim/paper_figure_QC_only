@@ -60,9 +60,10 @@ x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_AMPT_NSC_ {iset:d}_chisq".format(i
 ax[1].errorbar(x,y,yerr,linestyle="--",fmt=marker[3],color=color[3],mfc="none");
 
 #add text to first pad
-ax[0].text(0.6,0.1,"N = 4, Centrality 10 - 50 %",
+ax[0].text(0.6,0.1,"N = 4, Centrality 10 - 50%",
 	horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=12);
 ax[0].set_xticklabels(["","(3,2)","(4,2)","(5,2)","(5,3)","(4,3)"],fontsize = 10.2);
+ax[0].set_yticklabels(["","$10^{-1}$","$1$","$10^1$","$10^2$","$10^3$","$10^4$"],fontsize = 10.2);
 ax[0].legend(frameon=False,prop={'size':9},loc="center",
 	handletextpad=0.1,bbox_to_anchor=(0.45,0.87)); #title="Legend"
 
@@ -96,7 +97,7 @@ for i,a in enumerate(ax):
 
 	#a.text(0.5,-0.1,["x1","x2"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=16);
 	a.text(0.93,0.93,["(a)","(b)","(c)"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=12);
-	a.text(0.6,0.7,["SC(m,n)","NSC(m,n)","$v_n$ (n=2,3 and 4)"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=12);
+	a.text(0.6,0.7,["SC($m$,$n$)","NSC($m$,$n$)","$v_n$ (n=2,3 and 4)"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=12);
 
 #Manually place the axis labels for shared axes. There might be a better way..
 #p.text(0.46,0.02,"x-axis",size=16);

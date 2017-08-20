@@ -91,7 +91,7 @@ void Draw_QConly_Fig1(){
 	TCanvas *c1 = new TCanvas("c1", "c1", 800, 600 );
 	c1->Draw();
 	TH2D *href = new TH2D("href", "", 100, x_min, x_max, 100, -1.95e-7, 3.1e-7);
-	href->GetYaxis()->SetTitle("SC(m,n)");
+	href->GetYaxis()->SetTitle("SC(#it{m},#it{n})");
 	href->GetYaxis()->SetTitleSize(0.041);
 	href->GetYaxis()->SetTitleOffset(0.8);
 	href->GetYaxis()->SetLabelSize(0.035);
@@ -177,7 +177,8 @@ void Draw_QConly_Fig1(){
 	TCanvas *c2 = new TCanvas("c2", "c2" , 800, 600);
 	c2->Draw();
 	TH2D *href2 = new TH2D("href", "", 100, x_min, x_max, 100, -0.5, 1.8);
-	href2->GetYaxis()->SetTitle("SC(m,n)/#LTv_{m}^{2}#GT#LTv_{n}^{2}#GT");
+	href2->GetYaxis()->SetTitle("NSC(#it{m},#it{n})");
+	//href2->GetYaxis()->SetTitle("SC(m,n)/#LTv_{m}^{2}#GT#LTv_{n}^{2}#GT");
 	href2->GetYaxis()->SetTitleSize(0.041);
 	href2->GetYaxis()->SetTitleOffset(0.85);
 	href2->GetYaxis()->SetLabelSize(0.035);

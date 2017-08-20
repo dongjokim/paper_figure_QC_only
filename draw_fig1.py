@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import matplotlib.ticker as plticker
 import ROOT
+import matplotlib as mpl
+#mpl.rcParams['text.usetex'] = False  # not really needed
 
 marker = ["s","o","o","s","D","8","*"]; #https://matplotlib.org/api/markers_api.html
 color =     ["black","blue","red","darkgreen","m"];
@@ -70,8 +72,8 @@ for i in range(0,5):
 		x,y,xerr,yerr = TGraphErrorsToNumpy(tgraph);
 		ax[0].errorbar(x,y,yerr,fmt=marker[i],color=color[i],label=title);
 		
-ax[0].text(0.4,0.96,"ALICE Pb-Pb $\sqrt{s_{NN}}$ = 2.76 TeV",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=10);
-ax[0].text(0.3,0.07, "|$\eta$| < 0.8, 0.2 < $p_{T}$ < 5.0 GeV/$\it{c}$",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=10);
+ax[0].text(0.4,0.96,"ALICE Pb-Pb $\sqrt{s_{\mathrm{NN}}}$ = 2.76 TeV",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=10);
+ax[0].text(0.3,0.07, "|$\eta$| < 0.8, 0.2 < $p_{\mathrm{T}}$ < 5.0 GeV/$\it{c}$",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=10);
 ax[0].legend(frameon=False,prop={'size':9.5},loc="center",handletextpad=0.1,bbox_to_anchor=(0.4,0.8)); #title="Legend"
 
 #draw on the second pad
@@ -107,7 +109,7 @@ for i,a in enumerate(ax):
 
 	#a.text(0.5,-0.1,["x1","x2"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=16);
 	a.text(0.93,0.93,["(a)","(b)"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=12);
-	a.text(-0.15,0.9,["SC(m,n)","NSC(m,n)"][i],rotation="vertical",transform=a.transAxes,size=16);
+	a.text(-0.13,0.8,["SC($m$,$n$)","NSC($m$,$n$)"][i],rotation="vertical",transform=a.transAxes,size=16);
 	a.text(0.25,-0.1,["Centrality percentile","Centrality percentile"][i],transform=a.transAxes,size=16);
 
 #Manually place the axis labels for shared axes. There might be a better way..
