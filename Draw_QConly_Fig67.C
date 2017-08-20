@@ -214,7 +214,7 @@ void Draw_QConly_Fig67(){
 							leg_ekrt->SetBorderSize(0);
 							leg_ekrt->SetTextSize(0.052);
 							
-							leg_ekrt->AddEntry( gr_SC_xpt_EKRT[0][2][0], "param0 (#eta/s=0.02)", "l");
+							leg_ekrt->AddEntry( gr_SC_xpt_EKRT[0][2][0], "param0 (#eta/s=0.2)", "l");
 							leg_ekrt->AddEntry( gr_SC_xpt_EKRT[1][2][0], "param1 (#eta/s(T))", "l");
 
 					};
@@ -307,7 +307,7 @@ void Draw_QConly_Fig67(){
 				leg_ekrt2->SetFillStyle(0);
 				leg_ekrt2->SetBorderSize(0);
 				leg_ekrt2->SetTextSize(0.05);
-				leg_ekrt2->AddEntry( gr_SC_xpt_EKRT[0][2][0], "param0 (#eta/s=0.02)", "l");
+				leg_ekrt2->AddEntry( gr_SC_xpt_EKRT[0][2][0], "param0 (#eta/s=0.2)", "l");
 				leg_ekrt2->AddEntry( gr_SC_xpt_EKRT[1][2][0], "param1 (#eta/s(T))", "l");
 
 			};
