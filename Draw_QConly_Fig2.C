@@ -337,6 +337,8 @@ void Draw_QConly_Fig2(){
 	latex2->DrawLatexNDC( 0.15, 0.05, "#it{p}_{T,min} ( #it{p}_{T,min} < #it{p}_{T} < 5 ) [GeV/#it{c}]");
 	latex2->DrawLatexNDC( 0.55, 0.05, "#it{p}_{T,min} ( #it{p}_{T,min} < #it{p}_{T} < 5 ) [GeV/#it{c}]");
 
+	TLine *l0 = new TLine(x_min,0,x_max,0);
+	l0->SetLineStyle(2);
 
 	for(int ix=0; ix<cNX; ix++){
 		for(int iy=0; iy<cNY; iy++){
@@ -344,6 +346,7 @@ void Draw_QConly_Fig2(){
 
 			if(ix==0){ // left pannel SC
 				hSCReference[iy]->Draw();
+				l0->Draw();
 				for(int ic=0;ic<kNCent-1;ic++) {
 					gr_SC_xpt_err[kQC][ic][iy]->Draw("same 2");
 					gr_SC_xpt[kQC][ic][iy]->Draw("same p");
@@ -369,6 +372,7 @@ void Draw_QConly_Fig2(){
 
 			if(ix==1){ // right pannel
 				hNSCReference[iy]->Draw("Y+");
+				l0->Draw();
 				for(int ic=0;ic<kNCent-1;ic++) {
 					gr_NSC_xpt_err[kQC][ic][iy]->Draw("same 2");
 				}

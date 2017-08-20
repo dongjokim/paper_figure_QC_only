@@ -218,6 +218,17 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 	legmult->SetBorderSize(0);
 	legmult->SetFillStyle(0);
 
+	TLegend *legDataSC = new TLegend( 0.7, 0.8, 0.9, 0.90, NULL, "brNDC");
+	legDataSC->SetTextSize(0.10);
+	legDataSC->SetBorderSize(0);
+	legDataSC->SetFillStyle(0);
+	legDataSC->AddEntry(gr_SC[0],"SC(#it{m},#it{n})","p");
+	TLegend *legDataNSC = new TLegend( 0.52, 0.8, 0.72, 0.90, NULL, "brNDC");
+	legDataNSC->SetTextSize(0.10);
+	legDataNSC->SetBorderSize(0);
+	legDataNSC->SetFillStyle(0);
+	legDataNSC->AddEntry(gr_SC[0],"NSC(#it{m},#it{n})","p");
+
 	TLegend *legModel;
 	if(imodel == kEKRT) {
 		legModel = new TLegend( 0.18, 0.50, 0.5, 0.89, NULL, "brNDC");
@@ -267,7 +278,7 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 	if(imodel==kVISH) {
 		double Ref_Histo_SC_y_min[cNY] = { -27.2e-7, -4.2e-7, -0.27e-7, -0.16e-7, -1.39e-7 };
 		double Ref_Histo_SC_y_max[cNY] = { 6.9e-7, 47.7e-7, 3.93e-7, 1.69e-7, 2.7e-8};
-		double Ref_Histo_NSC_y_min[cNY] = {-0.19, -0.1, -0.11,-0.11 , -0.39 };
+		double Ref_Histo_NSC_y_min[cNY] = {-0.19, -0.1, -0.12,-0.11 , -0.39 };
 		double Ref_Histo_NSC_y_max[cNY] = {0.07,0.999, 0.599, 1.7, 0.077};
 	}
 	if(imodel==kAMPT) {
@@ -419,6 +430,12 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 
 			if(ix==0&&iy==0) {
 				legmult->Draw();
+			}
+			if(ix==0&&iy==0) {
+				legDataSC->Draw();
+			}
+			if(ix==1&&iy==0) {
+				legDataNSC->Draw();
 			}
 			if(ix==0&&iy==1) {
 				legModel->Draw();
