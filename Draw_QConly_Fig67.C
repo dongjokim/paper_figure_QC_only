@@ -5,6 +5,7 @@
 	enum{ k0005, k0510, k1020, k2030, k3040, k4050, k5060, kNCent};
 	enum{ kSP, kQC, kNM};
 
+	double msize = 1.4;
 	const int Npar=2;
 	TGraphErrors *gr_SC[kNM][kNpt][kNSC];
 	TGraphErrors *gr_SC_xpt[kNM][kNCent][kNSC];
@@ -105,7 +106,7 @@ void Draw_QConly_Fig67(){
 			for(int isc=0; isc<kNSC; isc++){
 				gr_SC_xpt[im][icent][isc] = new TGraphErrors();
 				gr_SC_xpt[im][icent][isc]->SetMarkerStyle( 20 );
-				gr_SC_xpt[im][icent][isc]->SetMarkerSize(1.1);
+				gr_SC_xpt[im][icent][isc]->SetMarkerSize(msize);
 				gr_SC_xpt[im][icent][isc]->SetMarkerColor( kBlack );
 				gr_SC_xpt[im][icent][isc]->SetLineColor( kBlack );
 				gr_SC_xpt[im][icent][isc]->SetFillColor( kGray );
@@ -158,7 +159,7 @@ void Draw_QConly_Fig67(){
 			for(int isc=0; isc<kNSC; isc++){
 				gr_SC_xpt_ratio[im][ic][isc] = CalculateRatio( gr_SC_xpt[im][ic][isc] , gr_SC_xpt[kQC][ic][isc], 0 );
 				gr_SC_xpt_ratio[im][ic][isc]->SetMarkerStyle( 24+im );
-				gr_SC_xpt_ratio[im][ic][isc]->SetMarkerSize(1.1);
+				gr_SC_xpt_ratio[im][ic][isc]->SetMarkerSize(msize);
 				gr_SC_xpt_ratio[im][ic][isc]->SetMarkerColor( isc==0?kBlue:kRed );
 				gr_SC_xpt_ratio[im][ic][isc]->SetLineColor( isc==0?kBlue:kRed);
 			}
@@ -447,7 +448,7 @@ void LoadAMPTResults(){
 				for(int isc=0; isc<kNSC; isc++){
 					gr_SC_xpt_AMPT[iampt][im][icent][isc] = new TGraphErrors();
 					gr_SC_xpt_AMPT[iampt][im][icent][isc]->SetMarkerStyle( gAMPTMarker[iampt] );
-					gr_SC_xpt_AMPT[iampt][im][icent][isc]->SetMarkerSize(1.1);
+					gr_SC_xpt_AMPT[iampt][im][icent][isc]->SetMarkerSize(msize);
 					gr_SC_xpt_AMPT[iampt][im][icent][isc]->SetMarkerColor( gAMPTColor[iampt] );
 					gr_SC_xpt_AMPT[iampt][im][icent][isc]->SetLineColor( gAMPTColor[iampt] );
 					gr_SC_xpt_AMPT[iampt][im][icent][isc]->SetFillStyle(3001);
