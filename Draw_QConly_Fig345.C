@@ -178,7 +178,7 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 		gr_AMPT_chisq[1][iset] = new TGraphErrors(kNSC,obsX,ampt_NSC_chisq[iset],0,0);
 	}
 	// wrinting the resuts into a rootfile
-	TFile *fout = new TFile("chisquared_results.root","recreate");
+	TFile *fout = new TFile("chisquaredndf_results.root","recreate");
 	fout->cd();
 	for(int iset=0;iset<2;iset++) {
 		if(iset==0){
@@ -212,22 +212,17 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 
 
 	TLegend *legmult = new TLegend( 0.09, 0.07, 0.53, 0.35, NULL, "brNDC");
-	legmult->AddEntry((TObject*)NULL,"ALICE Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV","");
+	legmult->AddEntry((TObject*)NULL,"Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV","");
 	legmult->AddEntry((TObject*)NULL,"|#eta| < 0.8, 0.2 < p_{T} < 5.0 GeV/#it{c}","");
 	legmult->SetTextSize(0.10);
 	legmult->SetBorderSize(0);
 	legmult->SetFillStyle(0);
 
-	TLegend *legDataSC = new TLegend( 0.7, 0.8, 0.9, 0.90, NULL, "brNDC");
-	legDataSC->SetTextSize(0.10);
-	legDataSC->SetBorderSize(0);
-	legDataSC->SetFillStyle(0);
-	legDataSC->AddEntry(gr_SC[0],"SC(#it{m},#it{n})","p");
-	TLegend *legDataNSC = new TLegend( 0.52, 0.8, 0.72, 0.90, NULL, "brNDC");
-	legDataNSC->SetTextSize(0.10);
-	legDataNSC->SetBorderSize(0);
-	legDataNSC->SetFillStyle(0);
-	legDataNSC->AddEntry(gr_SC[0],"NSC(#it{m},#it{n})","p");
+	TLegend *legData = new TLegend( 0.7, 0.8, 0.9, 0.90, NULL, "brNDC");
+	legData->SetTextSize(0.10);
+	legData->SetBorderSize(0);
+	legData->SetFillStyle(0);
+	legData->AddEntry(gr_SC[0],"ALICE","pl");
 
 	TLegend *legModel;
 	if(imodel == kEKRT) {
@@ -372,7 +367,7 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 				hSCReference[iy]->Draw();
 
 				gr_SC_syst[iy]->Draw("same2");
-				gr_SC[iy]->Draw("same p");
+				gr_SC[iy]->Draw("same p,Z");
 
 				if(imodel==kEKRT) {
 					gr_SC_EKRT[0][iy]->Draw("same c");
@@ -384,7 +379,7 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 				if(imodel==kVISH) {
 					for(int iset=0; iset<kNVISH; iset++){
 						for(int ieta=0; ieta<kVNvisco; ieta++){
-							gr_SC_VISH[iy][iset][ieta]->Draw("same pl");
+							gr_SC_VISH[iy][iset][ieta]->Draw("same pl,Z");
 							if(iy==0) legModel->AddEntry( gr_SC_VISH[iy][iset][ieta], Form("%s", strVISHconf[iset][ieta].Data() ), "pl");
 						}
 					}
@@ -393,7 +388,7 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 				if(imodel==kAMPT) {
 					for(int iset=0; iset<kNAMPT; iset++){
 						gr_SC_AMPT[iset][iy]->SetLineStyle(2);
-						gr_SC_AMPT[iset][iy]->Draw("same pl");
+						gr_SC_AMPT[iset][iy]->Draw("same pl,Z");
 						if(iy==0) legModel->AddEntry( gr_SC_AMPT[iset][iy], Form("%s", strAMPTName[iset].Data()), "pl");
 					}
 				}
@@ -403,7 +398,7 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 				hNSCReference[iy]->Draw("Y+");
 
 				gr_SC_norm_syst[iy]->Draw("same 2");
-				gr_SC_norm[iy]->Draw("same p");
+				gr_SC_norm[iy]->Draw("same p,Z");
 
 				if(imodel==kEKRT) {
 					gr_NSC_EKRT[0][iy]->Draw("same c");
@@ -415,7 +410,7 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 				if(imodel==kVISH) {
 					for(int iset=0; iset<kNVISH; iset++){
 						for(int ieta=0; ieta<kVNvisco; ieta++){
-							gr_SC_norm_VISH[iy][iset][ieta]->Draw("same pl");
+							gr_SC_norm_VISH[iy][iset][ieta]->Draw("same pl,Z");
 						}
 					}
 
@@ -423,7 +418,7 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 				if(imodel==kAMPT) {
 					for(int iset=0; iset<kNAMPT; iset++){
 						gr_SC_norm_AMPT[iset][iy]->SetLineStyle(2);
-						gr_SC_norm_AMPT[iset][iy]->Draw("same pl");
+						gr_SC_norm_AMPT[iset][iy]->Draw("same pl,Z");
 					}
 				}
 			}
@@ -432,10 +427,7 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 				legmult->Draw();
 			}
 			if(ix==0&&iy==0) {
-				legDataSC->Draw();
-			}
-			if(ix==1&&iy==0) {
-				legDataNSC->Draw();
+				legData->Draw();
 			}
 			if(ix==0&&iy==1) {
 				legModel->Draw();
@@ -766,5 +758,5 @@ double calculate_chisquared( TGraphErrors *gr_data, TGraphErrors *gr_data_syst, 
 		}
 	}
 	//cout << chisq << endl;
-	return chisq;
+	return chisq/4.;
 }

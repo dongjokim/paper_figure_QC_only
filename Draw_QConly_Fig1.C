@@ -144,7 +144,7 @@ void Draw_QConly_Fig1(){
 		if(Draw_SC[isc] == 1) {
 			if(ScaleFactor[isc]==1){
 				gr_SC_syst[isc]->Draw("same2");
-				gr_SC[isc]->Draw("samep");	
+				gr_SC[isc]->Draw("samep,Z");	
 				leg->AddEntry( gr_SC[isc] , Form("%s ", strSCType[isc].Data() ), "pl");
 			}
 			if(ScaleFactor[isc]!=1){
@@ -230,7 +230,7 @@ void Draw_QConly_Fig1(){
 		if(Draw_SC_norm[isc] == 1){	
 			if(ScaleFactor[isc]==1){
 				gr_SC_norm_syst[isc]->Draw("same2");	
-				gr_SC_norm[isc]->Draw("same p");
+				gr_SC_norm[isc]->Draw("same p,Z");
 				leg2->AddEntry( gr_SC_norm[isc], strSCnormType[isc].Data(), "pl");
 			}
 			if(ScaleFactor[isc]!=1){

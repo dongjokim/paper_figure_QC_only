@@ -241,7 +241,7 @@ void Draw_QConly_Fig67(){
 			latex.DrawLatex( 0.3, 0.17, Form("%2.f - %2.f%%", CentBins[count], CentBins[count+1]));	
 		
 			gr_SC_xpt_err[kQC][count][isc]->Draw("same 2");	
-			gr_SC_xpt[kQC][count][isc]->Draw("same p");
+			gr_SC_xpt[kQC][count][isc]->Draw("same p,Z");
 			if( count == 0 ) leg[count]->AddEntry( gr_SC_xpt[kQC][count][isc], "NSC(3,2)   |#eta| < 0.8", "p");
 			if( count != 0) gr_SC_xpt_EKRT[0][count][0]->Draw("same l");
 			if( count > 1 ) gr_SC_xpt_EKRT[1][count][0]->Draw("same l");
@@ -253,7 +253,7 @@ void Draw_QConly_Fig67(){
 					int kampt = iampt+1;
 					if(kampt==3) kampt=0;
 
-					gr_SC_xpt_AMPT[kampt][kQC][count][isc]->Draw("same p");
+					gr_SC_xpt_AMPT[kampt][kQC][count][isc]->Draw("same p,Z");
 					if(count==0) leg_ampt->AddEntry( gr_SC_xpt_AMPT[kampt][kQC][count][isc], strAMPT[kampt], "p" );
 
 				}
@@ -341,7 +341,7 @@ void Draw_QConly_Fig67(){
 			if( count != 0) gr_SC_xpt_EKRT[0][count][1]->Draw("same l");
 			if( count > 1 ) gr_SC_xpt_EKRT[1][count][1]->Draw("same l");
 			gr_SC_xpt_err[kQC][count][isc]->Draw("same 2");	
-			gr_SC_xpt[kQC][count][isc]->Draw("same p");
+			gr_SC_xpt[kQC][count][isc]->Draw("same p,Z");
 
 
 			if( count == 0 ) leg2[count]->AddEntry( gr_SC_xpt[kQC][count][isc], "NSC(4,2)   |#eta| < 0.8", "p");
@@ -350,7 +350,7 @@ void Draw_QConly_Fig67(){
 				if(Draw_AMPT[iampt]==1){
 					int kampt = iampt+1;
 					if(kampt==3) kampt=0;
-					gr_SC_xpt_AMPT[kampt][kQC][count][isc]->Draw("same p");
+					gr_SC_xpt_AMPT[kampt][kQC][count][isc]->Draw("same p,Z");
 					if(count==3 ) leg_ampt2->AddEntry( gr_SC_xpt_AMPT[kampt][kQC][count][isc], strAMPT[kampt], "p" );
 
 				}

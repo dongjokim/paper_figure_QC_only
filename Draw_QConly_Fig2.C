@@ -349,7 +349,7 @@ void Draw_QConly_Fig2(){
 				l0->Draw();
 				for(int ic=0;ic<kNCent-1;ic++) {
 					gr_SC_xpt_err[kQC][ic][iy]->Draw("same 2");
-					gr_SC_xpt[kQC][ic][iy]->Draw("same p");
+					gr_SC_xpt[kQC][ic][iy]->Draw("same p,Z");
 					cout <<"*dataset:"<<endl;
 					cout <<"*location: Figure 2"<<endl;
 					cout <<"*dscomment: Centrality dependence of observables "<<strSCType[iy]<<" in Pb-Pb collisions at 2.76 TeV"<<endl;
@@ -377,7 +377,7 @@ void Draw_QConly_Fig2(){
 					gr_NSC_xpt_err[kQC][ic][iy]->Draw("same 2");
 				}
 				for(int ic=0;ic<kNCent-1;ic++) {
-					gr_NSC_xpt[kQC][ic][iy]->Draw("same p");
+					gr_NSC_xpt[kQC][ic][iy]->Draw("same p,Z");
 					cout <<"*dataset:"<<endl;
 					cout <<"*location: Figure 2"<<endl;
 					cout <<"*dscomment: Centrality dependence of observables "<<strSCnormType[iy]<<" in Pb-Pb collisions at 2.76 TeV"<<endl;
