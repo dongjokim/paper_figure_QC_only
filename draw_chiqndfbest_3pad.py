@@ -63,14 +63,14 @@ ax[1].errorbar(x,y,yerr,linestyle="--",fmt=marker[3],color=color[3],mfc="none");
 #ax[0].text(0.6,0.1,"N = 4, Centrality 10 - 50%",
 #	horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=12);
 ax[0].text(0.5,0.12,"ALICE 10-50% Pb-Pb $\sqrt{s_{\mathrm{NN}}}$ = 2.76 TeV",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=10);
-ax[0].text(0.5,0.06,"N = 4",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=10);
-ax[0].set_xticklabels(["","(3,2)","(4,2)","(5,2)","(5,3)","(4,3)"],fontsize = 10.4,rotation=45);
-ax[0].set_yticklabels(["","$10^{-1}$","$1$","$10$","$10^2$","$10^3$"],fontweight='bold',fontsize = 13);
+ax[0].text(0.5,0.06,"$N_{\mathrm{dof}}$ = 4",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=10);
+ax[0].set_xticklabels(["","(3,2)","(4,2)","(5,2)","(5,3)","(4,3)"],fontsize = 10.4,rotation=45,fontweight='bold');
+ax[0].set_yticklabels(["","$10^{-2}$","$10^{-1}$","$1$","$10$","$10^2$","$10^3$"],fontweight='bold',fontsize = 13);
 ax[0].legend(frameon=False,prop={'size':9},loc="center",
 	handletextpad=0.1,bbox_to_anchor=(0.45,0.87)); #title="Legend"
 
 #add text to 2nd pad
-ax[1].set_xticklabels(["","(3,2)","(4,2)","(5,2)","(5,3)","(4,3)"],fontsize = 10.4,rotation=45);
+ax[1].set_xticklabels(["","(3,2)","(4,2)","(5,2)","(5,3)","(4,3)"],fontsize = 10.4,rotation=45,fontweight='bold');
 
 f.Close();
 f = ROOT.TFile("chisquaredndf_vn_results.root");
@@ -103,7 +103,7 @@ for i,a in enumerate(ax):
 
 #Manually place the axis labels for shared axes. There might be a better way..
 #p.text(0.46,0.02,"x-axis",size=16);
-p.text(0.07,0.5,"$\chi^2_{ndf}$",rotation="vertical",size=17);
+p.text(0.07,0.5,"$\chi^2/N_{\mathrm{dof}}$",rotation="vertical",size=17);
 
 #plt.savefig("figs/chisq_bestfits_3pad_wo_ampt.eps",bbox_inches="tight");
 plt.savefig("figs/chisqndf_bestfits_3pad.eps",bbox_inches="tight");

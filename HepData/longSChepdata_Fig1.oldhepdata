@@ -131,7 +131,6 @@
 30.0 TO 40.0;	-1.581397E-01 +- 2.314833E-02 (DSYS=2.314833E-02)
 40.0 TO 50.0;	-1.837091E-01 +- 3.628239E-02 (DSYS=3.628239E-02)
 *dataend:
-
 # Use "*E" to denote the end of the input file (optional, can be omitted,
 # provided that "*dataend:" is used above).
 

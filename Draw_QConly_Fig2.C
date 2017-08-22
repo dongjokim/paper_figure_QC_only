@@ -577,7 +577,7 @@ void printGrrHepData(TGraphErrors *gr, TGraphErrors *gr_syst, double *ptBins, of
         ey_syst[ii] = gr->GetErrorY(ii);
     }
     for(int ii=0;ii<NC;ii++) {
-            TString strData = Form("%.1f TO %.1f\t%E +- %E (DSYS=%E)",ptBins[ii],ptBins[ii],y[ii],ey[ii],ey_syst[ii]);
+           TString strData = Form("%.1f TO %.1f;\t%E +- %E (DSYS=%E)",ptBins[ii],ptBins[ii+1],y[ii],ey[ii],ey_syst[ii]);
            cout << strData << endl;
     }
 
