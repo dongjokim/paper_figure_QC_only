@@ -118,7 +118,7 @@ TGraphErrors *gr_AMPT_chisq[2][kNAMPT];
 
 double YlabelOffset = 1.21;
 
-void Draw_QConly_Fig345(int imodel=kEKRT){
+void Draw_QConly_Fig456(int imodel=kEKRT){
 	gStyle->SetErrorX(0);
 	TGaxis::SetExponentOffset(0.04, -0.1150, "y");
 
@@ -444,7 +444,7 @@ void Draw_QConly_Fig345(int imodel=kEKRT){
 			if(ix==1) latexPad.DrawLatexNDC( 0.80, 0.91 , strPadName[ix+2*iy]);
 		}
 	}
-	c100->SaveAs(Form("figs/Fig%d_ModelComparison_%s.eps",imodel+3,strModel[imodel].Data()));
+	c100->SaveAs(Form("figs/Fig%d_ModelComparison_%s.eps",imodel+4,strModel[imodel].Data()));
 }
 
 void LoadSCResults(){

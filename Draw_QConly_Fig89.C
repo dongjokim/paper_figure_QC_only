@@ -50,7 +50,7 @@
 		"gr_SC_norm_with_QC_3223", "gr_SC_norm_with_QC_4224"
 	};
 
-void Draw_QConly_Fig67(){
+void Draw_QConly_Fig89(){
 	
 	LoadAMPTResults();
 	LoadEKRT();
@@ -264,7 +264,7 @@ void Draw_QConly_Fig67(){
 			leg[count]->Draw();
 		}
 	}
-	p->GetCanvas()->SaveAs("figs/Fig6_pt_NSC32_Models.eps");
+	p->GetCanvas()->SaveAs("figs/Fig8_pt_NSC32_Models.eps");
 
 
 	// Draw 4,2 first // 
@@ -361,7 +361,7 @@ void Draw_QConly_Fig67(){
 			if( count == 3) leg_ampt2->Draw();
 		}
 	}
-	p->GetCanvas()->SaveAs("figs/Fig7_pt_NSC42_Models.eps");
+	p->GetCanvas()->SaveAs("figs/Fig9_pt_NSC42_Models.eps");
 
 }
 
