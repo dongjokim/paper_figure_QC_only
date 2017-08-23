@@ -352,7 +352,7 @@ void Draw_QConly_Fig2(){
 					gr_SC_xpt[kQC][ic][iy]->Draw("same p,Z");
 					cout <<"*dataset:"<<endl;
 					cout <<"*location: Figure 2"<<endl;
-					cout <<"*dscomment: Centrality dependence of observables "<<strSCType[iy]<<" in Pb-Pb collisions at 2.76 TeV"<<endl;
+					cout <<"*dscomment: Transeverse momemtum dependence of observables "<<strSCType[iy]<<" in Pb-Pb collisions at 2.76 TeV"<<endl;
 					cout <<"*reackey: PB PB --> CHARGED X"<<endl;
 					cout <<"*obskey: SC"<<endl;
 					cout <<"*qual: CENTRALITY : "<<CentBins[ic]<<"-"<<CentBins[ic+1] <<"%"<<endl;
@@ -577,7 +577,7 @@ void printGrrHepData(TGraphErrors *gr, TGraphErrors *gr_syst, double *ptBins, of
         ey_syst[ii] = gr->GetErrorY(ii);
     }
     for(int ii=0;ii<NC;ii++) {
-           TString strData = Form("%.1f TO %.1f;\t%E +- %E (DSYS=%E)",ptBins[ii],ptBins[ii+1],y[ii],ey[ii],ey_syst[ii]);
+           TString strData = Form(" %.1f TO %.1f;\t%E +- %E (DSYS=%E);",ptBins[ii],ptBins[ii],y[ii],ey[ii],ey_syst[ii]);
            cout << strData << endl;
     }
 
