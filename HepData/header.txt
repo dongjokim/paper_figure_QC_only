@@ -1,8 +1,8 @@
 *author: ADAM
 *reference: ARXIV: : 2017 # arXiv number
-*reference: CERN-EP-xxxx-xx : 2017 # preprint number
+*reference: CERN-EP-2017-215 : 2017 # preprint number
 *doi:
-*status: Encoded xx JUN 2017 by Dong Jo Kim for ALICE Publications
+*status: Encoded 24 Aug 2017 by Dong Jo Kim for ALICE Publications
 *experiment: CERN-LHC-ALICE
 *detector: ALICE
 *spiresId:

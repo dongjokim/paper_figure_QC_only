@@ -1,0 +1,451 @@
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_2$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_2$
+*qual: CENTRALITY : 0-5%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_2$
+*data: x : y
+ 0.2 TO 0.2;	2.778556E-02 +- 5.188838E-05 (DSYS=5.188838E-05);
+ 0.3 TO 0.3;	3.061540E-02 +- 5.549453E-05 (DSYS=5.549453E-05);
+ 0.4 TO 0.4;	3.361732E-02 +- 6.058149E-05 (DSYS=6.058149E-05);
+ 0.5 TO 0.5;	3.649954E-02 +- 6.696578E-05 (DSYS=6.696578E-05);
+ 0.7 TO 0.7;	4.176272E-02 +- 8.374984E-05 (DSYS=8.374984E-05);
+ 0.8 TO 0.8;	4.415034E-02 +- 9.438454E-05 (DSYS=9.438454E-05);
+ 0.9 TO 0.9;	4.645729E-02 +- 1.066061E-04 (DSYS=1.066061E-04);
+ 1.0 TO 1.0;	4.859390E-02 +- 1.213049E-04 (DSYS=1.213049E-04);
+ 1.2 TO 1.2;	5.272574E-02 +- 1.590457E-04 (DSYS=1.590457E-04);
+ 1.5 TO 1.5;	5.851587E-02 +- 2.499143E-04 (DSYS=2.499143E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_3$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_3$
+*qual: CENTRALITY : 0-5%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_3$
+*data: x : y
+ 0.2 TO 0.2;	2.051640E-02 +- 5.917008E-05 (DSYS=5.917008E-05);
+ 0.3 TO 0.3;	2.317545E-02 +- 6.185135E-05 (DSYS=6.185135E-05);
+ 0.4 TO 0.4;	2.626420E-02 +- 6.598895E-05 (DSYS=6.598895E-05);
+ 0.5 TO 0.5;	2.949003E-02 +- 7.161034E-05 (DSYS=7.161034E-05);
+ 0.7 TO 0.7;	3.598124E-02 +- 8.716333E-05 (DSYS=8.716333E-05);
+ 0.8 TO 0.8;	3.909154E-02 +- 9.723937E-05 (DSYS=9.723937E-05);
+ 0.9 TO 0.9;	4.224113E-02 +- 1.088804E-04 (DSYS=1.088804E-04);
+ 1.0 TO 1.0;	4.528030E-02 +- 1.226931E-04 (DSYS=1.226931E-04);
+ 1.2 TO 1.2;	5.128996E-02 +- 1.580334E-04 (DSYS=1.580334E-04);
+ 1.5 TO 1.5;	6.019738E-02 +- 2.396585E-04 (DSYS=2.396585E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_4$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_4$
+*qual: CENTRALITY : 0-5%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_4$
+*data: x : y
+ 0.2 TO 0.2;	9.894938E-03 +- 1.070639E-04 (DSYS=1.070639E-04);
+ 0.3 TO 0.3;	1.134198E-02 +- 1.088025E-04 (DSYS=1.088025E-04);
+ 0.4 TO 0.4;	1.319101E-02 +- 1.120252E-04 (DSYS=1.120252E-04);
+ 0.5 TO 0.5;	1.525955E-02 +- 1.177262E-04 (DSYS=1.177262E-04);
+ 0.7 TO 0.7;	1.963853E-02 +- 1.365957E-04 (DSYS=1.365957E-04);
+ 0.8 TO 0.8;	2.193170E-02 +- 1.494671E-04 (DSYS=1.494671E-04);
+ 0.9 TO 0.9;	2.432954E-02 +- 1.644226E-04 (DSYS=1.644226E-04);
+ 1.0 TO 1.0;	2.679063E-02 +- 1.819573E-04 (DSYS=1.819573E-04);
+ 1.2 TO 1.2;	3.170501E-02 +- 2.294338E-04 (DSYS=2.294338E-04);
+ 1.5 TO 1.5;	3.967861E-02 +- 3.364318E-04 (DSYS=3.364318E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_2$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_2$
+*qual: CENTRALITY : 5-10%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_2$
+*data: x : y
+ 0.2 TO 0.2;	4.520617E-02 +- 4.883274E-05 (DSYS=4.883274E-05);
+ 0.3 TO 0.3;	4.988354E-02 +- 5.249537E-05 (DSYS=5.249537E-05);
+ 0.4 TO 0.4;	5.487529E-02 +- 5.736773E-05 (DSYS=5.736773E-05);
+ 0.5 TO 0.5;	5.970653E-02 +- 6.316549E-05 (DSYS=6.316549E-05);
+ 0.7 TO 0.7;	6.881808E-02 +- 7.721473E-05 (DSYS=7.721473E-05);
+ 0.8 TO 0.8;	7.303501E-02 +- 8.573858E-05 (DSYS=8.573858E-05);
+ 0.9 TO 0.9;	7.701421E-02 +- 9.551809E-05 (DSYS=9.551809E-05);
+ 1.0 TO 1.0;	8.068707E-02 +- 1.070226E-04 (DSYS=1.070226E-04);
+ 1.2 TO 1.2;	8.770058E-02 +- 1.363125E-04 (DSYS=1.363125E-04);
+ 1.5 TO 1.5;	9.793058E-02 +- 2.037493E-04 (DSYS=2.037493E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_3$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_3$
+*qual: CENTRALITY : 5-10%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_3$
+*data: x : y
+ 0.2 TO 0.2;	2.370009E-02 +- 6.389363E-05 (DSYS=6.389363E-05);
+ 0.3 TO 0.3;	2.669227E-02 +- 6.709958E-05 (DSYS=6.709958E-05);
+ 0.4 TO 0.4;	3.025600E-02 +- 7.165754E-05 (DSYS=7.165754E-05);
+ 0.5 TO 0.5;	3.399877E-02 +- 7.766398E-05 (DSYS=7.766398E-05);
+ 0.7 TO 0.7;	4.154804E-02 +- 9.428324E-05 (DSYS=9.428324E-05);
+ 0.8 TO 0.8;	4.523680E-02 +- 1.047487E-04 (DSYS=1.047487E-04);
+ 0.9 TO 0.9;	4.877813E-02 +- 1.172830E-04 (DSYS=1.172830E-04);
+ 1.0 TO 1.0;	5.224042E-02 +- 1.318964E-04 (DSYS=1.318964E-04);
+ 1.2 TO 1.2;	5.926589E-02 +- 1.691703E-04 (DSYS=1.691703E-04);
+ 1.5 TO 1.5;	6.909006E-02 +- 2.573690E-04 (DSYS=2.573690E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_4$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_4$
+*qual: CENTRALITY : 5-10%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_4$
+*data: x : y
+ 0.2 TO 0.2;	1.163403E-02 +- 1.123283E-04 (DSYS=1.123283E-04);
+ 0.3 TO 0.3;	1.346137E-02 +- 1.135294E-04 (DSYS=1.135294E-04);
+ 0.4 TO 0.4;	1.544045E-02 +- 1.186270E-04 (DSYS=1.186270E-04);
+ 0.5 TO 0.5;	1.770978E-02 +- 1.256631E-04 (DSYS=1.256631E-04);
+ 0.7 TO 0.7;	2.275415E-02 +- 1.454631E-04 (DSYS=1.454631E-04);
+ 0.8 TO 0.8;	2.518920E-02 +- 1.603398E-04 (DSYS=1.603398E-04);
+ 0.9 TO 0.9;	2.783317E-02 +- 1.768133E-04 (DSYS=1.768133E-04);
+ 1.0 TO 1.0;	3.049650E-02 +- 1.967490E-04 (DSYS=1.967490E-04);
+ 1.2 TO 1.2;	3.624521E-02 +- 2.465019E-04 (DSYS=2.465019E-04);
+ 1.5 TO 1.5;	4.453062E-02 +- 3.681616E-04 (DSYS=3.681616E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_2$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_2$
+*qual: CENTRALITY : 10-20%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_2$
+*data: x : y
+ 0.2 TO 0.2;	6.477017E-02 +- 3.871444E-05 (DSYS=3.871444E-05);
+ 0.3 TO 0.3;	7.156758E-02 +- 4.180566E-05 (DSYS=4.180566E-05);
+ 0.4 TO 0.4;	7.876745E-02 +- 4.570088E-05 (DSYS=4.570088E-05);
+ 0.5 TO 0.5;	8.582707E-02 +- 5.018433E-05 (DSYS=5.018433E-05);
+ 0.7 TO 0.7;	9.896027E-02 +- 6.091734E-05 (DSYS=6.091734E-05);
+ 0.8 TO 0.8;	1.049379E-01 +- 6.724244E-05 (DSYS=6.724244E-05);
+ 0.9 TO 0.9;	1.105950E-01 +- 7.441694E-05 (DSYS=7.441694E-05);
+ 1.0 TO 1.0;	1.160025E-01 +- 8.265759E-05 (DSYS=8.265759E-05);
+ 1.2 TO 1.2;	1.263321E-01 +- 1.032830E-04 (DSYS=1.032830E-04);
+ 1.5 TO 1.5;	1.408916E-01 +- 1.504130E-04 (DSYS=1.504130E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_3$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_3$
+*qual: CENTRALITY : 10-20%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_3$
+*data: x : y
+ 0.2 TO 0.2;	2.652311E-02 +- 5.451376E-05 (DSYS=5.451376E-05);
+ 0.3 TO 0.3;	2.995236E-02 +- 5.714586E-05 (DSYS=5.714586E-05);
+ 0.4 TO 0.4;	3.389733E-02 +- 6.112960E-05 (DSYS=6.112960E-05);
+ 0.5 TO 0.5;	3.801657E-02 +- 6.650477E-05 (DSYS=6.650477E-05);
+ 0.7 TO 0.7;	4.622005E-02 +- 8.100676E-05 (DSYS=8.100676E-05);
+ 0.8 TO 0.8;	5.028912E-02 +- 9.020881E-05 (DSYS=9.020881E-05);
+ 0.9 TO 0.9;	5.425465E-02 +- 1.010299E-04 (DSYS=1.010299E-04);
+ 1.0 TO 1.0;	5.807114E-02 +- 1.139905E-04 (DSYS=1.139905E-04);
+ 1.2 TO 1.2;	6.568109E-02 +- 1.466732E-04 (DSYS=1.466732E-04);
+ 1.5 TO 1.5;	7.650112E-02 +- 2.235415E-04 (DSYS=2.235415E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_4$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_4$
+*qual: CENTRALITY : 10-20%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_4$
+*data: x : y
+ 0.2 TO 0.2;	1.273515E-02 +- 9.857450E-05 (DSYS=9.857450E-05);
+ 0.3 TO 0.3;	1.471427E-02 +- 9.987332E-05 (DSYS=9.987332E-05);
+ 0.4 TO 0.4;	1.712202E-02 +- 1.030991E-04 (DSYS=1.030991E-04);
+ 0.5 TO 0.5;	1.956350E-02 +- 1.095656E-04 (DSYS=1.095656E-04);
+ 0.7 TO 0.7;	2.506007E-02 +- 1.274136E-04 (DSYS=1.274136E-04);
+ 0.8 TO 0.8;	2.781278E-02 +- 1.399950E-04 (DSYS=1.399950E-04);
+ 0.9 TO 0.9;	3.067736E-02 +- 1.547065E-04 (DSYS=1.547065E-04);
+ 1.0 TO 1.0;	3.356480E-02 +- 1.722901E-04 (DSYS=1.722901E-04);
+ 1.2 TO 1.2;	3.945889E-02 +- 2.183647E-04 (DSYS=2.183647E-04);
+ 1.5 TO 1.5;	4.882723E-02 +- 3.238837E-04 (DSYS=3.238837E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_2$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_2$
+*qual: CENTRALITY : 20-30%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_2$
+*data: x : y
+ 0.2 TO 0.2;	8.381707E-02 +- 4.599423E-05 (DSYS=4.599423E-05);
+ 0.3 TO 0.3;	9.276970E-02 +- 4.978585E-05 (DSYS=4.978585E-05);
+ 0.4 TO 0.4;	1.022156E-01 +- 5.451232E-05 (DSYS=5.451232E-05);
+ 0.5 TO 0.5;	1.114402E-01 +- 5.998095E-05 (DSYS=5.998095E-05);
+ 0.7 TO 0.7;	1.285534E-01 +- 7.300743E-05 (DSYS=7.300743E-05);
+ 0.8 TO 0.8;	1.363974E-01 +- 8.072876E-05 (DSYS=8.072876E-05);
+ 0.9 TO 0.9;	1.437508E-01 +- 8.936074E-05 (DSYS=8.936074E-05);
+ 1.0 TO 1.0;	1.507204E-01 +- 9.938005E-05 (DSYS=9.938005E-05);
+ 1.2 TO 1.2;	1.637366E-01 +- 1.245734E-04 (DSYS=1.245734E-04);
+ 1.5 TO 1.5;	1.815093E-01 +- 1.829171E-04 (DSYS=1.829171E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_3$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_3$
+*qual: CENTRALITY : 20-30%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_3$
+*data: x : y
+ 0.2 TO 0.2;	2.916295E-02 +- 7.205104E-05 (DSYS=7.205104E-05);
+ 0.3 TO 0.3;	3.303743E-02 +- 7.540535E-05 (DSYS=7.540535E-05);
+ 0.4 TO 0.4;	3.751863E-02 +- 8.056392E-05 (DSYS=8.056392E-05);
+ 0.5 TO 0.5;	4.208347E-02 +- 8.769457E-05 (DSYS=8.769457E-05);
+ 0.7 TO 0.7;	5.117345E-02 +- 1.073689E-04 (DSYS=1.073689E-04);
+ 0.8 TO 0.8;	5.554292E-02 +- 1.202847E-04 (DSYS=1.202847E-04);
+ 0.9 TO 0.9;	5.971983E-02 +- 1.356306E-04 (DSYS=1.356306E-04);
+ 1.0 TO 1.0;	6.373819E-02 +- 1.539376E-04 (DSYS=1.539376E-04);
+ 1.2 TO 1.2;	7.186575E-02 +- 2.005475E-04 (DSYS=2.005475E-04);
+ 1.5 TO 1.5;	8.314629E-02 +- 3.123827E-04 (DSYS=3.123827E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_4$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_4$
+*qual: CENTRALITY : 20-30%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_4$
+*data: x : y
+ 0.2 TO 0.2;	1.418895E-02 +- 1.318120E-04 (DSYS=1.318120E-04);
+ 0.3 TO 0.3;	1.643401E-02 +- 1.338625E-04 (DSYS=1.338625E-04);
+ 0.4 TO 0.4;	1.919423E-02 +- 1.379789E-04 (DSYS=1.379789E-04);
+ 0.5 TO 0.5;	2.196284E-02 +- 1.469077E-04 (DSYS=1.469077E-04);
+ 0.7 TO 0.7;	2.813345E-02 +- 1.716323E-04 (DSYS=1.716323E-04);
+ 0.8 TO 0.8;	3.136749E-02 +- 1.882125E-04 (DSYS=1.882125E-04);
+ 0.9 TO 0.9;	3.436941E-02 +- 2.100326E-04 (DSYS=2.100326E-04);
+ 1.0 TO 1.0;	3.732711E-02 +- 2.364768E-04 (DSYS=2.364768E-04);
+ 1.2 TO 1.2;	4.363431E-02 +- 3.023386E-04 (DSYS=3.023386E-04);
+ 1.5 TO 1.5;	5.300974E-02 +- 4.609306E-04 (DSYS=4.609306E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_2$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_2$
+*qual: CENTRALITY : 30-40%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_2$
+*data: x : y
+ 0.2 TO 0.2;	9.524832E-02 +- 5.769268E-05 (DSYS=5.769268E-05);
+ 0.3 TO 0.3;	1.057720E-01 +- 6.255080E-05 (DSYS=6.255080E-05);
+ 0.4 TO 0.4;	1.168009E-01 +- 6.868591E-05 (DSYS=6.868591E-05);
+ 0.5 TO 0.5;	1.275184E-01 +- 7.592473E-05 (DSYS=7.592473E-05);
+ 0.7 TO 0.7;	1.471671E-01 +- 9.338850E-05 (DSYS=9.338850E-05);
+ 0.8 TO 0.8;	1.561575E-01 +- 1.039449E-04 (DSYS=1.039449E-04);
+ 0.9 TO 0.9;	1.645126E-01 +- 1.159983E-04 (DSYS=1.159983E-04);
+ 1.0 TO 1.0;	1.722646E-01 +- 1.301028E-04 (DSYS=1.301028E-04);
+ 1.2 TO 1.2;	1.867703E-01 +- 1.662074E-04 (DSYS=1.662074E-04);
+ 1.5 TO 1.5;	2.056824E-01 +- 2.522593E-04 (DSYS=2.522593E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_3$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_3$
+*qual: CENTRALITY : 30-40%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_3$
+*data: x : y
+ 0.2 TO 0.2;	3.051122E-02 +- 1.032668E-04 (DSYS=1.032668E-04);
+ 0.3 TO 0.3;	3.484912E-02 +- 1.075845E-04 (DSYS=1.075845E-04);
+ 0.4 TO 0.4;	3.954447E-02 +- 1.154491E-04 (DSYS=1.154491E-04);
+ 0.5 TO 0.5;	4.443609E-02 +- 1.260612E-04 (DSYS=1.260612E-04);
+ 0.7 TO 0.7;	5.434858E-02 +- 1.550733E-04 (DSYS=1.550733E-04);
+ 0.8 TO 0.8;	5.894720E-02 +- 1.747417E-04 (DSYS=1.747417E-04);
+ 0.9 TO 0.9;	6.332077E-02 +- 1.984960E-04 (DSYS=1.984960E-04);
+ 1.0 TO 1.0;	6.766534E-02 +- 2.265673E-04 (DSYS=2.265673E-04);
+ 1.2 TO 1.2;	7.589907E-02 +- 3.014576E-04 (DSYS=3.014576E-04);
+ 1.5 TO 1.5;	8.706328E-02 +- 4.862676E-04 (DSYS=4.862676E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_4$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_4$
+*qual: CENTRALITY : 30-40%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_4$
+*data: x : y
+ 0.2 TO 0.2;	1.539801E-02 +- 1.874886E-04 (DSYS=1.874886E-04);
+ 0.3 TO 0.3;	1.795167E-02 +- 1.898618E-04 (DSYS=1.898618E-04);
+ 0.4 TO 0.4;	2.094740E-02 +- 1.972949E-04 (DSYS=1.972949E-04);
+ 0.5 TO 0.5;	2.406534E-02 +- 2.102653E-04 (DSYS=2.102653E-04);
+ 0.7 TO 0.7;	3.062546E-02 +- 2.498600E-04 (DSYS=2.498600E-04);
+ 0.8 TO 0.8;	3.418280E-02 +- 2.750911E-04 (DSYS=2.750911E-04);
+ 0.9 TO 0.9;	3.767740E-02 +- 3.065523E-04 (DSYS=3.065523E-04);
+ 1.0 TO 1.0;	4.104523E-02 +- 3.457884E-04 (DSYS=3.457884E-04);
+ 1.2 TO 1.2;	4.802805E-02 +- 4.472104E-04 (DSYS=4.472104E-04);
+ 1.5 TO 1.5;	5.797473E-02 +- 6.992521E-04 (DSYS=6.992521E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_2$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_2$
+*qual: CENTRALITY : 40-50%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_2$
+*data: x : y
+ 0.2 TO 0.2;	9.990622E-02 +- 7.788299E-05 (DSYS=7.788299E-05);
+ 0.3 TO 0.3;	1.113044E-01 +- 8.459746E-05 (DSYS=8.459746E-05);
+ 0.4 TO 0.4;	1.232241E-01 +- 9.341083E-05 (DSYS=9.341083E-05);
+ 0.5 TO 0.5;	1.347735E-01 +- 1.039805E-04 (DSYS=1.039805E-04);
+ 0.7 TO 0.7;	1.557852E-01 +- 1.309098E-04 (DSYS=1.309098E-04);
+ 0.8 TO 0.8;	1.651258E-01 +- 1.476939E-04 (DSYS=1.476939E-04);
+ 0.9 TO 0.9;	1.737367E-01 +- 1.675443E-04 (DSYS=1.675443E-04);
+ 1.0 TO 1.0;	1.818106E-01 +- 1.909803E-04 (DSYS=1.909803E-04);
+ 1.2 TO 1.2;	1.966450E-01 +- 2.530458E-04 (DSYS=2.530458E-04);
+ 1.5 TO 1.5;	2.148448E-01 +- 4.059729E-04 (DSYS=4.059729E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_3$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_3$
+*qual: CENTRALITY : 40-50%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_3$
+*data: x : y
+ 0.2 TO 0.2;	3.053606E-02 +- 1.649529E-04 (DSYS=1.649529E-04);
+ 0.3 TO 0.3;	3.488548E-02 +- 1.729431E-04 (DSYS=1.729431E-04);
+ 0.4 TO 0.4;	3.995157E-02 +- 1.852113E-04 (DSYS=1.852113E-04);
+ 0.5 TO 0.5;	4.494285E-02 +- 2.035328E-04 (DSYS=2.035328E-04);
+ 0.7 TO 0.7;	5.514677E-02 +- 2.545087E-04 (DSYS=2.545087E-04);
+ 0.8 TO 0.8;	5.976067E-02 +- 2.897959E-04 (DSYS=2.897959E-04);
+ 0.9 TO 0.9;	6.409032E-02 +- 3.331864E-04 (DSYS=3.331864E-04);
+ 1.0 TO 1.0;	6.843521E-02 +- 3.851726E-04 (DSYS=3.851726E-04);
+ 1.2 TO 1.2;	7.604080E-02 +- 5.290343E-04 (DSYS=5.290343E-04);
+ 1.5 TO 1.5;	8.655598E-02 +- 8.829203E-04 (DSYS=8.829203E-04);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Transeverse momemtum dependence of observables $v_4$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_4$
+*qual: CENTRALITY : 40-50%
+*qual: ETARAP : -0.8 TO 0.8
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: $p_{T,min}$ IN GeV/c
+*yheader: $v_4$
+*data: x : y
+ 0.2 TO 0.2;	1.551217E-02 +- 3.055783E-04 (DSYS=3.055783E-04);
+ 0.3 TO 0.3;	1.793999E-02 +- 3.148452E-04 (DSYS=3.148452E-04);
+ 0.4 TO 0.4;	2.083492E-02 +- 3.317537E-04 (DSYS=3.317537E-04);
+ 0.5 TO 0.5;	2.440053E-02 +- 3.498851E-04 (DSYS=3.498851E-04);
+ 0.7 TO 0.7;	3.148860E-02 +- 4.164975E-04 (DSYS=4.164975E-04);
+ 0.8 TO 0.8;	3.442071E-02 +- 4.727307E-04 (DSYS=4.727307E-04);
+ 0.9 TO 0.9;	3.807986E-02 +- 5.288143E-04 (DSYS=5.288143E-04);
+ 1.0 TO 1.0;	4.138577E-02 +- 6.039794E-04 (DSYS=6.039794E-04);
+ 1.2 TO 1.2;	4.821627E-02 +- 8.009644E-04 (DSYS=8.009644E-04);
+ 1.5 TO 1.5;	5.697457E-02 +- 1.306093E-03 (DSYS=1.306093E-03);
+*dataend:
+
+*dataset:
+*location: Figure 3
+*dscomment: Centrality dependence of observables $v_5$ in Pb-Pb collisions at 2.76 TeV
+*reackey: PB PB --> CHARGED X
+*obskey: $v_5$
+*qual: ETARAP : -0.8 TO 0.8
+*qual: PT IN GEV/C : 0.2 TO 5.0
+*qual: RE : PB PB --> CHARGED X
+*qual: SQRT(S)/NUCLEON IN GEV : 2760
+*xheader: CENTRALITY IN PCT
+*yheader: $v_5$
+*data: x : y
+ 0.0 TO 5.0;	4.172880E-03 +- 2.271070E-04 (DSYS=2.271070E-04);
+ 5.0 TO 10.0;	3.833760E-03 +- 3.324080E-04 (DSYS=3.324080E-04);
+ 10.0 TO 20.0;	5.262940E-03 +- 2.515200E-04 (DSYS=2.515200E-04);
+ 20.0 TO 30.0;	6.675170E-03 +- 2.325310E-04 (DSYS=2.325310E-04);
+ 30.0 TO 40.0;	6.289480E-03 +- 5.405400E-04 (DSYS=5.405400E-04);
+ 40.0 TO 50.0;	4.463770E-03 +- 8.538330E-04 (DSYS=8.538330E-04);
+*dataend:

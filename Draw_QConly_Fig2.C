@@ -359,7 +359,7 @@ void Draw_QConly_Fig2(){
 					cout <<"*qual: ETARAP : -0.8 TO 0.8"<<endl;
 					cout <<"*qual: RE : PB PB --> CHARGED X"<<endl;
 					cout <<"*qual: SQRT(S)/NUCLEON IN GEV : 2760"<<endl;
-					cout <<"*xheader: PTMIN IN (GeV/c)"<<endl;
+					cout <<"*xheader: $p_{T,min}$ IN GeV/c"<<endl;
 					cout <<"*yheader: "<<strSCType[iy]<<endl;
 					cout <<"*data: x : y"<<endl;
 					printGrrHepData(gr_SC_xpt[kQC][ic][iy], gr_SC_xpt_err[kQC][ic][iy],ptbins,NULL);
@@ -387,7 +387,7 @@ void Draw_QConly_Fig2(){
 					cout <<"*qual: ETARAP : -0.8 TO 0.8"<<endl;
 					cout <<"*qual: RE : PB PB --> CHARGED X"<<endl;
 					cout <<"*qual: SQRT(S)/NUCLEON IN GEV : 2760"<<endl;
-					cout <<"*xheader: PTMIN IN (GeV/c)"<<endl;
+					cout <<"*xheader: $p_{T,min}$ IN GeV/c"<<endl;
 					cout <<"*yheader: "<<strSCnormType[iy]<<endl;
 					cout <<"*data: x : y"<<endl;
 					printGrrHepData(gr_NSC_xpt[kQC][ic][iy], gr_NSC_xpt_err[kQC][ic][iy],ptbins,NULL);
