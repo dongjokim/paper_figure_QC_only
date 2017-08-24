@@ -1,17 +1,3 @@
-*author: ADAM
-*reference: ARXIV: : 2017 # arXiv number
-*reference: CERN-EP-2017-215 : 2017 # preprint number
-*doi:
-*status: Encoded 24 Aug 2017 by Dong Jo Kim for ALICE Publications
-*experiment: CERN-LHC-ALICE
-*detector: ALICE
-*spiresId:
-*inspireId:
-*cdsId:
-*durhamId:
-*title: Systematic studies of correlations between different order flow harmonics in Pb-Pb collisions at $\sqrt{s_{_{\rm NN}}}=2.76$ TeV
-*comment: CERN-LHC. Measurements of correlations between event-by-event fluctuations of amplitudes of anisotropic flow harmonics in nucleus-nucleus collisions at $\sqrt{s_{_{\rm NN}}}=2.76$ TeV. Data was recorded in November 2010 with the ALICE detector at the CERN Large Hadron Collider. The measurements are performed in the central pseudorapidity region (|$\eta$| < 0.8) and transverse momentum range 0.2 < $p_T$ < 5.0 GeV/c.
-
 *dataset:
 *location: Figure 1
 *dscomment: Centrality dependence of observables SC(5,2) in Pb-Pb collisions at 2.76 TeV
@@ -24,12 +10,12 @@
 *xheader: CENTRALITY IN PCT
 *yheader: SC(5,2)
 *data: x : y
- 0.0 TO 5.0;	4.140716E-10 +- 1.113931E-09 (DSYS=1.113931E-09);
- 5.0 TO 10.0;	6.713435E-09 +- 2.891121E-09 (DSYS=2.891121E-09);
- 10.0 TO 20.0;	1.529927E-08 +- 5.364805E-09 (DSYS=5.364805E-09);
- 20.0 TO 30.0;	5.189072E-08 +- 1.308934E-08 (DSYS=1.308934E-08);
- 30.0 TO 40.0;	1.094558E-07 +- 2.691066E-08 (DSYS=2.691066E-08);
- 40.0 TO 50.0;	1.298023E-07 +- 5.263170E-08 (DSYS=5.263170E-08);
+ 0.0 TO 5.0;	4.1407E-10 +- 1.1139E-09 (DSYS=1.1139E-09);
+ 5.0 TO 10.0;	6.7134E-09 +- 2.8911E-09 (DSYS=2.8911E-09);
+ 10.0 TO 20.0;	1.5299E-08 +- 5.3648E-09 (DSYS=5.3648E-09);
+ 20.0 TO 30.0;	5.1891E-08 +- 1.3089E-08 (DSYS=1.3089E-08);
+ 30.0 TO 40.0;	1.0946E-07 +- 2.6911E-08 (DSYS=2.6911E-08);
+ 40.0 TO 50.0;	1.2980E-07 +- 5.2632E-08 (DSYS=5.2632E-08);
 *dataend:
 
 *dataset:
@@ -44,12 +30,12 @@
 *xheader: CENTRALITY IN PCT
 *yheader: SC(5,3)
 *data: x : y
- 0.0 TO 5.0;	2.894789E-10 +- 6.719300E-10 (DSYS=6.719300E-10);
- 5.0 TO 10.0;	3.964441E-09 +- 1.091935E-09 (DSYS=1.091935E-09);
- 10.0 TO 20.0;	1.065057E-08 +- 1.418464E-09 (DSYS=1.418464E-09);
- 20.0 TO 30.0;	2.348236E-08 +- 2.845184E-09 (DSYS=2.845184E-09);
- 30.0 TO 40.0;	3.809298E-08 +- 5.827914E-09 (DSYS=5.827914E-09);
- 40.0 TO 50.0;	4.255487E-08 +- 1.311739E-08 (DSYS=1.311739E-08);
+ 0.0 TO 5.0;	2.8948E-10 +- 6.7193E-10 (DSYS=6.7193E-10);
+ 5.0 TO 10.0;	3.9644E-09 +- 1.0919E-09 (DSYS=1.0919E-09);
+ 10.0 TO 20.0;	1.0651E-08 +- 1.4185E-09 (DSYS=1.4185E-09);
+ 20.0 TO 30.0;	2.3482E-08 +- 2.8452E-09 (DSYS=2.8452E-09);
+ 30.0 TO 40.0;	3.8093E-08 +- 5.8279E-09 (DSYS=5.8279E-09);
+ 40.0 TO 50.0;	4.2555E-08 +- 1.3117E-08 (DSYS=1.3117E-08);
 *dataend:
 
 *dataset:
@@ -64,12 +50,12 @@
 *xheader: CENTRALITY IN PCT
 *yheader: SC(4,3)
 *data: x : y
- 0.0 TO 5.0;	-1.440458E-09 +- 8.142325E-10 (DSYS=8.142325E-10);
- 5.0 TO 10.0;	-3.031715E-09 +- 1.323967E-09 (DSYS=1.323967E-09);
- 10.0 TO 20.0;	-1.123485E-08 +- 1.664732E-09 (DSYS=1.664732E-09);
- 20.0 TO 30.0;	-2.608431E-08 +- 3.230300E-09 (DSYS=3.230300E-09);
- 30.0 TO 40.0;	-3.695879E-08 +- 6.427908E-09 (DSYS=6.427908E-09);
- 40.0 TO 50.0;	-4.504331E-08 +- 1.405650E-08 (DSYS=1.405650E-08);
+ 0.0 TO 5.0;	-1.4405E-09 +- 8.1423E-10 (DSYS=8.1423E-10);
+ 5.0 TO 10.0;	-3.0317E-09 +- 1.3240E-09 (DSYS=1.3240E-09);
+ 10.0 TO 20.0;	-1.1235E-08 +- 1.6647E-09 (DSYS=1.6647E-09);
+ 20.0 TO 30.0;	-2.6084E-08 +- 3.2303E-09 (DSYS=3.2303E-09);
+ 30.0 TO 40.0;	-3.6959E-08 +- 6.4279E-09 (DSYS=6.4279E-09);
+ 40.0 TO 50.0;	-4.5043E-08 +- 1.4056E-08 (DSYS=1.4056E-08);
 *dataend:
 
 *dataset:
@@ -84,12 +70,12 @@
 *xheader: CENTRALITY IN PCT
 *yheader: NSC(5,2)
 *data: x : y
- 0.0 TO 5.0;	2.885351E-02 +- 8.956337E-02 (DSYS=8.956337E-02);
- 5.0 TO 10.0;	1.930038E-01 +- 1.145172E-01 (DSYS=1.145172E-01);
- 10.0 TO 20.0;	1.357607E-01 +- 6.984497E-02 (DSYS=6.984497E-02);
- 20.0 TO 30.0;	1.948778E-01 +- 7.379489E-02 (DSYS=7.379489E-02);
- 30.0 TO 40.0;	2.841486E-01 +- 1.015965E-01 (DSYS=1.015965E-01);
- 40.0 TO 50.0;	3.536037E-01 +- 1.924802E-01 (DSYS=1.924802E-01);
+ 0.0 TO 5.0;	2.8854E-02 +- 8.9563E-02 (DSYS=8.9563E-02);
+ 5.0 TO 10.0;	1.9300E-01 +- 1.1452E-01 (DSYS=1.1452E-01);
+ 10.0 TO 20.0;	1.3576E-01 +- 6.9845E-02 (DSYS=6.9845E-02);
+ 20.0 TO 30.0;	1.9488E-01 +- 7.3795E-02 (DSYS=7.3795E-02);
+ 30.0 TO 40.0;	2.8415E-01 +- 1.0160E-01 (DSYS=1.0160E-01);
+ 40.0 TO 50.0;	3.5360E-01 +- 1.9248E-01 (DSYS=1.9248E-01);
 *dataend:
 
 *dataset:
@@ -104,12 +90,12 @@
 *xheader: CENTRALITY IN PCT
 *yheader: NSC(5,3)
 *data: x : y
- 0.0 TO 5.0;	3.751426E-02 +- 9.122648E-02 (DSYS=9.122648E-02);
- 5.0 TO 10.0;	4.138229E-01 +- 1.158378E-01 (DSYS=1.158378E-01);
- 10.0 TO 20.0;	5.604857E-01 +- 7.106717E-02 (DSYS=7.106717E-02);
- 20.0 TO 30.0;	7.225253E-01 +- 7.529624E-02 (DSYS=7.529624E-02);
- 30.0 TO 40.0;	9.474152E-01 +- 1.035535E-01 (DSYS=1.035535E-01);
- 40.0 TO 50.0;	1.218336E+00 +- 1.951855E-01 (DSYS=1.951855E-01);
+ 0.0 TO 5.0;	3.7514E-02 +- 9.1226E-02 (DSYS=9.1226E-02);
+ 5.0 TO 10.0;	4.1382E-01 +- 1.1584E-01 (DSYS=1.1584E-01);
+ 10.0 TO 20.0;	5.6049E-01 +- 7.1067E-02 (DSYS=7.1067E-02);
+ 20.0 TO 30.0;	7.2253E-01 +- 7.5296E-02 (DSYS=7.5296E-02);
+ 30.0 TO 40.0;	9.4742E-01 +- 1.0355E-01 (DSYS=1.0355E-01);
+ 40.0 TO 50.0;	1.2183E+00 +- 1.9519E-01 (DSYS=1.9519E-01);
 *dataend:
 
 *dataset:
@@ -124,14 +110,10 @@
 *xheader: CENTRALITY IN PCT
 *yheader: NSC(4,3)
 *data: x : y
- 0.0 TO 5.0;	-3.334541E-02 +- 2.084820E-02 (DSYS=2.084820E-02);
- 5.0 TO 10.0;	-3.896127E-02 +- 1.905275E-02 (DSYS=1.905275E-02);
- 10.0 TO 20.0;	-9.461390E-02 +- 1.500212E-02 (DSYS=1.500212E-02);
- 20.0 TO 30.0;	-1.467197E-01 +- 1.789909E-02 (DSYS=1.789909E-02);
- 30.0 TO 40.0;	-1.581397E-01 +- 2.314833E-02 (DSYS=2.314833E-02);
- 40.0 TO 50.0;	-1.837091E-01 +- 3.628239E-02 (DSYS=3.628239E-02);
+ 0.0 TO 5.0;	-3.3345E-02 +- 2.0848E-02 (DSYS=2.0848E-02);
+ 5.0 TO 10.0;	-3.8961E-02 +- 1.9053E-02 (DSYS=1.9053E-02);
+ 10.0 TO 20.0;	-9.4614E-02 +- 1.5002E-02 (DSYS=1.5002E-02);
+ 20.0 TO 30.0;	-1.4672E-01 +- 1.7899E-02 (DSYS=1.7899E-02);
+ 30.0 TO 40.0;	-1.5814E-01 +- 2.3148E-02 (DSYS=2.3148E-02);
+ 40.0 TO 50.0;	-1.8371E-01 +- 3.6282E-02 (DSYS=3.6282E-02);
 *dataend:
-# Use "*E" to denote the end of the input file (optional, can be omitted,
-# provided that "*dataend:" is used above).
-
-*E
