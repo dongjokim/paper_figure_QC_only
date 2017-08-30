@@ -205,7 +205,7 @@ void Draw_QConly_Fig89(){
 
 					if(ix==0 && iy==0){
 							cout << count << endl;
-							leg[count] = new TLegend( 0.08, 0.7, 0.48, 0.83, Form("ALICE Pb+Pb #sqrt{S_{NN}}=2.76 TeV"), "brNDC" );
+							leg[count] = new TLegend( 0.02, 0.66, 0.42, 0.81, Form("ALICE Pb+Pb #sqrt{S_{NN}}=2.76 TeV"), "brNDC" );
 							leg_ampt = new TLegend( 0.06, 0.13, 0.4, 0.36, "AMPT", "brNDC" );
 							leg_ampt->SetFillStyle(0);
 							leg_ampt->SetBorderSize(0);
@@ -222,7 +222,7 @@ void Draw_QConly_Fig89(){
 					if(count !=0)leg[count] = new TLegend( 0.05, 0.1, 0.88, 0.5, "", "brNDC");
 					leg[count]->SetFillStyle(0);
 					leg[count]->SetBorderSize(0);
-					leg[count]->SetTextSize(0.045);
+					leg[count]->SetTextSize(0.05);
 					//			pad1->SetCaption( ix, iy, Form("Centrality %02.0f ~ %02.0f", CentBins[count], CentBins[1+count] ) );
 					//			pad1->SetOptionsCaption( 15, 43, 0.7, 3./5. );
 			}
@@ -238,7 +238,7 @@ void Draw_QConly_Fig89(){
 			p->SetGridy(1);
 						
 			int count = ix + nx* iy;
-			latex.SetTextSize(0.052);
+			latex.SetTextSize(0.06);
 			latex.DrawLatex( 0.3, 0.17, Form("%2.f - %2.f%%", CentBins[count], CentBins[count+1]));	
 		
 			gr_SC_xpt_err[kQC][count][isc]->Draw("same 2");	
@@ -302,8 +302,8 @@ void Draw_QConly_Fig89(){
 		for(int iy=0; iy<ny; iy++){
 			int count = ix + nx* iy;
 			if( count == 0){
-				leg2[count] = new TLegend( 0.05, 0.62, 0.6, 0.79, Form("ALICE Pb+Pb #sqrt{S_{NN}}=2.76 TeV"), "brNDC" );
-				leg2[count]->SetTextSize(0.045);
+				leg2[count] = new TLegend( 0.05, 0.60, 0.6, 0.76, Form("ALICE Pb+Pb #sqrt{S_{NN}}=2.76 TeV"), "brNDC" );
+				leg2[count]->SetTextSize(0.05);
 				leg_ekrt2 = new TLegend( 0.05, 0.33, 0.6, 0.52, "EKRT+Viscous Hydrodynamics", "brNDC");
 				leg_ekrt2->SetFillStyle(0);
 				leg_ekrt2->SetBorderSize(0);
