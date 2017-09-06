@@ -431,8 +431,8 @@ void printGrrHepData(TGraphErrors *gr, TGraphErrors *gr_syst, double *CentBins, 
     int NC_syst =  gr_syst->GetN();
     for(int ii=0;ii<NC;ii++){
         gr_syst->GetPoint(ii,x_syst[ii],y_syst[ii]);
-        ex_syst[ii] = gr->GetErrorX(ii);
-        ey_syst[ii] = gr->GetErrorY(ii);
+        ex_syst[ii] = gr_syst->GetErrorX(ii);
+        ey_syst[ii] = gr_syst->GetErrorY(ii);
     }
     for(int ii=0;ii<NC;ii++) {
             TString strData = Form(" %.1f TO %.1f;\t%.4E +- %.4E (DSYS=%.4E);",CentBins[ii],CentBins[ii+1],y[ii],ey[ii],ey_syst[ii]);
