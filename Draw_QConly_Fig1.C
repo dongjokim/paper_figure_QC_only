@@ -74,7 +74,196 @@ TGraphErrors *gr_SC_norm_pub_syst[kNSC];
 
 TGraphErrors *gr_SC_Hijing[kNSC];
 
+void RemovePoints(TGraphErrors *ge, double lcent)
+{
+	// Remove zero points from TGraphErrors.
 
+	if(!ge){return;}
+
+	Int_t nPoints = ge->GetN();
+	Double_t x = 0.; 
+	Double_t y = 0.; 
+	int p =0; 
+	while(p<nPoints) {
+		ge->GetPoint(p,x,y);
+		//if( x < 0.21 || x>8.  )
+		if( x > lcent  )
+		{   
+			ge->RemovePoint(p);
+			//			cout<<Form(" WARNING (%s): point %d is < 1.e-10 and it was removed from the plot !!!!",ge->GetName(),p+1)<<endl;
+			nPoints = ge->GetN();
+		} else {
+			p++;
+		}   
+	} // end of for(Int_t p=0;p<nPoints;p++)
+
+	//cout<<endl;
+	return;
+
+} // end of void RemoveZeroPoints(TGraphErrors *ge)
+
+
+void LoadSCResults(){
+	TFile *fin = new TFile( Form("%s", strFileName.Data() ), "read" );
+	TString strGrSCName[kNSC] = { 
+		"gr_SC_with_QC_3223",
+		"gr_SC_with_QC_4224",
+		"gr_SC_with_QC_5225",
+		"gr_SC_with_QC_5335",
+		"gr_SC_with_QC_4334"};
+	TString strGrSCnormName[kNSC] = {
+		"gr_SC_norm_with_QC_3223",
+		"gr_SC_norm_with_QC_4224",
+		"gr_SC_norm_with_QC_5225",
+		"gr_SC_norm_with_QC_5335",
+		"gr_SC_norm_with_QC_4334"};
+
+
+	for(int isc=0; isc<kNSC; isc++){
+		gr_SC[isc] = (TGraphErrors*)fin->Get(Form("%s", strGrSCName[isc].Data() ) );
+		//Shift_graph_X( gr_SC[isc], -2+isc );
+
+
+		gr_SC_norm[isc] = (TGraphErrors*) fin->Get(Form("%s", strGrSCnormName[isc].Data() ) );
+		//Shift_graph_X( gr_SC_norm[isc], -2+isc);
+
+		gr_SC_syst[isc] = (TGraphErrors*)gr_SC[isc]->Clone();
+		for(int ip=0; ip<gr_SC_syst[isc]->GetN(); ip++){
+			double sErr = gr_SC_syst[isc]->GetY()[ip] * systErr[isc];
+			gr_SC_syst[isc]->SetPointError( ip, 0.8, sErr );	
+		};
+		gr_SC_norm_syst[isc] = (TGraphErrors*)gr_SC_norm[isc]->Clone();
+		for(int ip=0; ip<gr_SC_norm_syst[isc]->GetN(); ip++){
+			double sErr = gr_SC_norm_syst[isc]->GetY()[ip] * systErr_norm[isc];
+			gr_SC_norm_syst[isc]->SetPointError(ip, 0.8, sErr);
+		}
+		RemovePoints(gr_SC[isc],50);
+		RemovePoints(gr_SC_norm[isc],50);
+		RemovePoints(gr_SC_syst[isc],50);
+		RemovePoints(gr_SC_norm_syst[isc],50);
+
+
+
+	}
+
+	//Scale graph  : SC
+	for(int isc=0; isc<kNSC; isc++){
+		double Npoint = gr_SC[isc]->GetN() ;
+		for(int ipoint=0; ipoint < Npoint; ipoint++){
+			double x = gr_SC[isc]->GetX()[ipoint] ;
+			double y = gr_SC[isc]->GetY()[ipoint] * ScaleFactor[isc] ;
+			double ex = gr_SC[isc]->GetErrorX(ipoint) ;
+			double ey = gr_SC[isc]->GetErrorY(ipoint) * ScaleFactor[isc] ;
+			gr_SC[isc]->SetPoint( ipoint, x, y);
+			gr_SC[isc]->SetPointError( ipoint, ex, ey);
+		};
+	};
+	//Scale graph : SC_syst
+	for(int isc=0; isc<kNSC; isc++){
+		double Npoint = gr_SC_syst[isc]->GetN() ;
+		for(int ipoint=0; ipoint < Npoint; ipoint++){
+			double x = gr_SC_syst[isc]->GetX()[ipoint] ;
+			double y = gr_SC_syst[isc]->GetY()[ipoint] * ScaleFactor[isc] ;
+			double ex = gr_SC_syst[isc]->GetErrorX(ipoint) ;
+			double ey = gr_SC_syst[isc]->GetErrorY(ipoint) * ScaleFactor[isc] ;
+			gr_SC_syst[isc]->SetPoint( ipoint, x, y);
+			gr_SC_syst[isc]->SetPointError(ipoint, ex, ey);
+		};
+	};
+
+}
+
+void Merge_Syst_Stat_Errors(){
+
+	//(*****************************************************
+	//change SC32, SC42 to published data points
+	TFile *fin_Ante = new TFile("Ante_SC_results/Ante_DataPoint_20160130.root", "read");
+	gr_SC_pub[kSC32] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC32");
+	gr_SC_pub[kSC42] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC42");
+	gr_SC_pub_syst[kSC32] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC32_Syst");
+	gr_SC_pub_syst[kSC42] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC42_Syst");
+
+	gr_SC_norm_pub[kSC32] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC32_norm");
+	gr_SC_norm_pub[kSC42] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC42_norm");
+	gr_SC_norm_pub_syst[kSC32] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC32_norm_Syst");
+	gr_SC_norm_pub_syst[kSC42] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC42_norm_Syst");
+
+	for(int isc=0; isc<2; isc++){ // only for sc32, and sc42
+		gr_SC_Band[isc] = (TGraphErrors*)gr_SC_pub[isc]->Clone();
+		int NP = gr_SC_pub[isc]->GetN();
+		for(int ip=0; ip<NP; ip++){
+			double staterr = gr_SC_pub[isc]->GetEY()[ip];  
+			double systerr = gr_SC_pub_syst[isc]->GetEY()[ip];
+			double error_sum = TMath::Sqrt( staterr * staterr + systerr * systerr 	);
+			gr_SC_Band[isc]->SetPointError( ip, 0.01, error_sum);
+		}
+
+		gr_SC_norm_Band[isc] = (TGraphErrors*)gr_SC_norm_pub[isc]->Clone();
+		NP = gr_SC_norm_pub[isc]->GetN();
+		for(int ip=0; ip<NP; ip++){
+			double staterr = gr_SC_norm_pub[isc]->GetEY()[ip];  
+			double systerr = gr_SC_norm_pub_syst[isc]->GetEY()[ip]; 
+			double error_sum = TMath::Sqrt( staterr * staterr + systerr * systerr 	);
+			gr_SC_norm_Band[isc]->SetPointError( ip, 0, error_sum);
+		}
+	}
+	//scaling
+	for(int isc=0; isc<2; isc++){
+		double Npoint = gr_SC_Band[isc]->GetN() ;
+		for(int ipoint=0; ipoint < Npoint; ipoint++){
+			double x = gr_SC_Band[isc]->GetX()[ipoint] ;
+			double y = gr_SC_Band[isc]->GetY()[ipoint] * ScaleFactor[isc] ;
+			double ex = gr_SC_Band[isc]->GetErrorX(ipoint) ;
+			double ey = gr_SC_Band[isc]->GetErrorY(ipoint) * ScaleFactor[isc] ;
+			gr_SC_Band[isc]->SetPoint( ipoint, x, y);
+			gr_SC_Band[isc]->SetPointError( ipoint, ex, ey);
+		}
+	}
+
+	gr_SC_Band[0]->SetFillStyle(fsty);
+	gr_SC_Band[0]->SetMarkerColor(kBlue+1);
+	gr_SC_Band[0]->SetLineColor(kBlue+1);
+	gr_SC_Band[0]->SetFillColor(kBlue+1);
+	gr_SC_Band[1]->SetFillStyle(fsty);
+	gr_SC_Band[1]->SetMarkerColor(kRed);
+	gr_SC_Band[1]->SetLineColor(kRed);
+	gr_SC_Band[1]->SetFillColor(kRed);
+
+	gr_SC_norm_Band[0]->SetFillStyle(fsty);
+	gr_SC_norm_Band[0]->SetMarkerColor(kBlue+1);
+	gr_SC_norm_Band[0]->SetLineColor(kBlue+1);
+	gr_SC_norm_Band[0]->SetFillColor(kBlue+1);
+	gr_SC_norm_Band[1]->SetFillStyle(fsty);
+	gr_SC_norm_Band[1]->SetMarkerColor(kRed);
+	gr_SC_norm_Band[1]->SetLineColor(kRed);
+	gr_SC_norm_Band[1]->SetFillColor(kRed);
+}
+
+void printGrrHepData(TGraphErrors *gr, TGraphErrors *gr_syst, const double *CentBins, ofstream *file=NULL){
+    streambuf* sbuf = cout.rdbuf();
+    if(file != NULL)  cout.rdbuf(file->rdbuf());
+
+    double x[300], y[300], ex[300], ey[300];
+    int NC =  gr->GetN();
+    for(int ii=0;ii<NC;ii++){
+        gr->GetPoint(ii,x[ii],y[ii]);
+        ex[ii] = gr->GetErrorX(ii);
+        ey[ii] = gr->GetErrorY(ii);
+    }
+    double x_syst[300], y_syst[300], ex_syst[300], ey_syst[300];
+    int NC_syst =  gr_syst->GetN();
+    for(int ii=0;ii<NC;ii++){
+        gr_syst->GetPoint(ii,x_syst[ii],y_syst[ii]);
+        ex_syst[ii] = gr->GetErrorX(ii);
+        ey_syst[ii] = gr->GetErrorY(ii);
+    }
+    for(int ii=0;ii<NC;ii++) {
+            TString strData = Form("%.1f TO %.1f;\t%E +- %E (DSYS=%E)",CentBins[ii],CentBins[ii+1],y[ii],ey[ii],ey_syst[ii]);
+           cout << strData << endl;
+    }
+
+    if(file != NULL) cout.rdbuf(sbuf);
+}
 
 void Draw_QConly_Fig1(){
 
@@ -249,195 +438,3 @@ void Draw_QConly_Fig1(){
 	fout->Close();
 }
 // 
-void LoadSCResults(){
-	TFile *fin = new TFile( Form("%s", strFileName.Data() ), "read" );
-	TString strGrSCName[kNSC] = { 
-		"gr_SC_with_QC_3223",
-		"gr_SC_with_QC_4224",
-		"gr_SC_with_QC_5225",
-		"gr_SC_with_QC_5335",
-		"gr_SC_with_QC_4334"}
-	TString strGrSCnormName[kNSC] = {
-		"gr_SC_norm_with_QC_3223",
-		"gr_SC_norm_with_QC_4224",
-		"gr_SC_norm_with_QC_5225",
-		"gr_SC_norm_with_QC_5335",
-		"gr_SC_norm_with_QC_4334"}
-
-
-	for(int isc=0; isc<kNSC; isc++){
-		gr_SC[isc] = (TGraphErrors*)fin->Get(Form("%s", strGrSCName[isc].Data() ) );
-		//Shift_graph_X( gr_SC[isc], -2+isc );
-
-
-		gr_SC_norm[isc] = (TGraphErrors*) fin->Get(Form("%s", strGrSCnormName[isc].Data() ) );
-		//Shift_graph_X( gr_SC_norm[isc], -2+isc);
-
-		gr_SC_syst[isc] = (TGraphErrors*)gr_SC[isc]->Clone();
-		for(int ip=0; ip<gr_SC_syst[isc]->GetN(); ip++){
-			double sErr = gr_SC_syst[isc]->GetY()[ip] * systErr[isc];
-			gr_SC_syst[isc]->SetPointError( ip, 0.8, sErr );	
-		};
-		gr_SC_norm_syst[isc] = (TGraphErrors*)gr_SC_norm[isc]->Clone();
-		for(int ip=0; ip<gr_SC_norm_syst[isc]->GetN(); ip++){
-			double sErr = gr_SC_norm_syst[isc]->GetY()[ip] * systErr_norm[isc];
-			gr_SC_norm_syst[isc]->SetPointError(ip, 0.8, sErr);
-		}
-		RemovePoints(gr_SC[isc],50);
-		RemovePoints(gr_SC_norm[isc],50);
-		RemovePoints(gr_SC_syst[isc],50);
-		RemovePoints(gr_SC_norm_syst[isc],50);
-
-
-
-	}
-
-	//Scale graph  : SC
-	for(int isc=0; isc<kNSC; isc++){
-		double Npoint = gr_SC[isc]->GetN() ;
-		for(int ipoint=0; ipoint < Npoint; ipoint++){
-			double x = gr_SC[isc]->GetX()[ipoint] ;
-			double y = gr_SC[isc]->GetY()[ipoint] * ScaleFactor[isc] ;
-			double ex = gr_SC[isc]->GetErrorX(ipoint) ;
-			double ey = gr_SC[isc]->GetErrorY(ipoint) * ScaleFactor[isc] ;
-			gr_SC[isc]->SetPoint( ipoint, x, y);
-			gr_SC[isc]->SetPointError( ipoint, ex, ey);
-		};
-	};
-	//Scale graph : SC_syst
-	for(int isc=0; isc<kNSC; isc++){
-		double Npoint = gr_SC_syst[isc]->GetN() ;
-		for(int ipoint=0; ipoint < Npoint; ipoint++){
-			double x = gr_SC_syst[isc]->GetX()[ipoint] ;
-			double y = gr_SC_syst[isc]->GetY()[ipoint] * ScaleFactor[isc] ;
-			double ex = gr_SC_syst[isc]->GetErrorX(ipoint) ;
-			double ey = gr_SC_syst[isc]->GetErrorY(ipoint) * ScaleFactor[isc] ;
-			gr_SC_syst[isc]->SetPoint( ipoint, x, y);
-			gr_SC_syst[isc]->SetPointError(ipoint, ex, ey);
-		};
-	};
-
-
-
-
-}
-
-void Merge_Syst_Stat_Errors(){
-
-	//(*****************************************************
-	//change SC32, SC42 to published data points
-	TFile *fin_Ante = new TFile("Ante_SC_results/Ante_DataPoint_20160130.root", "read");
-	gr_SC_pub[kSC32] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC32");
-	gr_SC_pub[kSC42] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC42");
-	gr_SC_pub_syst[kSC32] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC32_Syst");
-	gr_SC_pub_syst[kSC42] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC42_Syst");
-
-	gr_SC_norm_pub[kSC32] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC32_norm");
-	gr_SC_norm_pub[kSC42] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC42_norm");
-	gr_SC_norm_pub_syst[kSC32] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC32_norm_Syst");
-	gr_SC_norm_pub_syst[kSC42] = (TGraphErrors*)fin_Ante->Get("gr_Ante_SC42_norm_Syst");
-
-	for(int isc=0; isc<2; isc++){ // only for sc32, and sc42
-		gr_SC_Band[isc] = (TGraphErrors*)gr_SC_pub[isc]->Clone();
-		int NP = gr_SC_pub[isc]->GetN();
-		for(int ip=0; ip<NP; ip++){
-			double staterr = gr_SC_pub[isc]->GetEY()[ip];  
-			double systerr = gr_SC_pub_syst[isc]->GetEY()[ip];
-			double error_sum = TMath::Sqrt( staterr * staterr + systerr * systerr 	);
-			gr_SC_Band[isc]->SetPointError( ip, 0.01, error_sum);
-		}
-
-		gr_SC_norm_Band[isc] = (TGraphErrors*)gr_SC_norm_pub[isc]->Clone();
-		int NP = gr_SC_norm_pub[isc]->GetN();
-		for(int ip=0; ip<NP; ip++){
-			double staterr = gr_SC_norm_pub[isc]->GetEY()[ip];  
-			double systerr = gr_SC_norm_pub_syst[isc]->GetEY()[ip]; 
-			double error_sum = TMath::Sqrt( staterr * staterr + systerr * systerr 	);
-			gr_SC_norm_Band[isc]->SetPointError( ip, 0, error_sum);
-		}
-	}
-	//scaling
-	for(int isc=0; isc<2; isc++){
-		double Npoint = gr_SC_Band[isc]->GetN() ;
-		for(int ipoint=0; ipoint < Npoint; ipoint++){
-			double x = gr_SC_Band[isc]->GetX()[ipoint] ;
-			double y = gr_SC_Band[isc]->GetY()[ipoint] * ScaleFactor[isc] ;
-			double ex = gr_SC_Band[isc]->GetErrorX(ipoint) ;
-			double ey = gr_SC_Band[isc]->GetErrorY(ipoint) * ScaleFactor[isc] ;
-			gr_SC_Band[isc]->SetPoint( ipoint, x, y);
-			gr_SC_Band[isc]->SetPointError( ipoint, ex, ey);
-		}
-	}
-
-	gr_SC_Band[0]->SetFillStyle(fsty);
-	gr_SC_Band[0]->SetMarkerColor(kBlue+1);
-	gr_SC_Band[0]->SetLineColor(kBlue+1);
-	gr_SC_Band[0]->SetFillColor(kBlue+1);
-	gr_SC_Band[1]->SetFillStyle(fsty);
-	gr_SC_Band[1]->SetMarkerColor(kRed);
-	gr_SC_Band[1]->SetLineColor(kRed);
-	gr_SC_Band[1]->SetFillColor(kRed);
-
-	gr_SC_norm_Band[0]->SetFillStyle(fsty);
-	gr_SC_norm_Band[0]->SetMarkerColor(kBlue+1);
-	gr_SC_norm_Band[0]->SetLineColor(kBlue+1);
-	gr_SC_norm_Band[0]->SetFillColor(kBlue+1);
-	gr_SC_norm_Band[1]->SetFillStyle(fsty);
-	gr_SC_norm_Band[1]->SetMarkerColor(kRed);
-	gr_SC_norm_Band[1]->SetLineColor(kRed);
-	gr_SC_norm_Band[1]->SetFillColor(kRed);
-}
-
-void RemovePoints(TGraphErrors *ge, double lcent)
-{
-	// Remove zero points from TGraphErrors.
-
-	if(!ge){return;}
-
-	Int_t nPoints = ge->GetN();
-	Double_t x = 0.; 
-	Double_t y = 0.; 
-	int p =0; 
-	while(p<nPoints) {
-		ge->GetPoint(p,x,y);
-		//if( x < 0.21 || x>8.  )
-		if( x > lcent  )
-		{   
-			ge->RemovePoint(p);
-			//			cout<<Form(" WARNING (%s): point %d is < 1.e-10 and it was removed from the plot !!!!",ge->GetName(),p+1)<<endl;
-			nPoints = ge->GetN();
-		} else {
-			p++;
-		}   
-	} // end of for(Int_t p=0;p<nPoints;p++)
-
-	//cout<<endl;
-	return;
-
-} // end of void RemoveZeroPoints(TGraphErrors *ge)
-
-void printGrrHepData(TGraphErrors *gr, TGraphErrors *gr_syst, double *CentBins, ofstream *file=NULL){
-    streambuf* sbuf = cout.rdbuf();
-    if(file != NULL)  cout.rdbuf(file->rdbuf());
-
-    double x[300], y[300], ex[300], ey[300];
-    int NC =  gr->GetN();
-    for(int ii=0;ii<NC;ii++){
-        gr->GetPoint(ii,x[ii],y[ii]);
-        ex[ii] = gr->GetErrorX(ii);
-        ey[ii] = gr->GetErrorY(ii);
-    }
-    double x_syst[300], y_syst[300], ex_syst[300], ey_syst[300];
-    int NC_syst =  gr_syst->GetN();
-    for(int ii=0;ii<NC;ii++){
-        gr_syst->GetPoint(ii,x_syst[ii],y_syst[ii]);
-        ex_syst[ii] = gr->GetErrorX(ii);
-        ey_syst[ii] = gr->GetErrorY(ii);
-    }
-    for(int ii=0;ii<NC;ii++) {
-            TString strData = Form("%.1f TO %.1f;\t%E +- %E (DSYS=%E)",CentBins[ii],CentBins[ii+1],y[ii],ey[ii],ey_syst[ii]);
-           cout << strData << endl;
-    }
-
-    if(file != NULL) cout.rdbuf(sbuf);
-}
