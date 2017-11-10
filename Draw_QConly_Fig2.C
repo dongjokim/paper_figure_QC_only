@@ -403,7 +403,7 @@ void Draw_QConly_Fig2(){
 	//TLegend *legmult = new TLegend( 0.35, 0.79, 0.80, 0.98, NULL, "brNDC");
 	TLegend *legmult = new TLegend( 0.23, 0.10, 0.50, 0.32, NULL, "brNDC");
 	legmult->AddEntry((TObject*)NULL,"ALICE Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV","");
-	legmult->AddEntry((TObject*)NULL,"|#eta| < 0.8, 0.2 < p_{T} < 5.0 GeV/#it{c}","");
+	legmult->AddEntry((TObject*)NULL,"|#eta| < 0.8, #it{p}_{T,min} < #it{p}_{T} < 5 GeV/#it{c}","");
 	legmult->SetTextSize(0.060);
 	legmult->SetBorderSize(0);
 	legmult->SetFillStyle(0);
@@ -496,8 +496,8 @@ void Draw_QConly_Fig2(){
 	latex2->SetTextSize(0.04);
 	latex2->SetTextFont(42);
 	c100->cd();
-	latex2->DrawLatexNDC( 0.15, 0.05, "#it{p}_{T,min} ( #it{p}_{T,min} < #it{p}_{T} < 5 ) [GeV/#it{c}]");
-	latex2->DrawLatexNDC( 0.55, 0.05, "#it{p}_{T,min} ( #it{p}_{T,min} < #it{p}_{T} < 5 ) [GeV/#it{c}]");
+	latex2->DrawLatexNDC( 0.25, 0.05, "#it{p}_{T,min} (GeV/#it{c})");
+	latex2->DrawLatexNDC( 0.65, 0.05, "#it{p}_{T,min} (GeV/#it{c})");
 
 	TLine *l0 = new TLine(x_min,0,x_max,0);
 	l0->SetLineStyle(2);

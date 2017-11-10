@@ -415,9 +415,9 @@ double calculate_chisquared( TGraphErrors *gr_data, TGraphErrors *gr_data_syst, 
 			double data = gr_data->GetY()[i];
 			double err_data = gr_data->GetEY()[i]; 
 			double err_data_syst = gr_data_syst->GetEY()[i];
-			err_data = TMath::Sqrt(err_data*err_data + err_data_syst*err_data_syst );
 			double tho = gr_theory->Eval(x);
 			double err_tho = ger.Eval(x);
+			err_data = TMath::Sqrt(err_data*err_data + err_data_syst*err_data_syst + err_tho*err_tho);
 			// chi square is the quadratic sum of the distance from the point to the function weighted by its error
 			double delta  = TMath::Abs(data-tho)/TMath::Abs(err_data);
     		chisq += delta*delta;
@@ -559,7 +559,7 @@ void Draw_QConly_Fig456(int imodel=kEKRT){
 
 	const int cNX = 2; // number of pad along X
 	const int cNY = 5; // number of pad along y
-	double canvas_width = 800;
+	double canvas_width = 1300;
 	double canvas_height = 1500;
 	double canvas_margin_x = 10;
 	double W = 0.46; //(pad width as ratio);
@@ -662,17 +662,17 @@ void Draw_QConly_Fig456(int imodel=kEKRT){
 
 		hSCReference[i]->SetStats(0);
 		hSCReference[i]->GetYaxis()->SetTitle(Form("SC(%d,%d)   ", m, n) );
-		hSCReference[i]->GetYaxis()->SetTitleOffset(0.65);
+		hSCReference[i]->GetYaxis()->SetTitleOffset(0.6);
 		hSCReference[i]->GetYaxis()->SetTitleSize(0.10);
-		hSCReference[i]->GetYaxis()->SetLabelSize(0.08);
+		hSCReference[i]->GetYaxis()->SetLabelSize(0.09);
 		hSCReference[i]->GetYaxis()->CenterTitle();
 		hSCReference[i]->GetXaxis()->SetLabelSize(0.0);
 
 		hNSCReference[i]->SetStats(0);
 		hNSCReference[i]->GetYaxis()->SetTitle(Form("NSC(%d,%d) ", m, n) );
-		hNSCReference[i]->GetYaxis()->SetTitleOffset(0.7);
+		hNSCReference[i]->GetYaxis()->SetTitleOffset(0.68);
 		hNSCReference[i]->GetYaxis()->SetTitleSize(0.10);
-		hNSCReference[i]->GetYaxis()->SetLabelSize(0.08);
+		hNSCReference[i]->GetYaxis()->SetLabelSize(0.09);
 		hNSCReference[i]->GetYaxis()->CenterTitle();
 		hNSCReference[i]->GetXaxis()->SetLabelSize(0.0);
 
