@@ -46,8 +46,7 @@ TString strAMPT[3] = {
 	"AMPT string melting w/o hadronic rescattering",
 	"AMPT default",
 	"AMPT string melting"
-}
-
+};
 
 TFile *fin[kNpt];
 TString strFilename[kNpt] = {
@@ -61,15 +60,180 @@ TString strFilename[kNpt] = {
 	"results_0720/results_LHC10h_JFFlucAODLHC10h_pt1050.root",
 	"results_0720/results_LHC10h_JFFlucAODLHC10h_pt1250.root",
 	"results_0720/results_LHC10h_JFFlucAODLHC10h_pt1550.root"
-}
+};
+
 TString strGraphNameNSC[kNM][kNSC]= {
 	"gr_SC_ratio_00", "gr_SC_ratio_01",
 	"gr_SC_norm_with_QC_3223", "gr_SC_norm_with_QC_4224"
 };
+
 TString strGraphNameSC[kNM][kNSC]= {
 	"gr_SC_ratio_00", "gr_SC_ratio_01",
 	"gr_SC_with_QC_3223", "gr_SC_with_QC_4224"
 };
+
+void LoadAMPTResults(){
+
+	TString AMPTfiles[3][kNpt] = {
+		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt0250.root",
+		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt0350.root",
+		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt0450.root",
+		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt0550.root",
+		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt0750.root",
+		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt0850.root",
+		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt0950.root",
+		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt1050.root",
+		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt1250.root",
+		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt1550.root",
+
+		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt0250.root",
+		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt0350.root",
+		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt0450.root",
+		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt0550.root",
+		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt0750.root",
+		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt0850.root",
+		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt0950.root",
+		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt1050.root",
+		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt1250.root",
+		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt1550.root",
+
+		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt0250.root",
+		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt0350.root",
+		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt0450.root",
+		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt0550.root",
+		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt0750.root",
+		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt0850.root",
+		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt0950.root",
+		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt1050.root",
+		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt1250.root",
+		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt1550.root"
+	};
+
+
+	//load data part//
+	cout << "start load AMPT" << endl;
+
+	for(int iampt=0; iampt<3; iampt++){
+		for(int ipt=0; ipt<kNpt; ipt++){
+			fin_ampt[iampt][ipt] = new TFile( AMPTfiles[iampt][ipt].Data(), "read" );
+			for(int im=0; im<kNM; im++){
+				for(int isc=0; isc<kNSC; isc++){
+					gr_SC_AMPT[iampt][im][ipt][isc] = (TGraphErrors*)fin_ampt[iampt][ipt]->Get(strGraphNameNSC[im][isc].Data());
+				}
+			}
+		}
+	}
+	//load done	
+
+
+	//init new graph
+	for(int iampt=0; iampt<3; iampt++){
+		for(int im=0; im<kNM; im++){
+			for(int icent=0; icent<kNCent; icent++){
+				for(int isc=0; isc<kNSC; isc++){
+					gr_NSC_xpt_AMPT[iampt][im][icent][isc] = new TGraphErrors();
+					gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetMarkerStyle( gAMPTMarker[iampt] );
+					gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetMarkerSize(1.1);
+					gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetMarkerColor( gAMPTColor[iampt] );
+					gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetLineColor( gAMPTColor[iampt] );
+					gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetFillStyle(3001);
+					gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetFillColor( gAMPTColor[iampt] );
+					//gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetLineStyle(2+iampt);
+					gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetLineWidth(1.0);
+				}
+			}
+		}
+	}
+
+	// convert part //
+	for(int iampt=0; iampt<3; iampt++){ 
+		for(int isc =0; isc<kNSC; isc++){
+			for(int ipt=0; ipt<kNpt; ipt++){
+				for(int im=0; im<kNM; im++){
+					for(int icent=0; icent<kNCent; icent++){
+						double x = ptbins[ipt]; 
+						double y = gr_SC_AMPT[iampt][im][ipt][isc]->GetY()[icent];
+						double ex = 0;
+						double ey = gr_SC_AMPT[iampt][im][ipt][isc]->GetEY()[icent];
+
+						gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetPoint( ipt, x, y);
+						gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetPointError( ipt, ex, ey );
+					}
+				}
+			}
+		}
+	};
+
+};
+
+void LoadEKRT(){
+	TFile *fin_EKRT[2];
+	fin_EKRT[0]  = new TFile("Harris_results/EKRT_eta_020_pt_NSC.root", "read");
+	fin_EKRT[1]  = new TFile("Harris_results/EKRT_eta_par1_pt_NSC.root", "read");
+
+	TString centbinname[7] = {"0005", "0510", "1020", "2030", "3040", "4050", "5060"};
+
+	for(int ipar=0; ipar<2; ipar++){
+		for(int icent=0; icent<kNCent; icent++){
+			if(ipar==0 && icent==0) continue; // no 00~05 info for param 0
+			if(ipar==1 && icent<=1) continue; // no 00~05, 05~10 info for param1
+			for(int isc=0; isc<kNSC; isc++){
+				cout << isc << " " << icent << " " << centbinname[icent].Data() <<  endl;
+				gr_NSC_xpt_EKRT[ipar][icent][isc] = (TGraphErrors*)fin_EKRT[ipar]->Get(
+						Form("gr_harri_SC_%d_x_minpT_Cent%s", isc, centbinname[icent].Data() ) );				
+				gr_NSC_xpt_EKRT[ipar][icent][isc]->SetLineColor(ipar==0?kOrange+2:kViolet-1);
+				gr_NSC_xpt_EKRT[ipar][icent][isc]->SetLineWidth(3);
+				gr_NSC_xpt_EKRT[ipar][icent][isc]->SetLineStyle(1+ipar);
+			}
+		}
+	}
+	cout << "load EKRT data points... done" << endl;
+}
+
+// CalculateRatio
+TGraphErrors *CalculateRatio( TGraphErrors* gr1, TGraphErrors* gr2, double xshift){
+	int NPoint = gr1->GetN();
+	TGraphErrors *gr_ratio = new TGraphErrors( NPoint);
+	TGraph ger( gr2->GetN(), gr2->GetX(), gr2->GetEY() ); // << Err estimation of gr2
+	for(int i=0; i<NPoint; i++){
+		double x = gr1->GetX()[i];
+		double y1 = gr1->GetY()[i];
+		double ey1 = gr1->GetEY()[i];  // << estimation of gr2's y value for x1
+		double y2 = gr2->Eval(x);
+		double ey2 = ger.Eval(x);
+		double ratio = TMath::Abs( y1 / y2 );
+		gr_ratio->SetPoint( i, x+xshift, ratio);
+		gr_ratio->SetPointError( i, 0, ratio * TMath::Sqrt( ey1*ey1/y1/y1 + ey2*ey2/y2/y2 ));
+
+	}
+	return gr_ratio;
+}
+
+void printGrrHepData(TGraphErrors *gr, TGraphErrors *gr_syst, const double *ptBins, ofstream *file=NULL){
+    streambuf* sbuf = cout.rdbuf();
+    if(file != NULL)  cout.rdbuf(file->rdbuf());
+
+    double x[300], y[300], ex[300], ey[300];
+    int NC =  gr->GetN();
+    for(int ii=0;ii<NC;ii++){
+        gr->GetPoint(ii,x[ii],y[ii]);
+        ex[ii] = gr->GetErrorX(ii);
+        ey[ii] = gr->GetErrorY(ii);
+    }
+    double x_syst[300], y_syst[300], ex_syst[300], ey_syst[300];
+    int NC_syst =  gr_syst->GetN();
+    for(int ii=0;ii<NC;ii++){
+        gr_syst->GetPoint(ii,x_syst[ii],y_syst[ii]);
+        ex_syst[ii] = gr->GetErrorX(ii);
+        ey_syst[ii] = gr->GetErrorY(ii);
+    }
+    for(int ii=0;ii<NC;ii++) {
+           TString strData = Form("%.1f TO %.1f;\t%E +- %E (DSYS=%E)",ptBins[ii],ptBins[ii+1],y[ii],ey[ii],ey_syst[ii]);
+           cout << strData << endl;
+    }
+
+    if(file != NULL) cout.rdbuf(sbuf);
+}
 
 void Draw_QConly_Fig2(){
 
@@ -119,15 +283,13 @@ void Draw_QConly_Fig2(){
 		0.0525, 0.1808,  // 0.3 ~ 5.0
 		0.0466, 0.1898,  // 0.4 ~ 5.0
 		0.0544, 0.1794,  // 0.5 ~ 5.0
-		0.0697, 0.1558   // 0.7 ~ 5.0
-			0.0713, 0.1515,  // 0.8 ~ 5.0
+		0.0697, 0.1558,   // 0.7 ~ 5.0
+		0.0713, 0.1515,  // 0.8 ~ 5.0
 		0.0737, 0.1617,  // 0.9 ~ 5.0
 		0.0823, 0.1533,  // 10 ~ 5.0
 		0.1026, 0.1405,   // 12 ~ 5.0
 		0.1591, 0.1631  // 1.5
 	};
-
-
 
 	//load data part//
 	cout << "start load data" << endl;
@@ -194,7 +356,7 @@ void Draw_QConly_Fig2(){
 	// Add systematics for data
 	for(int isc=0; isc<kNSC; isc++){
 		for(int icent=0; icent<kNCent; icent++){
-			for(im=0; im<kNM; im++){
+			for(int im=0; im<kNM; im++){
 				gr_NSC_xpt_err[im][icent][isc] = (TGraphErrors*)gr_NSC_xpt[im][icent][isc]->Clone();
 				gr_NSC_xpt_err[im][icent][isc]->SetFillColor( gFillColor[icent]  );
 				gr_SC_xpt_err[im][icent][isc] = (TGraphErrors*)gr_SC_xpt[im][icent][isc]->Clone();
@@ -419,167 +581,3 @@ void Draw_QConly_Fig2(){
 }
 
 
-
-// CalculateRatio
-TGraphErrors *CalculateRatio( TGraphErrors* gr1, TGraphErrors* gr2, double xshift){
-	int NPoint = gr1->GetN();
-	TGraphErrors *gr_ratio = new TGraphErrors( NPoint);
-	TGraph ger( gr2->GetN(), gr2->GetX(), gr2->GetEY() ); // << Err estimation of gr2
-	for(int i=0; i<NPoint; i++){
-		double x = gr1->GetX()[i];
-		double y1 = gr1->GetY()[i];
-		double ey1 = gr1->GetEY()[i];  // << estimation of gr2's y value for x1
-		double y2 = gr2->Eval(x);
-		double ey2 = ger.Eval(x);
-		double ratio = TMath::Abs( y1 / y2 );
-		gr_ratio->SetPoint( i, x+xshift, ratio);
-		gr_ratio->SetPointError( i, 0, ratio * TMath::Sqrt( ey1*ey1/y1/y1 + ey2*ey2/y2/y2 ));
-
-	}
-	return gr_ratio;
-}
-
-
-void LoadAMPTResults(){
-
-	TString AMPTfiles[3][kNpt] = {
-		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt0250.root",
-		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt0350.root",
-		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt0450.root",
-		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt0550.root",
-		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt0750.root",
-		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt0850.root",
-		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt0950.root",
-		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt1050.root",
-		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt1250.root",
-		"results_0720/results_AMPT13f3a_JFFluc_KineOnly_Eta0408_Pt1550.root",
-
-		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt0250.root",
-		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt0350.root",
-		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt0450.root",
-		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt0550.root",
-		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt0750.root",
-		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt0850.root",
-		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt0950.root",
-		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt1050.root",
-		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt1250.root",
-		"results_0720/results_AMPT13f3b_JFFluc_KineOnly_Eta0408_Pt1550.root",
-
-		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt0250.root",
-		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt0350.root",
-		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt0450.root",
-		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt0550.root",
-		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt0750.root",
-		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt0850.root",
-		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt0950.root",
-		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt1050.root",
-		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt1250.root",
-		"results_0720/results_AMPT13f3c_JFFluc_KineOnly_Eta0408_Pt1550.root"
-	};
-
-
-	//load data part//
-	cout << "start load AMPT" << endl;
-
-	for(int iampt=0; iampt<3; iampt++){
-		for(int ipt=0; ipt<kNpt; ipt++){
-			fin_ampt[iampt][ipt] = new TFile( AMPTfiles[iampt][ipt].Data(), "read" );
-			for(int im=0; im<kNM; im++){
-				for(int isc=0; isc<kNSC; isc++){
-					gr_SC_AMPT[iampt][im][ipt][isc] = (TGraphErrors*)fin_ampt[iampt][ipt]->Get(strGraphNameNSC[im][isc].Data());
-				}
-			}
-		}
-	}
-	//load done	
-
-
-	//init new graph
-	for(int iampt=0; iampt<3; iampt++){
-		for(int im=0; im<kNM; im++){
-			for(int icent=0; icent<kNCent; icent++){
-				for(int isc=0; isc<kNSC; isc++){
-					gr_NSC_xpt_AMPT[iampt][im][icent][isc] = new TGraphErrors();
-					gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetMarkerStyle( gAMPTMarker[iampt] );
-					gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetMarkerSize(1.1);
-					gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetMarkerColor( gAMPTColor[iampt] );
-					gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetLineColor( gAMPTColor[iampt] );
-					gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetFillStyle(3001);
-					gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetFillColor( gAMPTColor[iampt] );
-					//gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetLineStyle(2+iampt);
-					gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetLineWidth(1.0);
-				}
-			}
-		}
-	}
-
-	// convert part //
-	for(int iampt=0; iampt<3; iampt++){ 
-		for(int isc =0; isc<kNSC; isc++){
-			for(int ipt=0; ipt<kNpt; ipt++){
-				for(int im=0; im<kNM; im++){
-					for(int icent=0; icent<kNCent; icent++){
-						double x = ptbins[ipt]; 
-						double y = gr_SC_AMPT[iampt][im][ipt][isc]->GetY()[icent];
-						double ex = 0;
-						double ey = gr_SC_AMPT[iampt][im][ipt][isc]->GetEY()[icent];
-
-						gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetPoint( ipt, x, y);
-						gr_NSC_xpt_AMPT[iampt][im][icent][isc]->SetPointError( ipt, ex, ey );
-					}
-				}
-			}
-		}
-	};
-
-};
-
-void LoadEKRT(){
-	TFile *fin_EKRT[2];
-	fin_EKRT[0]  = new TFile("Harris_results/EKRT_eta_020_pt_NSC.root", "read");
-	fin_EKRT[1]  = new TFile("Harris_results/EKRT_eta_par1_pt_NSC.root", "read");
-
-	TString centbinname[7] = {"0005", "0510", "1020", "2030", "3040", "4050", "5060"};
-
-	for(int ipar=0; ipar<2; ipar++){
-		for(int icent=0; icent<kNCent; icent++){
-			if(ipar==0 && icent==0) continue; // no 00~05 info for param 0
-			if(ipar==1 && icent<=1) continue; // no 00~05, 05~10 info for param1
-			for(int isc=0; isc<kNSC; isc++){
-				cout << isc << " " << icent << " " << centbinname[icent].Data() <<  endl;
-				gr_NSC_xpt_EKRT[ipar][icent][isc] = (TGraphErrors*)fin_EKRT[ipar]->Get(
-						Form("gr_harri_SC_%d_x_minpT_Cent%s", isc, centbinname[icent].Data() ) );				
-				gr_NSC_xpt_EKRT[ipar][icent][isc]->SetLineColor(ipar==0?kOrange+2:kViolet-1);
-				gr_NSC_xpt_EKRT[ipar][icent][isc]->SetLineWidth(3);
-				gr_NSC_xpt_EKRT[ipar][icent][isc]->SetLineStyle(1+ipar);
-			}
-		}
-	}
-	cout << "load EKRT data points... done" << endl;
-}
-
-void printGrrHepData(TGraphErrors *gr, TGraphErrors *gr_syst, double *ptBins, ofstream *file=NULL){
-    streambuf* sbuf = cout.rdbuf();
-    if(file != NULL)  cout.rdbuf(file->rdbuf());
-
-    double x[300], y[300], ex[300], ey[300];
-    int NC =  gr->GetN();
-    for(int ii=0;ii<NC;ii++){
-        gr->GetPoint(ii,x[ii],y[ii]);
-        ex[ii] = gr->GetErrorX(ii);
-        ey[ii] = gr->GetErrorY(ii);
-    }
-    double x_syst[300], y_syst[300], ex_syst[300], ey_syst[300];
-    int NC_syst =  gr_syst->GetN();
-    for(int ii=0;ii<NC;ii++){
-        gr_syst->GetPoint(ii,x_syst[ii],y_syst[ii]);
-        ex_syst[ii] = gr->GetErrorX(ii);
-        ey_syst[ii] = gr->GetErrorY(ii);
-    }
-    for(int ii=0;ii<NC;ii++) {
-           TString strData = Form("%.1f TO %.1f;\t%E +- %E (DSYS=%E)",ptBins[ii],ptBins[ii+1],y[ii],ey[ii],ey_syst[ii]);
-           cout << strData << endl;
-    }
-
-    if(file != NULL) cout.rdbuf(sbuf);
-}
