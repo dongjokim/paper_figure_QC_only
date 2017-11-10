@@ -62,15 +62,15 @@ ax[1].errorbar(x,y,yerr,linestyle="--",fmt=marker[3],color=color[3],mfc="none");
 #add text to first pad
 #ax[0].text(0.6,0.1,"N = 4, Centrality 10 - 50%",
 #	horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=12);
-ax[0].text(0.5,0.12,"ALICE 10-50% Pb-Pb $\sqrt{s_{\mathrm{NN}}}$ = 2.76 TeV",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=12);
+ax[0].text(0.5,0.12,"ALICE 10-50% Pb-Pb $\sqrt{s_{\mathrm{NN}}}$ = 2.76 TeV",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=13);
 ax[0].text(0.5,0.06,"$N_{\mathrm{dof}}$ = 4",horizontalalignment='center',verticalalignment='center',transform=ax[0].transAxes,size=10);
-ax[0].set_xticklabels(["","(3,2)","(4,2)","(5,2)","(5,3)","(4,3)"],fontsize = 12,rotation=45);
-ax[0].set_yticklabels(["","$10^{-2}$","$10^{-1}$","$1$","$10$","$10^2$","$10^3$"],fontweight='bold',fontsize = 14);
-ax[0].legend(frameon=False,prop={'size':10},loc="center",
+ax[0].set_xticklabels(["","(3,2)","(4,2)","(5,2)","(5,3)","(4,3)"],fontsize = 13,rotation=45);
+ax[0].set_yticklabels(["","$10^{-2}$","$10^{-1}$","$1$","$10$","$10^2$","$10^3$"],fontweight='bold',fontsize = 15);
+ax[0].legend(frameon=False,prop={'size':10.5},loc="center",
 	handletextpad=0.1,bbox_to_anchor=(0.45,0.87)); #title="Legend"
 
 #add text to 2nd pad
-ax[1].set_xticklabels(["","(3,2)","(4,2)","(5,2)","(5,3)","(4,3)"],fontsize = 12,rotation=45);
+ax[1].set_xticklabels(["","(3,2)","(4,2)","(5,2)","(5,3)","(4,3)"],fontsize = 14,rotation=45);
 
 f.Close();
 f = ROOT.TFile("chisquaredndf_vn_results.root");
@@ -82,7 +82,7 @@ for i in range(0,2):
 
 x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_VISH_vn_{iset:02d}{ieta:02d}_chisq".format(iset=0,ieta=0)));
 ax[2].errorbar(x,y,yerr,linestyle="-",fmt=marker[2],color=color[2]);#,label="b");
-ax[2].set_xticklabels(["","$v_2$","$v_3$","$v_4$"],fontsize = 15,fontweight='bold');
+ax[2].set_xticklabels(["","$v_2$","$v_3$","$v_4$"],fontsize = 17,fontweight='bold');
 
 x,y,xerr,yerr = TGraphErrorsToNumpy(f.Get("gr_AMPT_vn_ {iset:d}_chisq".format(iset=1)));
 ax[2].errorbar(x,y,yerr,linestyle="-",fmt=marker[3],color=color[3]);#,label="b");
@@ -98,12 +98,12 @@ for i,a in enumerate(ax):
 	#a.xaxis.set_minor_locator(plticker.MultipleLocator(0.1));
 
 	#a.text(0.5,-0.1,["x1","x2"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=16);
-	a.text(0.93,0.93,["(a)","(b)","(c)"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=12);
-	a.text(0.6,0.7,["SC($m$,$n$)","NSC($m$,$n$)","$v_n$ (n=2,3 and 4)"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=14);
+	a.text(0.93,0.93,["(a)","(b)","(c)"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=15);
+	a.text(0.6,0.7,["SC($m$,$n$)","NSC($m$,$n$)","$v_n$ (n=2,3 and 4)"][i],horizontalalignment='center',verticalalignment='center',transform=a.transAxes,size=15);
 
 #Manually place the axis labels for shared axes. There might be a better way..
 #p.text(0.46,0.02,"x-axis",size=16);
-p.text(0.07,0.5,"$\chi^2/N_{\mathrm{dof}}$",rotation="vertical",size=18);
+p.text(0.07,0.5,"$\chi^2/N_{\mathrm{dof}}$",rotation="vertical",size=20);
 
 #plt.savefig("figs/chisq_bestfits_3pad_wo_ampt.eps",bbox_inches="tight");
 plt.savefig("figs/Fig7_chisqndf_bestfits_3pad.eps",bbox_inches="tight");

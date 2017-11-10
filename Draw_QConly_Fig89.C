@@ -60,7 +60,7 @@ const double ptbins[kNpt] = {0.2, 0.3, 0.4, 0.5, 0.7, 0.8, 0.9, 1.0, 1.2, 1.5 };
 int gAMPTColor[3] = { kGreen+2, kRed, kBlue };
 int gAMPTMarker[3] = { kOpenDiamond, kOpenCircle, kOpenSquare};
 TString strAMPT[3] = {
-	"string melting w/o hadronic rescattering",
+	"string melting without hadronic rescattering",
 	"default",
 	"string melting"
 };
@@ -361,8 +361,8 @@ void Draw_QConly_Fig89(){
 	}
 	JmxnTPad *pad1 = new JmxnTPad( nx, ny, lrX, urX, lrY[0], urY[0]);
 	pad1->SetCanvas(1.5, 800, 10, 10);
-	pad1->SetOptionsLabelAxisX(0.008,0.58, 42);
-	pad1->SetOptionsLabelAxisY(0.008,0.32, 42);
+	pad1->SetOptionsLabelAxisX(0.008,0.62, 42);
+	pad1->SetOptionsLabelAxisY(0.008,0.42, 42);
 	pad1->SetSizeOfLabelPadsAxisY(0.05,0.017);
 	pad1->SetTitleX(" #it{p}_{T,min} ( #it{p}_{T,min} < #it{p}_{T} < 5 ) [GeV/#it{c}]", 1,0.04, 42, 1.4);
 	pad1->SetTitleY("NSC(3,2)",1,0.04,42,1.2);
@@ -381,7 +381,7 @@ void Draw_QConly_Fig89(){
 							leg_ampt = new TLegend( 0.06, 0.13, 0.4, 0.36, "AMPT", "brNDC" );
 							leg_ampt->SetFillStyle(0);
 							leg_ampt->SetBorderSize(0);
-							leg_ampt->SetTextSize(0.048);
+							leg_ampt->SetTextSize(0.05);
 							leg_ekrt = new TLegend( 0.15, 0.13, 0.8, 0.37, "EKRT+Viscous Hydrodynamics", "brNDC");
 							leg_ekrt->SetFillStyle(0);
 							leg_ekrt->SetBorderSize(0);
@@ -394,7 +394,7 @@ void Draw_QConly_Fig89(){
 					if(count !=0)leg[count] = new TLegend( 0.05, 0.1, 0.88, 0.5, "", "brNDC");
 					leg[count]->SetFillStyle(0);
 					leg[count]->SetBorderSize(0);
-					leg[count]->SetTextSize(0.045);
+					leg[count]->SetTextSize(0.05);
 					//			pad1->SetCaption( ix, iy, Form("Centrality %02.0f ~ %02.0f", CentBins[count], CentBins[1+count] ) );
 					//			pad1->SetOptionsCaption( 15, 43, 0.7, 3./5. );
 			}
@@ -410,7 +410,7 @@ void Draw_QConly_Fig89(){
 			p->SetGridy(1);
 						
 			int count = ix + nx* iy;
-			latex.SetTextSize(0.052);
+			latex.SetTextSize(0.06);
 			latex.DrawLatex( 0.3, 0.17, Form("%2.f - %2.f%%", CentBins[count], CentBins[count+1]));	
 		
 			gr_SC_xpt_err[kQC][count][isc]->Draw("same 2");	
@@ -445,7 +445,7 @@ void Draw_QConly_Fig89(){
 	TLegend *leg_ampt2 = new TLegend( 0.06, 0.5, 0.4, 0.80, "AMPT", "brNDC" );
 	leg_ampt2->SetFillStyle(0);
 	leg_ampt2->SetBorderSize(0);
-	leg_ampt2->SetTextSize(0.048);
+	leg_ampt2->SetTextSize(0.05);
 
 	for(int ix=0; ix <nx; ix++){
 		lrX[ix] = 0;
@@ -463,8 +463,8 @@ void Draw_QConly_Fig89(){
 	}
 	JmxnTPad *pad2 = new JmxnTPad( nx, ny, lrX, urX, lrY[0], urY[0]);
 	pad2->SetCanvas(1.5, 800, 10, 10);
-	pad2->SetOptionsLabelAxisX(0.008,0.58, 42);
-	pad2->SetOptionsLabelAxisY(0.008,0.32, 42);
+	pad2->SetOptionsLabelAxisX(0.008,0.62, 42);
+	pad2->SetOptionsLabelAxisY(0.008,0.42, 42);
 	pad2->SetSizeOfLabelPadsAxisY(0.05,0.017);
 	pad2->SetTitleX("#it{p}_{T,min} ( #it{p}_{T,min} < #it{p}_{T} < 5 ) [GeV/#it{c}]", 1,0.04, 42, 1.4);
 	pad2->SetTitleY("NSC(4,2)",1,0.04,42,1.2);
@@ -475,7 +475,7 @@ void Draw_QConly_Fig89(){
 			int count = ix + nx* iy;
 			if( count == 0){
 				leg2[count] = new TLegend( 0.05, 0.62, 0.6, 0.79, Form("ALICE Pb+Pb #sqrt{S_{NN}}=2.76 TeV"), "brNDC" );
-				leg2[count]->SetTextSize(0.045);
+				leg2[count]->SetTextSize(0.05);
 				leg_ekrt2 = new TLegend( 0.05, 0.33, 0.6, 0.52, "EKRT+Viscous Hydrodynamics", "brNDC");
 				leg_ekrt2->SetFillStyle(0);
 				leg_ekrt2->SetBorderSize(0);
@@ -486,7 +486,7 @@ void Draw_QConly_Fig89(){
 			};
 			if( count !=0 ){
 				leg2[count] = new TLegend( 0., 0.55, 0.6, 0.75, "", "brNDC");
-				leg2[count]->SetTextSize(0.048);
+				leg2[count]->SetTextSize(0.05);
 			}
 
 			leg2[count]->SetFillStyle(0);

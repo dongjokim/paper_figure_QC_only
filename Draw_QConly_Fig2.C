@@ -496,8 +496,8 @@ void Draw_QConly_Fig2(){
 	latex2->SetTextSize(0.04);
 	latex2->SetTextFont(42);
 	c100->cd();
-	latex2->DrawLatexNDC( 0.25, 0.05, "#it{p}_{T,min} (GeV/#it{c})");
-	latex2->DrawLatexNDC( 0.65, 0.05, "#it{p}_{T,min} (GeV/#it{c})");
+	latex2->DrawLatexNDC( 0.25, 0.05, "#it{p}_{T,min} [GeV/#it{c}]");
+	latex2->DrawLatexNDC( 0.65, 0.05, "#it{p}_{T,min} [GeV/#it{c}]");
 
 	TLine *l0 = new TLine(x_min,0,x_max,0);
 	l0->SetLineStyle(2);
