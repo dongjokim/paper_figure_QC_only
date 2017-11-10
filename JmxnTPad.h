@@ -42,6 +42,8 @@
 #define kDUMMYSIZE 30         //some dummy number for initialization
 #define kDefaultMinLogY 0.001 //default minimum of the log scale when y axis is set to start from zero 
 
+
+
 class JmxnTPad { 
 
   public:
@@ -54,7 +56,7 @@ class JmxnTPad {
     TPad* GetPad(int ix, int iy){ return (TPad*) toppad->cd(100*ix+iy+1);}//coordinates 0,0 = upper left  
     TVirtualPad * GetTopPad(){return toppad;}
 
-    void SetTitleX(TString title,   bool centralize = 1, double size = 0.05, int font = 42, double offset = 1.0, bool drawUnderEachColumn=0);
+    void SetTitleX(TString title,   bool centralize = 0, double size = 0.05, int font = 42, double offset = 1.0, bool drawUnderEachColumn=0);
     void SetTitleY(TString title,   bool centralize = 1, double size = 0.05, int font = 42, double offset = 1.5, bool drawForEachRow=0);
     void SetTitleTop(TString title, bool centralize = 1, double size = 0.05, int font = 42, double offset = 0.5);
   
@@ -71,9 +73,9 @@ class JmxnTPad {
     void SetYCaption(double captionY = 4./5){ CaptionY = captionY;} 
     void SetCaption(int ix, int iy, TString caption=""){ if(0<=ix && ix<kDUMMYSIZE && 0<=iy && iy<kDUMMYSIZE) Caption[ix][iy]=caption;}
 
-    void SetOptionsLabelsAxisY(double offsetLabelY = 0.007, double textSizeLabelY = 0.7, double textFontLabelY = 42); 
+    void SetOptionsLabelAxisY(double offsetLabelY = 0.007, double textSizeLabelY = 0.7, double textFontLabelY = 42); 
     void SetSizeOfLabelPadsAxisY(double width = 0.05, double height = 0.017); 
-    void SetOptionsLabelsAxisX(double offsetLabelX = 0.01, double textSizeLabelX = 0.8, double textFontLabelX = 42);
+    void SetOptionsLabelAxisX(double offsetLabelX = 0.01, double textSizeLabelX = 0.8, double textFontLabelX = 42);
     void SetSizeOfLabelPadsAxisX(double width = 0.021, double height = 0.05);   
 
 
@@ -202,7 +204,7 @@ JmxnTPad::JmxnTPad(const int nXpads, const int nYpads, double *lowerRangesX, dou
    TitleX(""), CentralizeTitleX(0), EachColumnHasTitleX(0), OffsetTitleX(1.), TextFontTitleX(42), TextSizeTitleX(0.05), 
    TitleY(""), CentralizeTitleY(0), EachRowHasTitleY(0),    OffsetTitleY(1.5), TextFontTitleY(42), TextSizeTitleY(0.05),
    Title(""),  CentralizeTitle(0) ,                         OffsetTitle(0.5) , TextFontTitle(42),  TextSizeTitle(0.05),
-   CaptionTextSizePx(15), CaptionTextFont(43), CaptionX(0.9), CaptionY(4./5),
+   CaptionTextSizePx(20), CaptionTextFont(43), CaptionX(0.9), CaptionY(4./5),
    OffsetLabelY(0.007), TextSizeLabelY(0.7), TextFontLabelY(42),  
    xxLabelYDeltaWidth(0.05), yyLabelYDeltaHeigt(0.017),
    OffsetLabelX(0.01), TextSizeLabelX(0.8), TextFontLabelX(42), 
@@ -228,7 +230,13 @@ JmxnTPad::~JmxnTPad(){
   //destructor
   if(C)      delete C;
   if(toppad) delete toppad;
-  if(hDummy[0][0]) delete [] hDummy;
+  if(hDummy[0][0]){
+  for(int i=0;i<kDUMMYSIZE;i++){
+    for(int j=0;j<kDUMMYSIZE;j++){
+		delete hDummy[i][j];
+	}
+	}
+	}
 }
 
 //--------------------------------------------------------------
@@ -375,7 +383,13 @@ void JmxnTPad::Draw() {
   char name[100], hname[100]; 
   if(C)            delete C;
   if(toppad)       delete toppad;
-  if(hDummy[0][0]) delete [] hDummy;
+  if(hDummy[0][0]){
+  for(int i=0;i<kDUMMYSIZE;i++){
+    for(int j=0;j<kDUMMYSIZE;j++){
+		delete hDummy[i][j];
+	}
+	}
+	}
 
   int o =  (int)  gRandom->Uniform(100,10000);
   sprintf(name,"c_%d",o);
@@ -403,20 +417,7 @@ void JmxnTPad::Draw() {
       hDummy[ix][iy] = new TH1F(name,"", 3564, lower_range_X[ix] , upper_range_X[ix]); 
       hDummy[ix][iy]->SetMinimum(lower_range_Y[iy]);
       hDummy[ix][iy]->SetMaximum(upper_range_Y[iy]);
-      hDummy[ix][iy]->GetXaxis()->CenterTitle(1);
-      hDummy[ix][iy]->GetYaxis()->CenterTitle(1);
-      hDummy[ix][iy]->GetXaxis()->SetTitleOffset(0.9);
-      hDummy[ix][iy]->GetYaxis()->SetTitleOffset(0.5);
-      hDummy[ix][iy]->GetXaxis()->SetTitleSize(0.06);
-      hDummy[ix][iy]->GetYaxis()->SetTitleSize(0.06);
-      hDummy[ix][iy]->GetXaxis()->SetLabelOffset(0.01);
-      hDummy[ix][iy]->GetYaxis()->SetLabelOffset(0.001);
-      hDummy[ix][iy]->GetXaxis()->SetLabelSize(0.05);
-      hDummy[ix][iy]->GetYaxis()->SetLabelSize(0.05);
-      hDummy[ix][iy]->GetXaxis()->SetNdivisions(NDivX);
-      hDummy[ix][iy]->GetYaxis()->SetNdivisions(NDivY);
-      hDummy[ix][iy]->GetXaxis()->SetTitle("#phi in degrees");
-      hDummy[ix][iy]->GetYaxis()->SetTitle("R_{AA}");
+      hset( *hDummy[ix][iy], "","", 0.9,  0.5, 0.06,0.06, 0.01,0.001,0.05,0.05, NDivX,NDivY);
       hDummy[ix][iy]->GetXaxis()->SetTickLength(TicksLengthX);//set ticks
       hDummy[ix][iy]->GetYaxis()->SetTickLength(TicksLengthY);
     }
@@ -553,9 +554,7 @@ void JmxnTPad::Draw() {
 
     AdjustTGaxis(gLabels,TitleY,TextSizeTitleY,TextFontTitleY,OffsetTitleY,CentralizeTitleY,0,0,0,1);
     gLabels->Draw();
-  } 
+  }
+ 
+}
 
-}
-void JmxnTPad::Print(TString name = "figs/test.eps"){
-  C->Print(name);
-}
