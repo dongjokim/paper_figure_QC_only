@@ -364,7 +364,7 @@ void Draw_QConly_Fig89(){
 	pad1->SetOptionsLabelAxisX(0.008,0.62, 42);
 	pad1->SetOptionsLabelAxisY(0.008,0.42, 42);
 	pad1->SetSizeOfLabelPadsAxisY(0.05,0.017);
-	pad1->SetTitleX(" #it{p}_{T,min} ( #it{p}_{T,min} < #it{p}_{T} < 5 ) [GeV/#it{c}]", 1,0.04, 42, 1.4);
+	pad1->SetTitleX(" #it{p}_{T,min} [GeV/#it{c}]", 1,0.04, 42, 1.4);
 	pad1->SetTitleY("NSC(3,2)",1,0.04,42,1.2);
 	//pad1->SetTitleY("SC(3,2)/#LTv_{3}^{2}#GT#LTv_{2}^{2}#GT",1,0.04,42,1.2);
 	TLegend *leg[nx*ny];
@@ -377,8 +377,8 @@ void Draw_QConly_Fig89(){
 
 					if(ix==0 && iy==0){
 							cout << count << endl;
-							leg[count] = new TLegend( 0.08, 0.7, 0.48, 0.83, Form("ALICE Pb+Pb #sqrt{S_{NN}}=2.76 TeV"), "brNDC" );
-							leg_ampt = new TLegend( 0.06, 0.13, 0.4, 0.36, "AMPT", "brNDC" );
+							leg[count] = new TLegend( 0.03, 0.7, 0.48, 0.83, Form("ALICE Pb+Pb #sqrt{#it{s}_{NN}}=2.76 TeV"), "brNDC" );
+							leg_ampt = new TLegend( 0.015, 0.13, 0.35, 0.36, "AMPT", "brNDC" );
 							leg_ampt->SetFillStyle(0);
 							leg_ampt->SetBorderSize(0);
 							leg_ampt->SetTextSize(0.05);
@@ -407,15 +407,15 @@ void Draw_QConly_Fig89(){
 			TPad *p = pad1->GetPad(ix, iy);
 			p->cd();
 			p->SetGridx(0);
-			p->SetGridy(1);
+			p->SetGridy(0);
 						
 			int count = ix + nx* iy;
 			latex.SetTextSize(0.06);
 			latex.DrawLatex( 0.3, 0.17, Form("%2.f - %2.f%%", CentBins[count], CentBins[count+1]));	
-		
+		    if(count==1) latex.DrawLatex(0.1,0.14,"|#eta| < 0.8, #it{p}_{T,min} < #it{p}_{T} < 5 GeV/#it{c}");
 			gr_SC_xpt_err[kQC][count][isc]->Draw("same 2");	
 			gr_SC_xpt[kQC][count][isc]->Draw("same p,Z");
-			if( count == 0 ) leg[count]->AddEntry( gr_SC_xpt[kQC][count][isc], "NSC(3,2)   |#eta| < 0.8", "p");
+			if( count == 0 ) leg[count]->AddEntry( gr_SC_xpt[kQC][count][isc], "NSC(3,2)", "p");
 			if( count != 0) gr_SC_xpt_EKRT[0][count][0]->Draw("same l");
 			if( count > 1 ) gr_SC_xpt_EKRT[1][count][0]->Draw("same l");
 
@@ -442,7 +442,7 @@ void Draw_QConly_Fig89(){
 	// Draw 4,2 first // 
 	isc=1;
 
-	TLegend *leg_ampt2 = new TLegend( 0.06, 0.5, 0.4, 0.80, "AMPT", "brNDC" );
+	TLegend *leg_ampt2 = new TLegend( 0.015, 0.5, 0.35, 0.80, "AMPT", "brNDC" );
 	leg_ampt2->SetFillStyle(0);
 	leg_ampt2->SetBorderSize(0);
 	leg_ampt2->SetTextSize(0.05);
@@ -456,7 +456,7 @@ void Draw_QConly_Fig89(){
 				urY[ix][iy] = 0.4;
 			}			
 			if(iy==1){
-				lrY[ix][iy] = 0.11;
+				lrY[ix][iy] = 0.01;
 				urY[ix][iy] = 1.85;
 			}
 		}
@@ -466,7 +466,7 @@ void Draw_QConly_Fig89(){
 	pad2->SetOptionsLabelAxisX(0.008,0.62, 42);
 	pad2->SetOptionsLabelAxisY(0.008,0.42, 42);
 	pad2->SetSizeOfLabelPadsAxisY(0.05,0.017);
-	pad2->SetTitleX("#it{p}_{T,min} ( #it{p}_{T,min} < #it{p}_{T} < 5 ) [GeV/#it{c}]", 1,0.04, 42, 1.4);
+	pad2->SetTitleX("#it{p}_{T,min} [GeV/#it{c}]", 1,0.04, 42, 1.4);
 	pad2->SetTitleY("NSC(4,2)",1,0.04,42,1.2);
 	//pad2->SetTitleY("SC(4,2)/#LTv_{4}^{2}#GT#LTv_{2}^{2}#GT",1,0.04,42,1.2);
 	TLegend *leg2[nx*ny], *leg_ekrt2;
@@ -474,7 +474,7 @@ void Draw_QConly_Fig89(){
 		for(int iy=0; iy<ny; iy++){
 			int count = ix + nx* iy;
 			if( count == 0){
-				leg2[count] = new TLegend( 0.05, 0.62, 0.6, 0.79, Form("ALICE Pb+Pb #sqrt{S_{NN}}=2.76 TeV"), "brNDC" );
+				leg2[count] = new TLegend( 0.03, 0.62, 0.6, 0.79, Form("ALICE Pb+Pb #sqrt{#it{s}_{NN}}=2.76 TeV"), "brNDC" );
 				leg2[count]->SetTextSize(0.05);
 				leg_ekrt2 = new TLegend( 0.05, 0.33, 0.6, 0.52, "EKRT+Viscous Hydrodynamics", "brNDC");
 				leg_ekrt2->SetFillStyle(0);
@@ -501,7 +501,7 @@ void Draw_QConly_Fig89(){
 			TPad *p = pad2->GetPad(ix, iy);
 			p->cd();
 			p->SetGridx(0);
-			p->SetGridy(1);
+			p->SetGridy(0);
 
 			int count = ix + nx* iy;
 			if(iy==0){
@@ -510,6 +510,7 @@ void Draw_QConly_Fig89(){
 			else{
 				latex.DrawLatex( 0.1, 1.55, Form("%.f - %.f%%", CentBins[count], CentBins[count+1]));		
 			}
+			if(count==1) latex.DrawLatex(0.1,0.25,"|#eta| < 0.8, #it{p}_{T,min} < #it{p}_{T} < 5 GeV/#it{c}");
 
 			if( count != 0) gr_SC_xpt_EKRT[0][count][1]->Draw("same l");
 			if( count > 1 ) gr_SC_xpt_EKRT[1][count][1]->Draw("same l");
@@ -517,7 +518,7 @@ void Draw_QConly_Fig89(){
 			gr_SC_xpt[kQC][count][isc]->Draw("same p,Z");
 
 
-			if( count == 0 ) leg2[count]->AddEntry( gr_SC_xpt[kQC][count][isc], "NSC(4,2)   |#eta| < 0.8", "p");
+			if( count == 0 ) leg2[count]->AddEntry( gr_SC_xpt[kQC][count][isc], "NSC(4,2)", "p");
 
 			for(int iampt=0; iampt<3; iampt++){
 				if(Draw_AMPT[iampt]==1){

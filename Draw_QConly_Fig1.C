@@ -282,10 +282,10 @@ void Draw_QConly_Fig1(){
 	TH2D *href = new TH2D("href", "", 100, x_min, x_max, 100, -1.95e-7, 3.1e-7);
 	href->GetYaxis()->SetTitle("SC(#it{m},#it{n})");
 	href->GetYaxis()->SetTitleSize(0.05);
-	href->GetYaxis()->SetTitleOffset(0.85);
+	href->GetYaxis()->SetTitleOffset(0.91);
 	href->GetYaxis()->SetLabelSize(0.05);
-	href->GetXaxis()->SetTitleSize(0.055);
-	href->GetXaxis()->SetTitleOffset(0.8);
+	href->GetXaxis()->SetTitleSize(0.057);
+	href->GetXaxis()->SetTitleOffset(0.86);
 	href->GetXaxis()->SetLabelSize(0.05);
 	href->GetXaxis()->SetTitle("Centrality percentile");
 	href->SetStats(0);
@@ -348,7 +348,7 @@ void Draw_QConly_Fig1(){
 		if(Draw_SC_HIJING[isc] ==1)gr_SC_Hijing[isc]->Draw("same p");
 	}
 	//leg->AddEntry((TObject*)NULL,"|#eta| < 0.8, 0.2 < p_{T} < 5.0 GeV/#it{c}","");
-	if(Draw_TLatex==kTRUE) latex.DrawLatexNDC(0.15, 0.15, "|#eta| < 0.8, 0.2 < p_{T} < 5.0 GeV/#it{c}");
+	if(Draw_TLatex==kTRUE) latex.DrawLatexNDC(0.15, 0.15, "|#eta| < 0.8, 0.2 < #it{p}_{T} < 5.0 GeV/#it{c}");
 	leg->Draw();
 	if(Draw_SC_HIJING[0]==1){
 		TLegend *leg_hijing = new TLegend( 0.15, 0.25, 0.55, 0.45, "", "brNDC");
@@ -370,10 +370,10 @@ void Draw_QConly_Fig1(){
 	href2->GetYaxis()->SetTitle("NSC(#it{m},#it{n})");
 	//href2->GetYaxis()->SetTitle("SC(m,n)/#LTv_{m}^{2}#GT#LTv_{n}^{2}#GT");
 	href2->GetYaxis()->SetTitleSize(0.05);
-	href2->GetYaxis()->SetTitleOffset(0.85);
+	href2->GetYaxis()->SetTitleOffset(0.91);
 	href2->GetYaxis()->SetLabelSize(0.05);
 	href2->GetXaxis()->SetTitleSize(0.055);
-	href2->GetXaxis()->SetTitleOffset(0.8);
+	href2->GetXaxis()->SetTitleOffset(0.86);
 	href2->GetXaxis()->SetLabelSize(0.05);
 	href2->GetXaxis()->SetTitle("Centrality percentile");
 	href2->SetStats(0);
@@ -433,7 +433,7 @@ void Draw_QConly_Fig1(){
 			}
 		};
 	}
-	if(Draw_TLatex==kTRUE) latex.DrawLatexNDC(0.15, 0.15, "|#eta| < 0.8, 0.2 < p_{T} < 5.0 GeV/#it{c}");
+	if(Draw_TLatex==kTRUE) latex.DrawLatexNDC(0.15, 0.15, "|#eta| < 0.8, 0.2 < #it{p}_{T} < 5.0 GeV/#it{c}");
 	//leg2->AddEntry((TObject*)NULL,"|#eta| < 0.8, 0.2 < p_{T} < 5.0 GeV/#it{c}","");
 	leg2->Draw();
 	gPad->GetCanvas()->SaveAs("figs/Fig1b_higherNSC.eps");

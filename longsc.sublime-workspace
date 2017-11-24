@@ -1,0 +1,598 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"d",
+				"drawLowOrder"
+			],
+			[
+				"Ge",
+				"GetTitle"
+			],
+			[
+				"g",
+				"gColor"
+			],
+			[
+				"SetMark",
+				"SetMarkerColor"
+			],
+			[
+				"run",
+				"vn_run2"
+			],
+			[
+				"p",
+				"printf\tprintf …"
+			],
+			[
+				"Get",
+				"Get"
+			],
+			[
+				"kN",
+				"kNSC"
+			],
+			[
+				"kNA",
+				"kNAMPT"
+			],
+			[
+				"TGra",
+				"TGraphErrors"
+			],
+			[
+				"gr_ALICE_Pub_vn_QC_",
+				"gr_ALICE_Pub_vn_QC_Run1"
+			],
+			[
+				"gr",
+				"gr_vn_run2"
+			],
+			[
+				"A",
+				"AddEntry"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Draw_QConly_Fig2.C",
+			"settings":
+			{
+				"buffer_size": 20810,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/djkim/GitHub/paperQConly/longSC.tex",
+			"settings":
+			{
+				"buffer_size": 55197,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/djkim/Dropbox/jfluc/common/vn_ptmin/Draw_QConly_Fig3_vpt.C",
+			"settings":
+			{
+				"buffer_size": 18934,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/djkim/Dropbox/jfluc/common/single_vn/vn_mult.C",
+			"settings":
+			{
+				"buffer_size": 19347,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Draw_QConly_Fig1.C",
+			"settings":
+			{
+				"buffer_size": 15994,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Draw_QConly_Fig456.C",
+			"settings":
+			{
+				"buffer_size": 27709,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Draw_QConly_Fig89.C",
+			"settings":
+			{
+				"buffer_size": 18184,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reindent",
+				"Indentation: Reindent Lines"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/djkim/Dropbox/jfluc/common/vn_ptmin/Draw_QConly_Fig3_vpt.C",
+		"/Users/djkim/GitHub/paper_figure_QC_only/Draw_QConly_Fig456.C",
+		"/Users/djkim/GitHub/paper_figure_QC_only/Draw_QConly_Fig89.C",
+		"/Users/djkim/Dropbox/jfluc/common/single_vn/vn_mult.C",
+		"/Users/djkim/GitHub/paper_figure_QC_only/Draw_QConly_Fig2.C",
+		"/Users/djkim/Dropbox/jfluc/NL/plot_hsjet_lhc15o_rhoN.py",
+		"/Users/djkim/GitHub/paper_figure_QC_only/Draw_QConly_Fig1.C",
+		"/Users/djkim/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/9B1D0B33-0538-4139-AF1E-19D5EA78865C/paper.pdf",
+		"/Users/djkim/GitHub/paper_figure_QC_only/draw_chiqndfbest_3pad.py",
+		"/Users/djkim/Documents/Conference-talk/talks/QM2018/sec_analysis_spectra.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/QM2018/sec_analysis_EPNL.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/QM2018/sec_analysis_SC.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/QM2018/sec_flow_summary.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/QM2018/sec_analysis_summary.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/QM2018/sec_machcone.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/QM2018/sec_analysis.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/QM2018/sec_EPNL.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/PPD2017/sec_machcone.tex",
+		"/Users/djkim/Dropbox/jfluc/NL/plot_hs_lhc15o_chiN.py",
+		"/Users/djkim/Dropbox/jfluc/NL/plot_hs_lhc15o_rhoN.py",
+		"/Users/djkim/Dropbox/jfluc/NL/plot_hs_ampt_chiN.py",
+		"/Users/djkim/Dropbox/jfluc/NL/plot_hs_ampt_rhoN.py",
+		"/Users/djkim/Documents/Conference-talk/talks/PPD2017/sec_introD.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/PPD2017/sec_result_SC.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/PPD2017/sec_summary.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/PPD2017/sec_hf.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/PPD2017/sec_HI.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/PPD2017/sec_intro_chi.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/HighPT2017/sec_introD.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/HighPT2017/sec_machcone.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/HighPT2017/sec_result_SC.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/HighPT2017/sec_backup.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/HighPT2017/sec_intro_chi.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/HighPT2017/sec_analysis_summary.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/HighPT2017/sec_flow_smallsystem.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/HighPT2017/sec_intro_qhat_etas.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/HighPT2017/sec_result_old.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/IS2017/sec_result_SC_sum.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/HighPT2017/sec_result_NL.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/HighPT2017/sec_analysis_SC.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/HighPT2017/sec_discussions.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/IS2017/sec_result_old.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/IS2017/sec_issummary.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/HighPT2017/sec_Intro.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/HighPT2017/hpt.sublime-workspace",
+		"/Users/djkim/Documents/Conference-talk/talks/HighPT2017/hpt.sublime-project",
+		"/Users/djkim/Documents/Conference-talk/talks/IS2017/sec_introD.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/IS2017/sec_result_new.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/IS2017/sec_intro_chi.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/IS2017/sec_backup.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/IS2017/sec_result_NL.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/IS2017/sec_result_EP.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/IS2017/sec_details_EP.tex",
+		"/Users/djkim/SyncCom/Sync/EbECorr/HSInterplay/vn_HS.C",
+		"/Users/djkim/Documents/Conference-talk/talks/IS2017/sec_Intro.tex",
+		"/Users/djkim/Documents/Conference-talk/talks/IS2017/sec_result_pre.tex",
+		"/Users/djkim/SyncCom/Sync/EbECorr/HSInterplay/Comparison_SC_HS_all.C",
+		"/Users/djkim/SyncCom/Sync/EbECorr/HSInterplay/HS_data_config_NSC_S1.h",
+		"/Users/djkim/SyncCom/Sync/EbECorr/Presentations/HSInterplay/sec_analysis_spectra.tex",
+		"/Users/djkim/Dropbox/2017-08-SAB/sec_SC.tex",
+		"/Users/djkim/Dropbox/jfluc/common/1.resultsGraphs/hardsoft_results.py",
+		"/Users/djkim/Dropbox/2017-08-SAB/sec_jt.tex",
+		"/Users/djkim/Dropbox/jfluc/common/1.resultsGraphs/jfflucresults.py",
+		"/Users/djkim/SyncCom/Sync/EbECorr/HSInterplay/JFFlucResults_0720.C",
+		"/Users/djkim/Dropbox/2017-08-SAB/sec_intro.tex",
+		"/Users/djkim/Dropbox/2017-08-SAB/sec_jets.tex",
+		"/Users/djkim/Dropbox/jfluc/common/1.resultsGraphs/jfflucresults.cpp",
+		"/Users/djkim/SyncCom/Sync/EbECorr/Presentations/HSInterplay/sec_analysis_vn.tex",
+		"/Users/djkim/SyncCom/Sync/EbECorr/Presentations/HSInterplay/sec_summary.tex",
+		"/Users/djkim/SyncCom/Sync/EbECorr/Presentations/HSInterplay/sec_analysis_intro.tex",
+		"/Users/djkim/SyncCom/Sync/EbECorr/Presentations/HSInterplay/sec_intro.tex",
+		"/Users/djkim/Dropbox/jfluc/common/1.resultsGraphs/plot_vna.py",
+		"/Users/djkim/Dropbox/jfluc/common/1.resultsGraphs/observables.h",
+		"/Users/djkim/SyncCom/Sync/EbECorr/Presentations/HSInterplay/sec_SC_intro.tex",
+		"/Users/djkim/SyncCom/Sync/EbECorr/Presentations/HSInterplay/sec_analysis_SC.tex",
+		"/Users/djkim/SyncCom/Sync/EbECorr/HSInterplay/Comparison_NSC_HS_all.C",
+		"/Users/djkim/SyncCom/Sync/EbECorr/HSInterplay/HS_data_config_SC_S1.h",
+		"/Users/djkim/SyncCom/Sync/EbECorr/HSInterplay/HS_data_config_SC_S2_Jet.h",
+		"/Users/djkim/SyncCom/Sync/EbECorr/HSInterplay/HS_data_config_NSC_S2_Jet.h",
+		"/Users/djkim/GitHub/paper_figure_QC_only/draw_fig1.py",
+		"/Users/djkim/GitHub/paper_figure_QC_only/draw_chiqbest_3pad.py",
+		"/Users/djkim/Dropbox/jfluc/common/single_vn/vn_mod.py",
+		"/Users/djkim/GitHub/paper_figure_QC_only/draw_chiqbest.py",
+		"/Users/djkim/GitHub/paper_figure_QC_only/draw_chiq.cpp",
+		"/Users/djkim/GitHub/paper_figure_QC_only/Draw_QConly_Fig345.C",
+		"/Users/djkim/myrootmac/rootalias_lec.C",
+		"/Users/djkim/GitHub/paper_figure_QC_only/JmxnTPad.h",
+		"/Users/djkim/GitHub/paper_figure_QC_only/Draw_QConly_Fig67.C",
+		"/Users/djkim/GitHub/paper_figure_QC_only/draw_chiq_multi.cpp",
+		"/Users/djkim/Dropbox/jfluc/common/single_vn/5tev/Fig1_modified.C",
+		"/Users/djkim/Dropbox/jfluc/common/single_vn/vn_run2.C",
+		"/Users/djkim/Dropbox/jfluc/common/single_vn/5tev/Fig1.C",
+		"/Users/djkim/GitHub/paperQConly/longSC.tex"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"leg_ampt",
+			"leg_ampt2",
+			"Offset",
+			"centrality percentile ranges",
+			"0-40",
+			"0--40",
+			"centrality",
+			"centrality range",
+			"hset",
+			"Grid",
+			"TG",
+			"hset"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 6,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Draw_QConly_Fig2.C",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20810,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17108,
+								17114
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6853.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/djkim/GitHub/paperQConly/longSC.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 55197,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								51997,
+								51997
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 8293.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/djkim/Dropbox/jfluc/common/vn_ptmin/Draw_QConly_Fig3_vpt.C",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18934,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12959,
+								12959
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5040.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/djkim/Dropbox/jfluc/common/single_vn/vn_mult.C",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19347,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7649,
+								7649
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 3.0,
+						"translation.y": 3790.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Draw_QConly_Fig1.C",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15994,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13242,
+								13242
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4960.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Draw_QConly_Fig456.C",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 27709,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								24920,
+								24920
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 9664.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Draw_QConly_Fig89.C",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18184,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15208,
+								15208
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6133.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 100.0
+	},
+	"pinned_build_system": "",
+	"project": "longsc.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

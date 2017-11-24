@@ -72,7 +72,7 @@ TString strSCnormType[kNSC] = {
 	"SC(5,3)/#LTv_{5}^{2}#GT#LTv_{3}^{2}#GT",
 	"SC(4,3)/#LTv_{4}^{2}#GT#LTv_{3}^{2}#GT"};
 TString strAMPTName[kNAMPT] ={
-	"string melting w/o hadronic rescattering",
+	"string melting without hadronic rescattering",
 	"default",
 	"string melting"
 };
@@ -430,7 +430,8 @@ double calculate_chisquared( TGraphErrors *gr_data, TGraphErrors *gr_data_syst, 
 
 void Draw_QConly_Fig456(int imodel=kEKRT){
 	gStyle->SetErrorX(0);
-	TGaxis::SetExponentOffset(0.04, -0.1150, "y");
+	TGaxis::SetExponentOffset(0.05, -0.144, "y");
+	TGaxis::SetMaxDigits(5);
 
 	if(Draw_old_EKRT){LoadHydro();}
 	LoadSCResults();
@@ -523,13 +524,13 @@ void Draw_QConly_Fig456(int imodel=kEKRT){
 
 	TLegend *legmult = new TLegend( 0.09, 0.07, 0.53, 0.35, NULL, "brNDC");
 	legmult->AddEntry((TObject*)NULL,"Pb-Pb #sqrt{#it{s}_{NN}} = 2.76 TeV","");
-	legmult->AddEntry((TObject*)NULL,"|#eta| < 0.8, 0.2 < p_{T} < 5.0 GeV/#it{c}","");
-	legmult->SetTextSize(0.10);
+	legmult->AddEntry((TObject*)NULL,"|#eta| < 0.8, 0.2 < #it{p}_{T} < 5.0 GeV/#it{c}","");
+	legmult->SetTextSize(0.12);
 	legmult->SetBorderSize(0);
 	legmult->SetFillStyle(0);
 
 	TLegend *legData = new TLegend( 0.7, 0.8, 0.9, 0.90, NULL, "brNDC");
-	legData->SetTextSize(0.10);
+	legData->SetTextSize(0.12);
 	legData->SetBorderSize(0);
 	legData->SetFillStyle(0);
 	legData->AddEntry(gr_SC[0],"ALICE","pl");
@@ -537,7 +538,7 @@ void Draw_QConly_Fig456(int imodel=kEKRT){
 	TLegend *legModel;
 	if(imodel == kEKRT) {
 		legModel = new TLegend( 0.18, 0.50, 0.5, 0.89, NULL, "brNDC");
-		legModel->SetTextSize(0.10);
+		legModel->SetTextSize(0.12);
 		legModel->SetBorderSize(0);
 		legModel->SetFillStyle(0);
 		legModel->AddEntry((TObject*)NULL,"EKRT+Viscous Hydrodynamics","");
@@ -545,22 +546,22 @@ void Draw_QConly_Fig456(int imodel=kEKRT){
 		legModel->AddEntry( gr_SC_EKRT[1][1], "param1 (#eta/s(T))", "l");
 	} 
 	if(imodel==kVISH) {
-		legModel = new TLegend( 0.15, 0.23, 0.5, 0.890, "VISH2+1", "brNDC");
+		legModel = new TLegend( 0.18, 0.23, 0.45, 0.850, "VISH2+1", "brNDC");
 		legModel->SetTextSize(0.09);
 		legModel->SetBorderSize(0);
 		legModel->SetFillStyle(0);
 	}
 	if(imodel == kAMPT) {
 		legModel = new TLegend( 0.19, 0.40, 0.5, 0.85, "AMPT", "brNDC");
-		legModel->SetTextSize(0.10);
+		legModel->SetTextSize(0.11);
 		legModel->SetBorderSize(0);
 		legModel->SetFillStyle(0);
 	}
 
 	const int cNX = 2; // number of pad along X
 	const int cNY = 5; // number of pad along y
-	double canvas_width = 1300;
-	double canvas_height = 1500;
+	double canvas_width = 1000;
+	double canvas_height = 1600;
 	double canvas_margin_x = 10;
 	double W = 0.46; //(pad width as ratio);
 	double Xm = (1- cNX*W)/2; // xmargin
@@ -579,10 +580,10 @@ void Draw_QConly_Fig456(int imodel=kEKRT){
 	double *Ref_Histo_NSC_y_min;
 	double *Ref_Histo_NSC_y_max;
 	if(imodel==kEKRT) {
-		static double a[cNY] = { -15.2e-7, -4.2e-7, -0.19e-7, -0.06e-7, -0.74e-7 };
+		static double a[cNY] = { -16.1e-7, -4.2e-7, -0.19e-7, -0.06e-7, -0.74e-7 };
 		static double b[cNY] = { 2.8e-7, 28.6e-7, 2.1e-7, 0.63e-7, 0.9e-8};
 		static double c[cNY] = {-0.19, -0.1, -0.08,-0.08 , -0.39 };
-		static double d[cNY] = {0.01,0.999, 0.599, 1.7, 0.015};
+		static double d[cNY] = {0.01,0.999, 0.599, 1.7, 0.016};
 		Ref_Histo_SC_y_min = a;
 		Ref_Histo_SC_y_max = b;
 		Ref_Histo_NSC_y_min = c;
@@ -591,7 +592,7 @@ void Draw_QConly_Fig456(int imodel=kEKRT){
 	if(imodel==kVISH) {
 		static double a[cNY] = { -27.2e-7, -4.2e-7, -0.27e-7, -0.16e-7, -1.39e-7 };
 		static double b[cNY] = { 6.9e-7, 47.7e-7, 3.93e-7, 1.69e-7, 2.7e-8};
-		static double c[cNY] = {-0.19, -0.1, -0.12,-0.11 , -0.39 };
+		static double c[cNY] = {-0.19, -0.1, -0.14,-0.12 , -0.39 };
 		static double d[cNY] = {0.07,0.999, 0.599, 1.7, 0.077};
 		Ref_Histo_SC_y_min = a;
 		Ref_Histo_SC_y_max = b;
@@ -600,8 +601,8 @@ void Draw_QConly_Fig456(int imodel=kEKRT){
 	}
 	if(imodel==kAMPT) {
 		static double a[cNY] = { -16.1e-7, -4.2e-7, -0.29e-7, -0.16e-7, -0.87e-7 };
-		static double b[cNY] = { 9.9e-7, 32.7e-7, 2.35e-7, 0.76e-7, 4.4e-8};
-		static double c[cNY] = {-0.32, -0.1, -0.11,-0.11 , -0.39 };
+		static double b[cNY] = { 9.9e-7, 32.7e-7, 2.35e-7, 0.76e-7, 4.7e-8};
+		static double c[cNY] = {-0.33, -0.1, -0.11,-0.11 , -0.39 };
 		static double d[cNY] = {0.27,1.45, 1.11, 2.75, 0.47};
 		Ref_Histo_SC_y_min = a;
 		Ref_Histo_SC_y_max = b;
@@ -620,9 +621,9 @@ void Draw_QConly_Fig456(int imodel=kEKRT){
 					Xm + (ix+1)*W, ypos[iy+1],
 					0, 0, 0 );
 			if(ix==0) pads[ix][iy]->SetRightMargin(0);
-			if(ix==0) pads[ix][iy]->SetLeftMargin(0.13);
+			if(ix==0) pads[ix][iy]->SetLeftMargin(0.15);
 			if(ix==1) pads[ix][iy]->SetLeftMargin(0);
-			if(ix==1) pads[ix][iy]->SetRightMargin(0.13);
+			if(ix==1) pads[ix][iy]->SetRightMargin(0.15);
 			pads[ix][iy]->SetBottomMargin(0);
 			pads[ix][iy]->SetTopMargin(0);
 			pads[ix][iy]->Draw();
@@ -630,24 +631,24 @@ void Draw_QConly_Fig456(int imodel=kEKRT){
 	}
 
 	TLatex *latex2 = new TLatex();
-	latex2->SetTextSize(0.02);
+	latex2->SetTextSize(0.025);
 	latex2->SetTextFont(42);
 	c100->cd();
-	latex2->DrawLatexNDC( 0.10, 0.047, "0");
-	latex2->DrawLatexNDC( 0.168, 0.047, "10");
-	latex2->DrawLatexNDC( 0.245, 0.047, "20");
-	latex2->DrawLatexNDC( 0.325, 0.047, "30");
-	latex2->DrawLatexNDC( 0.405, 0.047, "40");
-	latex2->DrawLatexNDC( 0.48, 0.047, "50");
+	latex2->DrawLatexNDC( 0.10, 0.046, "0");
+	latex2->DrawLatexNDC( 0.173, 0.046, "10");
+	latex2->DrawLatexNDC( 0.249, 0.046, "20");
+	latex2->DrawLatexNDC( 0.326, 0.046, "30");
+	latex2->DrawLatexNDC( 0.404, 0.046, "40");
+	latex2->DrawLatexNDC( 0.48, 0.046, "50");
 
-	latex2->DrawLatexNDC( 0.57, 0.047, "10");
-	latex2->DrawLatexNDC( 0.645, 0.047, "20");
-	latex2->DrawLatexNDC( 0.725, 0.047, "30");
-	latex2->DrawLatexNDC( 0.805, 0.047, "40");
-	latex2->DrawLatexNDC( 0.88, 0.047, "50");
+	latex2->DrawLatexNDC( 0.565, 0.046, "10");
+	latex2->DrawLatexNDC( 0.644, 0.046, "20");
+	latex2->DrawLatexNDC( 0.720, 0.046, "30");
+	latex2->DrawLatexNDC( 0.797, 0.046, "40");
+	latex2->DrawLatexNDC( 0.873, 0.046, "50");
 
-	latex2->DrawLatexNDC( 0.30, 0.025, "#scale[1.2]{Centrality percentile}");
-	latex2->DrawLatexNDC( 0.70, 0.025, "#scale[1.2]{Centrality percentile}");
+	latex2->DrawLatexNDC( 0.30, 0.020, "#scale[1.2]{Centrality percentile}");
+	latex2->DrawLatexNDC( 0.70, 0.020, "#scale[1.2]{Centrality percentile}");
 
 	cout << "pads are ready" << endl;
 
@@ -662,24 +663,27 @@ void Draw_QConly_Fig456(int imodel=kEKRT){
 
 		hSCReference[i]->SetStats(0);
 		hSCReference[i]->GetYaxis()->SetTitle(Form("SC(%d,%d)   ", m, n) );
-		hSCReference[i]->GetYaxis()->SetTitleOffset(0.6);
-		hSCReference[i]->GetYaxis()->SetTitleSize(0.10);
-		hSCReference[i]->GetYaxis()->SetLabelSize(0.09);
+		hSCReference[i]->GetYaxis()->SetTitleOffset(0.52);
+		hSCReference[i]->GetYaxis()->SetTitleSize(0.15);
+		hSCReference[i]->GetYaxis()->SetLabelSize(0.125);
 		hSCReference[i]->GetYaxis()->CenterTitle();
 		hSCReference[i]->GetXaxis()->SetLabelSize(0.0);
+		hSCReference[i]->GetYaxis()->SetNdivisions(505);
+
 
 		hNSCReference[i]->SetStats(0);
 		hNSCReference[i]->GetYaxis()->SetTitle(Form("NSC(%d,%d) ", m, n) );
-		hNSCReference[i]->GetYaxis()->SetTitleOffset(0.68);
-		hNSCReference[i]->GetYaxis()->SetTitleSize(0.10);
-		hNSCReference[i]->GetYaxis()->SetLabelSize(0.09);
+		hNSCReference[i]->GetYaxis()->SetTitleOffset(0.56);
+		hNSCReference[i]->GetYaxis()->SetTitleSize(0.15);
+		hNSCReference[i]->GetYaxis()->SetLabelSize(0.125);
 		hNSCReference[i]->GetYaxis()->CenterTitle();
 		hNSCReference[i]->GetXaxis()->SetLabelSize(0.0);
+		hNSCReference[i]->GetYaxis()->SetNdivisions(505);
 
 		if(i==4){	
 			hNSCReference[i]->GetXaxis()->SetTitle("Centrality percentile");
 			hNSCReference[i]->GetXaxis()->SetTitleSize(0.077);
-			hNSCReference[i]->GetXaxis()->SetTitleOffset(0.801);
+			hNSCReference[i]->GetXaxis()->SetTitleOffset(0.81);
 
 		}		
 
@@ -762,12 +766,12 @@ void Draw_QConly_Fig456(int imodel=kEKRT){
 	}
 	TString strPadName[10] = {"(a)","(A)","(b)","(B)","(c)","(C)","(d)","(D)","(e)","(E)"};
 	TLatex latexPad;
-	latexPad.SetTextSize(0.09);
+	latexPad.SetTextSize(0.10);
 	for(int ix=0; ix<cNX; ix++){
 		for(int iy=0; iy<cNY; iy++){
 			pads[ix][4-iy]->cd();
 			if(ix==0) latexPad.DrawLatexNDC( 0.93, 0.91 , strPadName[ix+2*iy]);
-			if(ix==1) latexPad.DrawLatexNDC( 0.80, 0.91 , strPadName[ix+2*iy]);
+			if(ix==1) latexPad.DrawLatexNDC( 0.78, 0.91 , strPadName[ix+2*iy]);
 		}
 	}
 	c100->SaveAs(Form("figs/Fig%d_ModelComparison_%s.eps",imodel+4,strModel[imodel].Data()));

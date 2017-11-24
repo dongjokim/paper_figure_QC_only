@@ -399,6 +399,7 @@ void Draw_QConly_Fig2(){
 	//*********************************************************************************
 
 	TGaxis::SetExponentOffset(0.04, -0.1150, "y");
+	//TGaxis::SetMaxDigits(2);
 
 	//TLegend *legmult = new TLegend( 0.35, 0.79, 0.80, 0.98, NULL, "brNDC");
 	TLegend *legmult = new TLegend( 0.23, 0.10, 0.50, 0.32, NULL, "brNDC");
@@ -477,12 +478,14 @@ void Draw_QConly_Fig2(){
 		hSCReference[i]->GetYaxis()->SetTitleOffset(0.85);
 		hSCReference[i]->GetYaxis()->SetTitleSize(ytitlesize);
 		hSCReference[i]->GetYaxis()->SetLabelSize(0.07);
+		hSCReference[i]->GetYaxis()->SetNdivisions(505);
 
 		hNSCReference[i]->SetStats(0);
 		hNSCReference[i]->GetYaxis()->SetTitle(Form("NSC(%d,%d) ", m, n) );
-		hNSCReference[i]->GetYaxis()->SetTitleOffset(0.83);
+		hNSCReference[i]->GetYaxis()->SetTitleOffset(0.85);
 		hNSCReference[i]->GetYaxis()->SetTitleSize(ytitlesize);
 		hNSCReference[i]->GetYaxis()->SetLabelSize(0.07);
+		hNSCReference[i]->GetYaxis()->SetNdivisions(505);
 
 		if(i==1){
 			hSCReference[i]->GetXaxis()->SetLabelSize(0.07);
@@ -496,8 +499,8 @@ void Draw_QConly_Fig2(){
 	latex2->SetTextSize(0.04);
 	latex2->SetTextFont(42);
 	c100->cd();
-	latex2->DrawLatexNDC( 0.25, 0.05, "#it{p}_{T,min} [GeV/#it{c}]");
-	latex2->DrawLatexNDC( 0.65, 0.05, "#it{p}_{T,min} [GeV/#it{c}]");
+	latex2->DrawLatexNDC( 0.35, 0.05, "#it{p}_{T,min} [GeV/#it{c}]");
+	latex2->DrawLatexNDC( 0.73, 0.05, "#it{p}_{T,min} [GeV/#it{c}]");
 
 	TLine *l0 = new TLine(x_min,0,x_max,0);
 	l0->SetLineStyle(2);
